@@ -236,7 +236,7 @@ Cyrill Novgorodcev, C<< <cynovg at cpan.org> >>
 
 =head1 SEE ALSO
 
-WG API Reference http://ru.wargaming.net/developers/api_reference/wot/account/list/
+WG API Reference L<http://ru.wargaming.net/developers/api_reference/wot/account/list/>
 
 =cut
 
