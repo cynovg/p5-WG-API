@@ -1,5 +1,5 @@
 {
-   "abstract" : "The great new WG::API!",
+   "abstract" : "Module for work with Wargaming.net Public API",
    "author" : [
       "Cyrill Novgorodcev, C<< <cynovg at cpan.org> >>"
    ],
