@@ -1,6 +1,7 @@
 Revision history for WG-API
 
 {{$NEXT}}
+        - no parallel test in TRAVIS
 
 v0.02 2015-07-02T19:42:50Z
         Hot fix
