@@ -5,7 +5,7 @@ WG::API - Module for work with Wargaming.net Public API
 
 # VERSION
 
-Version 0.01
+Version v0.02
 
 # SYNOPSIS
 

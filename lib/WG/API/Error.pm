@@ -10,11 +10,11 @@ WG::API::Error - The great new WG::API::Error!
 
 =head1 VERSION
 
-Version 0.01
+Version v0.02
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = 'v0.02';
 
 
 =head1 SYNOPSIS
