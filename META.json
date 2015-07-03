@@ -1,7 +1,7 @@
 {
    "abstract" : "Module for work with Wargaming.net Public API",
    "author" : [
-      "Cyrill Novgorodcev, C<< <cynovg at cpan.org> >>"
+      "cynovg , C<< <cynovg at cpan.org> >>"
    ],
    "dynamic_config" : 0,
    "generated_by" : "Minilla/v2.4.1, CPAN::Meta::Converter version 2.142690",
@@ -67,7 +67,6 @@
       }
    },
    "version" : "v0.02",
-   "x_authority" : "cpan:CYNOVG",
    "x_contributors" : [
       "Cyrill Novgorodcev <cynovg@gmail.com>"
    ]
