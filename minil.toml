@@ -1,4 +1,3 @@
-authority = "cpan:CYNOVG"
 license="artistic_2"
 badges = ['travis', 'coveralls', 'gitter']
 abstract_from="lib/WG/API.pm"
