@@ -49,7 +49,6 @@
          "requires" : {
             "JSON" : "2.61",
             "LWP" : "6.08",
-            "Readonly" : "2",
             "perl" : "5.014"
          }
       }
