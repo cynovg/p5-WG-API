@@ -41,9 +41,10 @@ Perhaps a little code snippet.
 Create new object with params. Rerquired application id: http://ru.wargaming.net/developers/documentation/guide/getting-started/
 
 Params:
-    application_id *
-    languare
-    api_uri
+
+ - application_id *
+ - languare
+ - api_uri
 
 =cut
 
@@ -74,9 +75,9 @@ sub _init {
     return $self;
 }
 
-=head2 INTERNAL DATA
+=head1 INTERNAL DATA
 
-=head3 status
+=head2 status
 
 Return request status - 'ok', 'error' or undef, if request not finished.
 
@@ -84,7 +85,7 @@ Return request status - 'ok', 'error' or undef, if request not finished.
 
 sub status { shift->{ 'status' } }
 
-=head3 response
+=head2 response
 
 Return response from WG API
 
@@ -92,7 +93,7 @@ Return response from WG API
 
 sub response { shift->{ 'response' } }
 
-=head3 meta
+=head2 meta
 
 Fetch meta from response
 
@@ -100,7 +101,7 @@ Fetch meta from response
 
 sub meta { shift->{ 'meta' } }
 
-=head3 error
+=head2 error
 
 Return WG::API::Error object
 
@@ -236,7 +237,7 @@ Cyrill Novgorodcev, C<< <cynovg at cpan.org> >>
 
 =head1 SEE ALSO
 
-WG API Reference L<http://ru.wargaming.net/developers/api_reference/wot/account/list/>
+WG API Reference L<http://ru.wargaming.net/developers/>
 
 =cut
 
