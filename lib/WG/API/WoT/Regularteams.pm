@@ -17,23 +17,11 @@ Version v0.02
 
 our $VERSION = 'v0.02';
 
-=head1 SYNOPSYS
-
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
-     use WG::API::WoT::Regularteams
- 
-     my $foo = WG::API::Regularteams->new();
-     my @list = $foo->regularteams_list();
-     ...
-
 =head1 METHODS
 
 =head2 regularteams_list
 
-...
+Method returns full list of permanent teams and allows to search and sort them.
 
 =cut
 
@@ -47,7 +35,7 @@ sub regularteams_list {
 
 =head2 regularteams_info
 
-...
+Method returns details on permanent teams.
 
 =cut
 
@@ -59,18 +47,9 @@ sub regularteams_info {
     return $self->status eq 'ok' ? $self->response : undef ;
 }
 
-=head1 AUTHOR
-
-Cyrill Novgorodcev, C<< <cynovg at cpan.org> >>
-
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-wg-api at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=WG-API>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-
-
+Please report any bugs or feature requests to C<cynovg at cpan.org>, or through the web interface at L<https://github.com/cynovg/WG-API/issues>.  I will be notified, and then you'll automatically be notified of progress on your bug as I make changes.
 
 =head1 SUPPORT
 
@@ -78,14 +57,13 @@ You can find documentation for this module with the perldoc command.
 
     perldoc WG::API
 
-
 You can also look for information at:
 
 =over 4
 
-=item * RT: CPAN's request tracker (report bugs here)
+=item * RT: GitHub's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=WG-API>
+L<https://github.com/cynovg/WG-API/issues>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
@@ -104,7 +82,15 @@ L<http://search.cpan.org/dist/WG-API/>
 
 =head1 ACKNOWLEDGEMENTS
 
-=cut
+...
+
+=head1 SEE ALSO
+
+WG API Reference L<http://ru.wargaming.net/developers/>
+
+=head1 AUTHOR
+
+cynovg , C<< <cynovg at cpan.org> >>
 
 =head1 LICENSE AND COPYRIGHT
 
@@ -149,4 +135,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of WG::API
+1; # End of WG::API::WoT::Regularteams

@@ -18,23 +18,11 @@ Version v0.02
 
 our $VERSION = 'v0.02';
 
-=head1 SYNOPSYS
-
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
-     use WG::API::WoT::Globalwar
- 
-     my $foo = WG::API::Globalwar->new();
-     my @list = $foo->globalwar_clans();
-     ...
-
 =head1 METHODS
 
 =head2 globalwar_clans 
 
-...
+Method returns list of clans engaged in Clan Wars.
 
 =cut 
 
@@ -48,7 +36,7 @@ sub globalwar_clans{
 
 =head2 globalwar_maps 
 
-...
+Method returns information about all maps on Global Map. For each map there is information about last season.
 
 =cut 
 
@@ -62,7 +50,7 @@ sub globalwar_maps {
 
 =head2 globalwar_provinces 
 
-...
+Method returns list of provinces on the Global Map.
 
 =cut 
 
@@ -76,7 +64,7 @@ sub globalwar_provinces {
 
 =head2 globalwar_tournaments 
 
-...
+Method returns list of tournaments on the selected Global Map.
 
 =cut 
 
@@ -90,7 +78,7 @@ sub globalwar_tournaments {
 
 =head2 globalwar_battles 
 
-...
+Method returns list of clan's battles.
 
 =cut 
 
@@ -104,7 +92,7 @@ sub globalwar_battles {
 
 =head2 globalwar_accountpoints 
 
-...
+Method returns information about player's fame points.
 
 =cut 
 
@@ -118,7 +106,7 @@ sub globalwar_accountpoints {
 
 =head2 globalwar_accountpointshistory 
 
-...
+Method returns information about the changes of player's fame points.
 
 =cut 
 
@@ -132,7 +120,7 @@ sub globalwar_accountpointshistory {
 
 =head2 globalwar_accountpointsrating 
 
-...
+Method returns list of top players in fame points rating.
 
 =cut 
 
@@ -146,7 +134,7 @@ sub globalwar_accountpointsrating {
 
 =head2 globalwar_clanpoints 
 
-...
+Method returns information about clan's fame points.
 
 =cut 
 
@@ -160,7 +148,7 @@ sub globalwar_clanpoints {
 
 =head2 globalwar_clanpointshistory 
 
-...
+Method returns information about the changes of clan's fame points.
 
 =cut 
 
@@ -174,7 +162,7 @@ sub globalwar_clanpointshistory {
 
 =head2 globalwar_clanpointsrating 
 
-...
+Method returns list of top clans in fame points rating.
 
 =cut 
 
@@ -188,7 +176,7 @@ sub globalwar_clanpointsrating {
 
 =head2 globalwar_clanprovinces
 
-...
+Method returns lists of clans provinces.
 
 =cut 
 
@@ -200,19 +188,9 @@ sub globalwar_clanprovinces {
     return $self->status eq 'ok' ? $self->response : undef ;
 }
 
-
-=head1 AUTHOR
-
-Cyrill Novgorodcev, C<< <cynovg at cpan.org> >>
-
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-wg-api at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=WG-API>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-
-
+Please report any bugs or feature requests to C<cynovg at cpan.org>, or through the web interface at L<https://github.com/cynovg/WG-API/issues>.  I will be notified, and then you'll automatically be notified of progress on your bug as I make changes.
 
 =head1 SUPPORT
 
@@ -220,14 +198,13 @@ You can find documentation for this module with the perldoc command.
 
     perldoc WG::API
 
-
 You can also look for information at:
 
 =over 4
 
-=item * RT: CPAN's request tracker (report bugs here)
+=item * RT: GitHub's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=WG-API>
+L<https://github.com/cynovg/WG-API/issues>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
@@ -246,7 +223,15 @@ L<http://search.cpan.org/dist/WG-API/>
 
 =head1 ACKNOWLEDGEMENTS
 
-=cut
+...
+
+=head1 SEE ALSO
+
+WG API Reference L<http://ru.wargaming.net/developers/>
+
+=head1 AUTHOR
+
+cynovg , C<< <cynovg at cpan.org> >>
 
 =head1 LICENSE AND COPYRIGHT
 
@@ -291,4 +276,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of WG::API
+1; # End of WG::API::WoT::Globalwar

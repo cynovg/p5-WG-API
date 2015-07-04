@@ -7,7 +7,7 @@ use base qw/WG::API/;
 
 =head1 NAME
 
-WG::API - The great new WG::API!
+WG::API::WoWp - Modules to work with Wargaming.net Public API for World of Warplanes
 
 =head1 VERSION
 
@@ -20,14 +20,15 @@ our $VERSION = 'v0.02';
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
+Wargaming.net Public API is a set of API methods that provide access to Wargaming.net content, including in-game and game-related content, as well as player statistics.
 
-Perhaps a little code snippet.
+This module provide access to WG Public API
 
-    use WG::API::WoWp;
+    use WG::API::WoT::Account;
 
-    my $foo = WG::API::WoWp->new();
+    my $wowp = WG::API::WoWp::Account->new( { application_id => 'demo' } );
     ...
+    my $player = $wowp->account_info( { account_id => '1' } );
 
 =head1 METHODS
 
@@ -35,7 +36,13 @@ Perhaps a little code snippet.
 
 =head3 new
 
-Creta new object.
+Create new object with params. Rerquired application id: http://ru.wargaming.net/developers/documentation/guide/getting-started/
+
+Params:
+
+ - application_id *
+ - languare
+ - api_uri
 
 =cut
 
@@ -48,18 +55,9 @@ sub _init {
     return $self;
 }
 
-=head1 AUTHOR
-
-Cyrill Novgorodcev, C<< <cynovg at cpan.org> >>
-
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-wg-api at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=WG-API>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-
-
+Please report any bugs or feature requests to C<cynovg at cpan.org>, or through the web interface at L<https://github.com/cynovg/WG-API/issues>.  I will be notified, and then you'll automatically be notified of progress on your bug as I make changes.
 
 =head1 SUPPORT
 
@@ -67,14 +65,13 @@ You can find documentation for this module with the perldoc command.
 
     perldoc WG::API
 
-
 You can also look for information at:
 
 =over 4
 
-=item * RT: CPAN's request tracker (report bugs here)
+=item * RT: GitHub's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=WG-API>
+L<https://github.com/cynovg/WG-API/issues>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
@@ -93,7 +90,15 @@ L<http://search.cpan.org/dist/WG-API/>
 
 =head1 ACKNOWLEDGEMENTS
 
-=cut
+...
+
+=head1 SEE ALSO
+
+WG API Reference L<http://ru.wargaming.net/developers/>
+
+=head1 AUTHOR
+
+cynovg , C<< <cynovg at cpan.org> >>
 
 =head1 LICENSE AND COPYRIGHT
 
@@ -138,4 +143,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of WG::API
+1; # End of WG::API::WoWp

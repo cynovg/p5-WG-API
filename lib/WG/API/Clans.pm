@@ -7,7 +7,7 @@ use base qw/WG::API/;
 
 =head1 NAME
 
-WG::API::Clans - The great new WG::API::Clans!
+WG::API::Clans - provide access to clans info
 
 =head1 VERSION
 
@@ -19,31 +19,20 @@ our $VERSION = 'v0.02';
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
+This modile provide access to serch clans, info about clans, clans members and clan roles
 
-Perhaps a little code snippet.
 
     use WG::API::Clans;
 
-    my $foo = WG::API::Clans->new();
-    my @list = $foo->clans_list();
+    my $foo = WG::API::Clans->new( { application_id => 'demo' } );
+    my $list = $foo->clans_list( { search => 'Hellenes' } );
     ...
 
 =head1 METHODS
 
 =head2 clans_list
 
-Fetch clans list 
-
-    $foo->clans_list( $args );
-
-    args:
-        language
-        fields
-        search
-        order_by
-        limit
-        page_no
+Method searches through clans and sorts them in a specified order.
 
 =cut
 
@@ -57,7 +46,7 @@ sub clans_list {
 
 =head2 clans_info
 
-Fetch clan info
+Method returns detailed clan information.
 
 =cut
 
@@ -71,7 +60,7 @@ sub clans_info {
 
 =head2 clans_membersinfo 
 
-Fetch info about clan members
+Method returns clan member info and short info on the clan.
 
 =cut
 
@@ -85,7 +74,7 @@ sub clans_membersinfo {
 
 =head2 clans_glossary
 
-Fetch clans glossary
+Method returns information on clan entities.
 
 =cut
 
@@ -97,33 +86,23 @@ sub clans_glossary {
     return $self->status eq 'ok' ? $self->response : undef;
 }
 
-=head1 AUTHOR
-
-Cyrill Novgorodcev, C<< <cynovg at cpan.org> >>
-
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-wg-api at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=WG-API>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-
-
+Please report any bugs or feature requests to C<cynovg at cpan.org>, or through the web interface at L<https://github.com/cynovg/WG-API/issues>.  I will be notified, and then you'll automatically be notified of progress on your bug as I make changes.
 
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc WG::API::Clans
-
+    perldoc WG::API
 
 You can also look for information at:
 
 =over 4
 
-=item * RT: CPAN's request tracker (report bugs here)
+=item * RT: GitHub's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=WG-API>
+L<https://github.com/cynovg/WG-API/issues>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
@@ -142,7 +121,15 @@ L<http://search.cpan.org/dist/WG-API/>
 
 =head1 ACKNOWLEDGEMENTS
 
-=cut
+...
+
+=head1 SEE ALSO
+
+WG API Reference L<http://ru.wargaming.net/developers/>
+
+=head1 AUTHOR
+
+cynovg , C<< <cynovg at cpan.org> >>
 
 =head1 LICENSE AND COPYRIGHT
 

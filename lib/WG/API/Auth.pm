@@ -7,7 +7,7 @@ use base qw/WG::API/;
  
 =head1 NAME
 
-WG::API::Auth - The great new WG::API::Auth!
+WG::API::Auth  - Auth-module with using OpenID for work with WG PAPI
 
 =head1 VERSION
 
@@ -19,13 +19,13 @@ our $VERSION = 'v0.02';
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
+This module implements the possibility of authorization, prolongate and logout from the center of development.
 
-Perhaps a little code snippet.
+    use WG::API::Auth;
 
-    use WG::API;
-
-    my $foo = WG::API->login();
+    my $response = WG::API::Auth->new({ application_id => 'demo' })->login({ nofollow => '1', redirect_uri => 'yoursite.com/response' } );
+    
+    my $redirect_uri = $response->{ 'location' };
     ...
 
 =head1 METHODS
@@ -33,6 +33,10 @@ Perhaps a little code snippet.
 =head2 AUTH
 
 =head3 login
+
+Method authenticates user based on Wargaming.net ID (OpenID) which is used in World of Tanks, World of Tanks Blitz, World of Warplanes, and WarGag.ru. To log in, player must enter email and password used for creating account, or use a social network profile. Authentication is not available for iOS Game Center users in the following cases: the account is not linked to a social network account, or email and password are not specified in the profile.
+
+Information on authorization status is sent to URL specified in redirect_uri parameter.
 
 =cut
 
@@ -44,11 +48,19 @@ sub login {
 
 =head3 prolongate
 
+Method generates new access_token based on the current token.
+
+This method is used when the player is still using the application but the current access_token is about to expire.
+
 =cut
 
 sub prolongate { $_[0]->_request( 'post', 'auth/prolongate', ['access_token', 'expires_at'], ['access_token'], $_[1] ) }
 
 =head3 logout
+
+Method deletes user's access_token.
+
+After this method is called, access_token becomes invalid.
 
 =cut
 
@@ -151,4 +163,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of WG::API
+1; # End of WG::API::Auth

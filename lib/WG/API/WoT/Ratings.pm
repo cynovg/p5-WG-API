@@ -17,23 +17,11 @@ Version v0.02
 
 our $VERSION = 'v0.02';
 
-=head1 SYNOPSYS
-
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
-     use WG::API::WoT::Ratings
- 
-     my $foo = WG::API::Ratings->new();
-     my @list = $foo->rating_types();
-     ...
-
 =head1 METHODS
 
 =head2 ratings_types 
 
-...
+Method returns dictionary of rating periods and ratings details.
 
 =cut
 
@@ -47,7 +35,7 @@ sub ratings_types {
 
 =head2 ratings_dates
 
-...
+Method returns dates with available rating data.
 
 =cut
 
@@ -61,7 +49,7 @@ sub ratings_dates {
 
 =head2 ratings_accounts 
 
-...
+Method returns player ratings by specified IDs.
 
 =cut
 
@@ -75,7 +63,7 @@ sub ratings_accounts {
 
 =head2 ratings_neighbors 
 
-...
+Method returns list of adjacent positions in specified rating.
 
 =cut
 
@@ -89,7 +77,7 @@ sub ratings_neighbors {
 
 =head2 ratings_top
 
-...
+Method returns the list of top players by specified parameter.
 
 =cut
 
@@ -101,18 +89,9 @@ sub ratings_top {
     return $self->status eq 'ok' ? $self->response : undef ;
 }
 
-=head1 AUTHOR
-
-Cyrill Novgorodcev, C<< <cynovg at cpan.org> >>
-
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-wg-api at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=WG-API>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-
-
+Please report any bugs or feature requests to C<cynovg at cpan.org>, or through the web interface at L<https://github.com/cynovg/WG-API/issues>.  I will be notified, and then you'll automatically be notified of progress on your bug as I make changes.
 
 =head1 SUPPORT
 
@@ -120,14 +99,13 @@ You can find documentation for this module with the perldoc command.
 
     perldoc WG::API
 
-
 You can also look for information at:
 
 =over 4
 
-=item * RT: CPAN's request tracker (report bugs here)
+=item * RT: GitHub's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=WG-API>
+L<https://github.com/cynovg/WG-API/issues>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
@@ -146,7 +124,15 @@ L<http://search.cpan.org/dist/WG-API/>
 
 =head1 ACKNOWLEDGEMENTS
 
-=cut
+...
+
+=head1 SEE ALSO
+
+WG API Reference L<http://ru.wargaming.net/developers/>
+
+=head1 AUTHOR
+
+cynovg , C<< <cynovg at cpan.org> >>
 
 =head1 LICENSE AND COPYRIGHT
 
@@ -191,4 +177,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of WG::API
+1; # End of WG::API::WoT::Ratings

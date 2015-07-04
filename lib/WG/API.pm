@@ -24,9 +24,9 @@ our $VERSION = 'v0.02';
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
+Wargaming.net Public API is a set of API methods that provide access to Wargaming.net content, including in-game and game-related content, as well as player statistics.
 
-Perhaps a little code snippet.
+This module provide access to WG Public API
 
     use WG::API::WoT::Account;
 

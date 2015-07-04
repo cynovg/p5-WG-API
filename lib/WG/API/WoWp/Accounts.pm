@@ -7,7 +7,7 @@ use base qw/WG::API::WoWp/;
 
 =head1 NAME
 
-WG::API::WoWp::Accounts- The great new!
+WG::API::WoWp::Accounts - provide access to accounts info
 
 =head1 VERSION
 
@@ -17,23 +17,11 @@ Version v0.02
 
 our $VERSION = 'v0.02';
 
-=head1 SYNOPSIS
-
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
-    use WG::API::WoWp::Accounts
-
-    my $foo = WG::API::Accounts->new();
-    my @list = $foo->account_list();
-    ...
-
 =head1 METHODS
 
 =head2 account_list
 
-...
+Method returns partial list of players. The list is filtered by initial characters of user name and sorted alphabetically.
 
 =cut
 
@@ -47,7 +35,7 @@ sub account_list {
 
 =head2 account_info 
 
-...
+Method returns player details.
 
 =cut
 
@@ -61,7 +49,7 @@ sub account_info {
 
 =head2 account_planes
 
-...
+Method returns details on player's aircrafts.
 
 =cut
 
@@ -73,18 +61,9 @@ sub account_planes {
     return $self->status eq 'ok' ? $self->response : undef;
 }
 
-=head1 AUTHOR
-
-Cyrill Novgorodcev, C<< <cynovg at cpan.org> >>
-
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-wg-api at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=WG-API>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-
-
+Please report any bugs or feature requests to C<cynovg at cpan.org>, or through the web interface at L<https://github.com/cynovg/WG-API/issues>.  I will be notified, and then you'll automatically be notified of progress on your bug as I make changes.
 
 =head1 SUPPORT
 
@@ -92,14 +71,13 @@ You can find documentation for this module with the perldoc command.
 
     perldoc WG::API
 
-
 You can also look for information at:
 
 =over 4
 
-=item * RT: CPAN's request tracker (report bugs here)
+=item * RT: GitHub's request tracker (report bugs here)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=WG-API>
+L<https://github.com/cynovg/WG-API/issues>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
@@ -118,7 +96,15 @@ L<http://search.cpan.org/dist/WG-API/>
 
 =head1 ACKNOWLEDGEMENTS
 
-=cut
+...
+
+=head1 SEE ALSO
+
+WG API Reference L<http://ru.wargaming.net/developers/>
+
+=head1 AUTHOR
+
+cynovg , C<< <cynovg at cpan.org> >>
 
 =head1 LICENSE AND COPYRIGHT
 
@@ -163,4 +149,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of WG::API
+1; # End of WG::API::Clans

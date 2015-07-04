@@ -7,7 +7,7 @@ use Data::Dumper;
 
 =head1 NAME
 
-WG::API::Data - The great new WG::API::Data!
+WG::API::Data - module for work with API response 
 
 =head1 VERSION
 
@@ -29,13 +29,11 @@ Perhaps a little code snippet.
     my $wg_data = WG::API::Data->new();
     ...
 
-=head1 SUBROUTINES/METHODS
+=head1 CONSTRUCTOR
 
-=head2 CONSTRUCTOR
+=head2 new
 
-=head3 new
-
-Create new error object.
+Create new response object.
 
 =cut
 
@@ -48,28 +46,50 @@ sub new {
     return $self;
 }
 
-=head1 AUTHOR
-
-Cyrill Novgorodcev, C<< <cynovg at cpan.org> >>
-
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-wg-api-error at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=WG-API-Error>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-
-
+Please report any bugs or feature requests to C<cynovg at cpan.org>, or through the web interface at L<https://github.com/cynovg/WG-API/issues>.  I will be notified, and then you'll automatically be notified of progress on your bug as I make changes.
 
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc WG::API::Error
+    perldoc WG::API
+
+You can also look for information at:
+
+=over 4
+
+=item * RT: GitHub's request tracker (report bugs here)
+
+L<https://github.com/cynovg/WG-API/issues>
+
+=item * AnnoCPAN: Annotated CPAN documentation
+
+L<http://annocpan.org/dist/WG-API>
+
+=item * CPAN Ratings
+
+L<http://cpanratings.perl.org/d/WG-API>
+
+=item * Search CPAN
+
+L<http://search.cpan.org/dist/WG-API/>
+
+=back
+
+
+=head1 ACKNOWLEDGEMENTS
+
+...
 
 =head1 SEE ALSO
 
-    perldoc WG::API
+WG API Reference L<http://ru.wargaming.net/developers/>
+
+=head1 AUTHOR
+
+cynovg , C<< <cynovg at cpan.org> >>
 
 =head1 LICENSE AND COPYRIGHT
 
@@ -114,4 +134,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of WG::API::Error
+1; # End of WG::API::Data
