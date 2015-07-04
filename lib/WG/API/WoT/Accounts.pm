@@ -67,15 +67,15 @@ Method returns players' achievement details.
 
 =over Achievement properties define the achievements field values (ref. Achievements):
 
-=item * 
+=item
 
 1-4 for Mastery Badges and Stage Achievements (type: "class");
 
-=item * 
+=item
 
 maximum value of Achievement series (type: "series");
 
-=item * 
+=item
 
 number of achievements earned from sections: Battle Hero, Epic Achievements, Group Achievements, Special Achievements, etc. (type: "repeatable, single, custom").
 

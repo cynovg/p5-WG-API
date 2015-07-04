@@ -21,7 +21,7 @@ our $VERSION = 'v0.02';
 
 =head2 clan_provinces
 
-Method returns lists of clan’s provinces.
+Method returns lists of clan's provinces.
 
 =cut
 
