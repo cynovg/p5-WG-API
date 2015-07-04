@@ -65,7 +65,7 @@
          "web" : "https://github.com/cynovg/WG-API"
       }
    },
-   "version" : "v0.02",
+   "version" : "v0.03",
    "x_contributors" : [
       "Cyrill Novgorodcev <cynovg@gmail.com>"
    ]

@@ -11,11 +11,11 @@ WG::API::WoWp::Accounts - provide access to accounts info
 
 =head1 VERSION
 
-Version v0.02
+Version v0.03
 
 =cut
 
-our $VERSION = 'v0.02';
+our $VERSION = 'v0.03';
 
 =head1 METHODS
 
