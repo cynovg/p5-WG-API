@@ -83,6 +83,14 @@ Return error value.
 
 sub value { shift->{ 'value' } }
 
+=head3 raw
+
+Return RAW data from invalid response
+
+=cut
+
+sub raw { shift->{ 'raw' } }
+
 sub _parse {
     my ( $self, $response ) = @_;
 
@@ -90,6 +98,7 @@ sub _parse {
     $self->{ 'message' } = $response->{ 'message' };
     $self->{ 'field' }   = $response->{ 'field' };
     $self->{ 'value' }   = $response->{ 'value' };
+    $self->{ 'raw' }     = $response->{ 'raw' };
 
     return;
 }
