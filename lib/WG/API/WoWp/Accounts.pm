@@ -149,4 +149,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of WG::API::Clans
+1; # End of WG::API::WoWp::Accounts
