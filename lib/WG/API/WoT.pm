@@ -11,11 +11,11 @@ WG::API::WoWp - Modules to work with Wargaming.net Public API for World of Warpl
 
 =head1 VERSION
 
-Version v0.03
+Version v0.04
 
 =cut
 
-our $VERSION = 'v0.03';
+our $VERSION = 'v0.04';
 
 
 =head1 SYNOPSIS

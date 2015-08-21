@@ -10,11 +10,11 @@ WG::API::WoWs - Moduled for work with Wargaming.net Public API for Worlf of Wars
 
 =head1 VERSION
 
-Version v0.03
+Version v0.04
 
 =cut
 
-our $VERSION = 'v0.03';
+our $VERSION = 'v0.04';
 
 =head1 SYNOPSIS
 

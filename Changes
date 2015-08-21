@@ -2,6 +2,12 @@ Revision history for WG-API
 
 {{$NEXT}}
 
+v0.04 2015-08-21T16:32:37Z
+        - add World of Warships API
+        - rename some tests
+        - remove some tests
+        - fix pods
+
 v0.03 2015-07-04T10:04:53Z
         - change tests structure
         - fix pods
