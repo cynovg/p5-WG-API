@@ -224,7 +224,7 @@ sub _parse {
                 push @{ $self->{ 'response' } }, WG::API::Data->new( $data );
             };
         } else {
-            push @{ $self->{ 'response' } }, $response->{ 'data' };
+            $self->{ 'response' } = WG::API::Data->new( $response->{ 'data' } );
         }
     }
 
