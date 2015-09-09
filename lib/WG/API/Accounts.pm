@@ -1,12 +1,12 @@
-package WG::API::WoWs;
+package WG::API::Accounts;
 
-use 5.014;
-use warnings;
-use base qw/WG::API/;
+use strict;
+use v5.020;
+use base 'WG::API';
 
-=head1 NAME
+=head1 NANE
 
-WG::API::WoWs - Moduled for work with Wargaming.net Public API for Worlf of Warships
+WG::API::Accounts - This 
 
 =head1 VERSION
 
@@ -18,37 +18,36 @@ our $VERSION = 'v0.5';
 
 =head1 SYNOPSIS
 
-Wargaming.net Public API is a set of API methods that provide access to Wargaming.net content, including in-game and game-related content, as well as player statistics.
+    use WG::API::Accounts;
 
-This module provide access to WG Public API
-
-    use WG::API::WoWs::Account;
-
-    my $wows = WG::API::WoWs::Account->new( { application_id => 'demo' } );
+    my $foo = WG::API::Accounts->new( { application_id => 'demo' } );
+    my $info = $foo->account_info( { account_id => 1 } );
     ...
-    my $player = $wows->account_info( { account_id => '1' } );
 
-=head1 CONSTRUCTOR
 
-=head2 new 
+=head1 METHODS
 
-Create new object with params. Rerquired application id: http://ru.wargaming.net/developers/documentation/guide/getting-started/
+=head2 accounts_list
 
-Params:
+Method returns partial list of players. The list is filtered by initial characters of user name and sorted alphabetically.
 
- - application_id *
- - languare
- - api_uri
+=cut 
+
+sub accounts_list {
+    my $self = shift;
+    $self->_request( 'get', 'account/list', [], undef, $_[0] );
+    
+    return $self->status eq 'ok' ? $self->response : undef;
+}
+
+=head2 account_info
+
+Method returns Wargaming account details.
 
 =cut
 
-sub _init {
-    my $self = shift;
-
-    $self->{ 'api_uri' }    = 'api.worldoftanks.ru/wows';
-    $self->SUPER::_init();
-
-    return $self;
+sub account_info {
+    shift;
 }
 
 =head1 BUGS
@@ -139,5 +138,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of WG::API::WoWs
-
+1; # End of WG::API::Accounts 

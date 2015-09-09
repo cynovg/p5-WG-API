@@ -10,11 +10,11 @@ WG::API::WoWs::Warships
 
 =head1 VERSION
 
-Version v0.04
+Version v0.5
 
 =cut
 
-our $VERSION = 'v0.04';
+our $VERSION = 'v0.5';
 
 =head1 METHODS
 
