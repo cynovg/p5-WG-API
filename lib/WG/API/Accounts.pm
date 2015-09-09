@@ -35,7 +35,8 @@ Method returns partial list of players. The list is filtered by initial characte
 
 sub accounts_list {
     my $self = shift;
-    $self->_request( 'get', 'account/list', [], undef, $_[0] );
+
+    $self->_request( 'get', 'account/list', ['fields', 'game', 'type', 'search', 'limit'], undef, $_[0] );
     
     return $self->status eq 'ok' ? $self->response : undef;
 }
@@ -47,7 +48,11 @@ Method returns Wargaming account details.
 =cut
 
 sub account_info {
-    shift;
+    my $self = shift;
+
+    $self->_request( 'get', 'account/info', ['fields', 'access_token', 'account_id'], ['account_id'], $_[0] );
+    
+    return $self->status eq 'ok' ? $self->response : undef;
 }
 
 =head1 BUGS
