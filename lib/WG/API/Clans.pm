@@ -11,11 +11,11 @@ WG::API::Clans - provide access to clans info
 
 =head1 VERSION
 
-Version v0.04
+Version v0.05
 
 =cut
 
-our $VERSION = 'v0.04';
+our $VERSION = 'v0.05';
 
 =head1 SYNOPSIS
 

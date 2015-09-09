@@ -2,6 +2,10 @@ Revision history for WG-API
 
 {{$NEXT}}
 
+v0.05 2015-09-09T16:09:14Z
+	- add work with global accounts
+  - changed response format for scalar context
+
 v0.04 2015-08-21T16:32:37Z
         - add World of Warships API
         - rename some tests

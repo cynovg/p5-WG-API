@@ -11,11 +11,11 @@ WG::API::WoWp::Ratings - provide access to player ratings
 
 =head1 VERSION
 
-Version v0.04
+Version v0.05
 
 =cut
 
-our $VERSION = 'v0.04';
+our $VERSION = 'v0.05';
 
 =head1 METHODS
 
