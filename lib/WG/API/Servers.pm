@@ -35,11 +35,13 @@ Method returns the number of online players on the servers.
 =cut
 
 sub servers_info { 
-    my $self = shift;
+    my ( $self, %params ) = @_;
 
-    $self->_request( 'get', 'servers/info', ['language', 'fields', 'game'], undef, $_[ 0 ] ); 
+    $self->_request( 'get', 'servers/info', ['language', 'fields', 'game'], undef, %params ); 
     
-    return $self->status eq 'ok' ? $self->response : undef;
+    return $self->status eq 'ok' ? 
+        WG::API::Data->new( $params{ 'game' } ? $self->response->{ $params{ 'game' } } : $self->response )
+        : undef;
 }
 
 =head1 BUGS

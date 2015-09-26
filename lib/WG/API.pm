@@ -114,44 +114,43 @@ sub error {
 }
 
 sub _request {
-    my ( $self, $method, $uri, $params, $required_params, $passed_params ) = @_;
+    my ( $self, $method, $uri, $params, $required_params, %passed_params ) = @_;
 
     $self->{ 'status' } = '';
 
-    return undef unless $self->_validate_params( $required_params, $passed_params );    #check required params
+    return undef unless $self->_validate_params( $required_params, %passed_params );    #check required params
 
     return undef unless $method =~ /^(?:get|post)$/;
 
     $method = "_".$method;                                                              # add prefix for private methods
 
-    $self->$method( $uri, $params, $passed_params );
+    $self->$method( $uri, $params, %passed_params );
 
     return 1;
 }
 
 sub _validate_params {
-    my ( $self, $required_params, $passed_params ) = @_;
+    my ( $self, $required_params, %passed_params ) = @_;
 
-    return undef if $passed_params && ref $passed_params ne 'HASH';                     #invalid params ref
-    return undef if $required_params && ! $passed_params;                               #without params when they are needed
+    return undef if $required_params && ! keys %passed_params;                               #without params when they are needed
 
     for ( @$required_params ) {
-        return undef unless defined $passed_params->{ $_ };
+        return undef unless defined $passed_params{ $_ };
     }
 
     return 'passed';
 }
 
 sub _get {
-    my ( $self, $uri, $params, $passed_params ) = @_;
+    my ( $self, $uri, $params, %passed_params ) = @_;
 
     my $url = sprintf 'https://%s/%s/?application_id=%s',
-            $passed_params->{ 'api_uri' } ? $passed_params->{ 'api_uri' } : $self->{ 'api_uri' },
+            $passed_params{ 'api_uri' } ? $passed_params{ 'api_uri' } : $self->{ 'api_uri' },
             $uri ? $uri : '',
             $self->{ 'application_id' },
     ;
     for ( @$params ) {
-        $url .= sprintf "&%s=%s", $_, $passed_params->{ $_ } if defined $passed_params->{ $_ }; 
+        $url .= sprintf "&%s=%s", $_, $passed_params{ $_ } if defined $passed_params{ $_ }; 
     }
 
     my $response = $self->{ 'ua' }->get( $url ); 
@@ -160,23 +159,23 @@ sub _get {
 }
 
 sub _post {
-    my ( $self, $uri, $params, $passed_params ) = @_;
+    my ( $self, $uri, $params, %passed_params ) = @_;
 
     my $url = sprintf 'https://%s/%s/', 
-        $passed_params->{ 'api_uri' } ? $passed_params->{ 'api_uri' } : $self->{ 'api_uri' },
+        $passed_params{ 'api_uri' } ? $passed_params{ 'api_uri' } : $self->{ 'api_uri' },
         $uri ? $uri : '';
 
     #remove unused fields
-    if ( $params && $passed_params ) {
+    if ( $params && %passed_params ) {
         my %params;
-        @params{ keys %$passed_params } = ();
+        @params{ keys %passed_params } = ();
         delete @params{ @$params };
-        delete $passed_params->{ $_ } for keys %params;
+        delete $passed_params{ $_ } for keys %params;
     }
 
-    $passed_params->{ 'application_id' } = $self->{ 'application_id' };
+    $passed_params{ 'application_id' } = $self->{ 'application_id' };
 
-    my $response = $self->{ 'ua' }->post( $url, $passed_params ); 
+    my $response = $self->{ 'ua' }->post( $url, %passed_params ); 
     $self->_parse( $response->is_success ? decode_json $response->decoded_content : undef );
     return;
 }
@@ -216,16 +215,9 @@ sub _parse {
             $response->{ 'error' },
         );
     } else {
-        $self->{ 'error' }  = '';
-        $self->{ 'meta' } = $response->{ 'meta' };
-
-        if ( ref $response->{ 'data' } eq 'ARRAY' ) {
-            for my $data ( @{ $response->{ 'data' } } ) {
-                push @{ $self->{ 'response' } }, WG::API::Data->new( $data );
-            };
-        } else {
-            $self->{ 'response' } = WG::API::Data->new( $response->{ 'data' } );
-        }
+        $self->{ 'error' }      = '';
+        $self->{ 'meta' }       = $response->{ 'meta' };
+        $self->{ 'response' }   = $response->{ 'data' };
     }
 
     return;
