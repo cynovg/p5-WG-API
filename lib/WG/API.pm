@@ -49,11 +49,12 @@ Params:
 =cut
 
 sub new {
-    my ( $class, $params )  = @_;
+    my ( $class, %params )  = @_;
 
-    if ( ref $params eq 'HASH' && $params->{ 'application_id' } ) {
+    if ( %params && $params{ 'application_id' } ) {
 
-        my $self = $params;
+        my $self = {};
+        map { $self->{ $_ } = $params{ $_ } } keys %params;
 
         bless $self, ref( $class ) ? ref( $class ) : $class;
 
