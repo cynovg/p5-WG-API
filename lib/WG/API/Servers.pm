@@ -22,15 +22,34 @@ our $VERSION = 'v0.05';
 
     use WG::API::Servers;
 
-    my $foo = WG::API::Servers->new( { application_id => 'demo' } );
-    my $info = $foo->servers_info( { game => 'wowp' } );
+    my $foo = WG::API::Servers->new( application_id => 'demo' );
+    my $info = $foo->servers_info( game => 'wowp' );
     ...
 
 =head1 METHODS
 
-=head2 servers_info
+=head2 servers_info( %params )
 
 Method returns the number of online players on the servers.
+
+=over
+
+=item Params
+
+  language - Localization language.
+  fields - Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is no defined, the method returns all fields.
+  game - Game ID. Valid values:
+
+    "wot" - World of Tanks
+    "wotb" - World of Tanks Blitz
+    "wowp" - World of Warplanes
+
+=item Return
+
+  players_online - Number of online players
+  server - Server ID
+
+=back
 
 =cut
 
@@ -83,7 +102,7 @@ L<http://search.cpan.org/dist/WG-API/>
 
 =head1 SEE ALSO
 
-WG API Reference L<http://ru.wargaming.net/developers/>
+WG API Reference L<https://ru.wargaming.net/developers/api_reference/wgn/servers/info/>
 
 =head1 AUTHOR
 
