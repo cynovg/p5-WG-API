@@ -28,7 +28,7 @@ our $VERSION = 'v0.05';
 
 =head1 METHODS
 
-=head2 servers_info( %params )
+=head2 servers_info( [ %params ] )
 
 Method returns the number of online players on the servers.
 
