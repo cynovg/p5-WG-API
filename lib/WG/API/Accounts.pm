@@ -20,39 +20,87 @@ our $VERSION = 'v0.05';
 
     use WG::API::Accounts;
 
-    my $foo = WG::API::Accounts->new( { application_id => 'demo' } );
-    my $info = $foo->account_info( { account_id => 1 } );
+    my $foo = WG::API::Accounts->new( application_id => 'demo' );
+    my $info = $foo->account_info( 1 );
     ...
 
 
 =head1 METHODS
 
-=head2 accounts_list
+=head2 accounts_list( [ %params ] )
 
 Method returns partial list of players. The list is filtered by initial characters of user name and sorted alphabetically.
+
+=over
+
+=item Params
+
+  language - Localization language.
+  fields - Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is no defined, the method returns all fields.
+  game - Name of the game to search player for. If the parameter is not specified, search will be executed across known games.
+  type - Search type. Default is startswith. Valid values:
+
+    "startswith" — Search by initial part of player name (case insensitive). Minimum length: 3 characters. Maximum length: 24 characters. (by default)
+    "exact" — Search by exact match of player name (case insensitive). Indication of list of names, separated by commas is allowed (up to 100 values)
+
+  search - Search bar by player name. Search type and minimum string length depend on "type" parameter. If "exact" search type is used, indication of list of names, separated by commas is allowed.
+  limit - Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, an limit of None is applied (by default).
+
+=item Return
+
+ account_id - Player ID.
+ created_by - Date when player's account was created.
+ games - List of games player has played
+ nickname - Player name
+
+=back
 
 =cut 
 
 sub accounts_list {
     my $self = shift;
 
-    $self->_request( 'get', 'account/list', ['fields', 'game', 'type', 'search', 'limit'], undef, $_[0] );
+    $self->_request( 'get', 'account/list', ['fields', 'game', 'type', 'search', 'limit'], undef, @_ );
     
     return $self->status eq 'ok' ? $self->response : undef;
 }
 
-=head2 account_info
+=head2 account_info( account_id )
 
 Method returns Wargaming account details.
+
+=over 
+
+=item Params
+
+  language - Localization language. 
+  fields - Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is no defined, the method returns all fields.
+  access_token - Access token is used to access personal user data. The token is obtained via authentication and has expiration time.
+  account_id* - Player ID.
+
+=item Return
+
+  account_id - Player ID.
+  creates_by - Date when player's account was created.
+  games - List of games player has played.
+  nickname - Player name.
+
+PRIVATE (Player's private data):
+
+  private.free_xp - Amount of Free Experience.
+  private.gold - Current gold balance.
+  private.premium_expires_at - Premium Account expiration date.
+
+=back
 
 =cut
 
 sub account_info {
-    my $self = shift;
+    my ( $self, %params ) = @_;
 
-    $self->_request( 'get', 'account/info', ['fields', 'access_token', 'account_id'], ['account_id'], $_[0] );
+    $self->_request( 'get', 'account/info', ['fields', 'access_token', 'account_id'], ['account_id'], %params );
     
-    return $self->status eq 'ok' ? $self->response : undef;
+    return $self->status eq 'ok' &&  $self->response->{ $params{ 'account_id' } } ? WG::API::Data->new( $self->response->{ $params{ 'account_id' } } ) : undef;
 }
 
 =head1 BUGS
@@ -94,7 +142,17 @@ L<http://search.cpan.org/dist/WG-API/>
 
 =head1 SEE ALSO
 
-WG API Reference L<http://ru.wargaming.net/developers/>
+  WG API Reference 
+
+L<http://ru.wargaming.net/developers/>
+
+  WG API Reference, List of accounts  
+
+L<https://ru.wargaming.net/developers/api_reference/wgn/account/list/>
+
+  WG API Reference, Account Information 
+
+L<https://ru.wargaming.net/developers/api_reference/wgn/account/info/>
 
 =head1 AUTHOR
 
@@ -108,7 +166,7 @@ This program is free software; you can redistribute it and/or modify it
 under the terms of the the Artistic License (2.0). You may obtain a
 copy of the full license at:
 
-L<http://www.perlfoundation.org/artistic_license_2_0>
+st of accountsL<http://www.perlfoundation.org/artistic_license_2_0>
 
 Any use, modification, and distribution of the Standard or Modified
 Versions is governed by this Artistic License. By using, modifying or
