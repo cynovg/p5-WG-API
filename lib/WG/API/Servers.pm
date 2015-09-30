@@ -37,7 +37,7 @@ Method returns the number of online players on the servers.
 =item Params
 
   language - Localization language.
-  fields - Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is no defined, the method returns all fields.
+  fields - Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is no defined, the method returns all fields.
   game - Game ID. Valid values:
 
     "wot" - World of Tanks

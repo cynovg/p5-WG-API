@@ -36,12 +36,12 @@ Method returns partial list of players. The list is filtered by initial characte
 =item Params
 
   language - Localization language.
-  fields - Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is no defined, the method returns all fields.
+  fields - Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is no defined, the method returns all fields.
   game - Name of the game to search player for. If the parameter is not specified, search will be executed across known games.
   type - Search type. Default is startswith. Valid values:
 
-    "startswith" — Search by initial part of player name (case insensitive). Minimum length: 3 characters. Maximum length: 24 characters. (by default)
-    "exact" — Search by exact match of player name (case insensitive). Indication of list of names, separated by commas is allowed (up to 100 values)
+    "startswith" - Search by initial part of player name (case insensitive). Minimum length: 3 characters. Maximum length: 24 characters. (by default)
+    "exact" - Search by exact match of player name (case insensitive). Indication of list of names, separated by commas is allowed (up to 100 values)
 
   search - Search bar by player name. Search type and minimum string length depend on "type" parameter. If "exact" search type is used, indication of list of names, separated by commas is allowed.
   limit - Number of returned entries (fewer can be returned, but not more than 100). If the limit sent exceeds 100, an limit of None is applied (by default).
@@ -74,7 +74,7 @@ Method returns Wargaming account details.
 =item Params
 
   language - Localization language. 
-  fields - Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use “-” in front of its name. In case the parameter is no defined, the method returns all fields.
+  fields - Response field. The fields are separated with commas. Embedded fields are separated with dots. To exclude a field, use "-" in front of its name. In case the parameter is no defined, the method returns all fields.
   access_token - Access token is used to access personal user data. The token is obtained via authentication and has expiration time.
   account_id* - Player ID.
 
