@@ -1,13 +1,14 @@
 package WG::API;
 
 use 5.014;
-use strict;
-use warnings;
+use Moo;
 use WG::API::Error;
 use WG::API::Data;
 use LWP;
 use JSON;
 use Data::Dumper;
+
+=encoding utf8
 
 =head1 NAME
 
@@ -21,103 +22,180 @@ Version v0.05
 
 our $VERSION = 'v0.05';
 
-
 =head1 SYNOPSIS
 
 Wargaming.net Public API is a set of API methods that provide access to Wargaming.net content, including in-game and game-related content, as well as player statistics.
 
 This module provide access to WG Public API
 
-    use WG::API::WoT::Account;
+    use WG::API::NET;
 
-    my $wot = WG::API::WoT::Account->new( { application_id => 'demo' } );
+    my $wg = WG::API::NET->new( application_id => 'demo' );
     ...
-    my $player = $wot->account_info( { account_id => '1' } );
+    my $player = $wg->account_info( account_id => '1' );
 
-=head1 CONSTRUCTOR
+=head1 ATTRIBUTES
 
-=head2 new
+=over 1
 
-Create new object with params. Rerquired application id: http://ru.wargaming.net/developers/documentation/guide/getting-started/
+=item I<application_id*>
 
-Params:
+Rerquired application id: http://ru.wargaming.net/developers/documentation/guide/getting-started/
 
- - application_id *
- - languare
- - api_uri
+=back
+
+=cut 
+
+has application_id => (
+    is  => 'ro',
+    require => 1,
+);
+
+=over 1
+
+=item I<ua>
+
+User agent, default - LWP::UserAgent.
+
+=back
+
+=cut 
+
+has ua => ( 
+    is  => 'ro',
+    default => sub { LWP::UserAgent->new() },
+);
+
+=over 1
+
+=item I<language>
+
+Localization language. Default - 'ru', Valid values:
+
+=over 4
+
+=item "en" — English
+
+=item "ru" — Русский (by default)
+
+=item "pl" — Polski
+
+=item "de" — Deutsch
+
+=item "fr" — Français
+
+=item "es" — Español
+
+=item "zh-cn" — 简体中文
+
+=item "tr" — Türkçe
+
+=item "cs" — Čeština
+
+=item "th" — ไทย
+
+=item "vi" — Tiếng Việt
+
+=item "ko" — 한국어
+
+=back
+
+=back
+
+=cut 
+
+has language => (
+    is  => 'ro',
+    default => 'ru',
+);
+
+=over 1
+
+=item I<api_uri>
+
+URL for which a request is sent.
+
+=back
+
+=cut 
+
+has api_uri => (
+    is  => 'ro',
+    default => 'api.worldoftanks.ru/wgn',
+);
+
+=over 1 
+
+=item I<status>
+
+Request status - 'ok', 'error' or undef, if request not finished.
+
+=back 
 
 =cut
 
-sub new {
-    my ( $class, %params )  = @_;
+has status => (
+    is  => 'rw',
+);
 
-    if ( %params && $params{ 'application_id' } ) {
+=over 1
 
-        my $self = {};
-        map { $self->{ $_ } = $params{ $_ } } keys %params;
+=item I<response>
 
-        bless $self, ref( $class ) ? ref( $class ) : $class;
+Response from WG API
 
-        $self->_init();
-
-        return $self;
-    }
-    return;
-}
-
-sub _init {
-    my $self = shift;
-
-    $self->{ 'ua' }         = LWP::UserAgent->new();
-    $self->{ 'lang' }       = 'ru' unless defined $self->{ 'lang' };
-    $self->{ 'api_uri' }    = 'api.worldoftanks.ru/wgn' unless defined $self->{ 'api_uri' };
-    $self->{ 'status' }      = '';
-
-    return $self;
-}
-
-=head1 INTERNAL DATA
-
-=head2 status
-
-Return request status - 'ok', 'error' or undef, if request not finished.
+=back
 
 =cut
 
-sub status { shift->{ 'status' } }
+has response => (
+    is  => 'rw',
+);
 
-=head2 response
+=over 1
 
-Return response from WG API
+=item I<meta>
 
-=cut
+Meta from response
 
-sub response { shift->{ 'response' } }
-
-=head2 meta
-
-Fetch meta from response
+=back
 
 =cut
 
-sub meta { shift->{ 'meta' } }
+has meta => (
+    is  => 'rw',
+);
 
-=head2 error
+=over 1
 
-Return WG::API::Error object
+=item I<error>
+
+Once an error occurred, the following values are returned:
+
+=over 4
+
+=item code
+
+=item message
+
+=item field
+
+=item value
+
+=back
+
+=back
 
 =cut
 
-sub error { 
-    my $self = shift;
-
-    return $self->{ 'error' } ? $self->{ 'error' } : WG::API::Error->new( @_ );
-}
+has error => (
+    is  => 'rw',
+);
 
 sub _request {
     my ( $self, $method, $uri, $params, $required_params, %passed_params ) = @_;
 
-    $self->{ 'status' } = '';
+    $self->status( undef );
 
     return undef unless $self->_validate_params( $required_params, %passed_params );    #check required params
 
@@ -146,15 +224,15 @@ sub _get {
     my ( $self, $uri, $params, %passed_params ) = @_;
 
     my $url = sprintf 'https://%s/%s/?application_id=%s',
-            $passed_params{ 'api_uri' } ? $passed_params{ 'api_uri' } : $self->{ 'api_uri' },
+            $passed_params{ 'api_uri' } ? $passed_params{ 'api_uri' } : $self->api_uri,
             $uri ? $uri : '',
-            $self->{ 'application_id' },
+            $self->application_id,
     ;
     for ( @$params ) {
         $url .= sprintf "&%s=%s", $_, $passed_params{ $_ } if defined $passed_params{ $_ }; 
     }
 
-    my $response = $self->{ 'ua' }->get( $url ); 
+    my $response = $self->ua->get( $url ); 
     $self->_parse( $response->is_success ? decode_json $response->decoded_content : undef );
     return;
 }
@@ -163,7 +241,7 @@ sub _post {
     my ( $self, $uri, $params, %passed_params ) = @_;
 
     my $url = sprintf 'https://%s/%s/', 
-        $passed_params{ 'api_uri' } ? $passed_params{ 'api_uri' } : $self->{ 'api_uri' },
+        $passed_params{ 'api_uri' } ? $passed_params{ 'api_uri' } : $self->api_uri,
         $uri ? $uri : '';
 
     #remove unused fields
@@ -174,7 +252,7 @@ sub _post {
         delete $passed_params{ $_ } for keys %params;
     }
 
-    $passed_params{ 'application_id' } = $self->{ 'application_id' };
+    $passed_params{ 'application_id' } = $self->application_id;
 
     my $response = $self->{ 'ua' }->post( $url, %passed_params ); 
     $self->_parse( $response->is_success ? decode_json $response->decoded_content : undef );
@@ -208,17 +286,15 @@ sub _parse {
         };
     }
 
-    $self->{ 'status' } = $response->{ 'status' };
+    $self->status( $response->{ 'status' } );
     delete $self->{ 'response' };
 
     if ( $self->status eq 'error' ) {
-        $self->{ 'error' } = WG::API::Error->new(
-            $response->{ 'error' },
-        );
+        $self->error( WG::API::Error->new( $response->{ 'error' } ) );
     } else {
-        $self->{ 'error' }      = '';
-        $self->{ 'meta' }       = $response->{ 'meta' };
-        $self->{ 'response' }   = $response->{ 'data' };
+        $self->error( undef );
+        $self->meta( $response->{ 'meta' } );
+        $self->response( $response->{ 'data' } );
     }
 
     return;

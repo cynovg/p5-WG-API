@@ -1,8 +1,7 @@
 package WG::API::Error;
 
+use Moo;
 use 5.014;
-use strict;
-use warnings;
 
 =head1 NAME
 
@@ -38,70 +37,81 @@ Create new error object.
 
 =cut
 
-sub new {
-    my $class = shift;
-    
-    my $self = {};
-    bless $self, ref( $class ) ? ref( $class ) : $class;
+=head2 ATTRIBUTES
 
-    $self->_parse( @_ );
+=over 1
 
-    return $self;
-}
+=item I<code>
 
-=head2 METHODS
+Error code.
 
-=head3 code
-
-Return error code.
+=back
 
 =cut
 
-sub code { shift->{ 'code' } }
+has code => (
+    is  => 'ro',
+    required => 1,
+);
 
-=head3 message
+=over 1
 
-Return error message.
+=item I<message>
 
-=cut
+Error message.
 
-sub message { shift->{ 'message' } }
-
-=head3 field
-
-Return error field.
-
-=cut
-
-sub field { shift->{ 'field' } }
-
-=head3 value
-
-Return error value.
+=back
 
 =cut
 
-sub value { shift->{ 'value' } }
+has message => (
+    is  => 'ro',
+    required => 1,
+);
 
-=head3 raw
+=over 1
 
-Return RAW data from invalid response
+=item I<field>
+
+Error field.
+
+=back
 
 =cut
 
-sub raw { shift->{ 'raw' } }
+has field => (
+    is  => 'ro',
+    required => 1,
+);
 
-sub _parse {
-    my ( $self, $response ) = @_;
+=over 1
 
-    $self->{ 'code' }    = $response->{ 'code' };
-    $self->{ 'message' } = $response->{ 'message' };
-    $self->{ 'field' }   = $response->{ 'field' };
-    $self->{ 'value' }   = $response->{ 'value' };
-    $self->{ 'raw' }     = $response->{ 'raw' };
+=item I<value>
 
-    return;
-}
+Error value.
+
+=back
+
+=cut
+
+has value => (
+    is  => 'ro',
+    required => 1,
+);
+
+=over 
+
+=item I<raw>
+
+RAW data from invalid response
+
+=back
+
+=cut
+
+has raw => (
+    is  => 'ro',
+);
 
 =head1 BUGS
 
