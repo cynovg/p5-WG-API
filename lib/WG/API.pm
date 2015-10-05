@@ -3,7 +3,6 @@ package WG::API;
 use 5.014;
 use Moo;
 use WG::API::Error;
-use WG::API::Data;
 use LWP;
 use JSON;
 use Data::Dumper;

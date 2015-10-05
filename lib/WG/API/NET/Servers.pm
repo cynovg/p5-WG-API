@@ -68,7 +68,7 @@ sub servers_info {
     $self->_request( 'get', 'servers/info', ['language', 'fields', 'game'], undef, %params ); 
     
     return $self->status eq 'ok' ? 
-        WG::API::Data->new( $params{ 'game' } ? $self->response->{ $params{ 'game' } } : $self->response )
+        $params{ 'game' } ? $self->response->{ $params{ 'game' } } : $self->response 
         : undef;
 }
 
