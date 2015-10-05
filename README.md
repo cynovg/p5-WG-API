@@ -13,41 +13,63 @@ Wargaming.net Public API is a set of API methods that provide access to Wargamin
 
 This module provide access to WG Public API
 
-    use WG::API::WoT::Account;
+    use WG::API::NET;
 
-    my $wot = WG::API::WoT::Account->new( { application_id => 'demo' } );
+    my $wg = WG::API::NET->new( application_id => 'demo' );
     ...
-    my $player = $wot->account_info( { account_id => '1' } );
+    my $player = $wg->account_info( account_id => '1' );
 
-# CONSTRUCTOR
+# ATTRIBUTES
 
-## new
+- _application\_id\*_
 
-Create new object with params. Rerquired application id: http://ru.wargaming.net/developers/documentation/guide/getting-started/
+    Rerquired application id: http://ru.wargaming.net/developers/documentation/guide/getting-started/
 
-Params:
+- _ua_
 
-    - application_id *
-    - languare
-    - api_uri
+    User agent, default - LWP::UserAgent.
 
-# INTERNAL DATA
+- _language_
 
-## status
+    Localization language. Default - 'ru', Valid values:
 
-Return request status - 'ok', 'error' or undef, if request not finished.
+    - "en" — English
+    - "ru" — Русский (by default)
+    - "pl" — Polski
+    - "de" — Deutsch
+    - "fr" — Français
+    - "es" — Español
+    - "zh-cn" — 简体中文
+    - "tr" — Türkçe
+    - "cs" — Čeština
+    - "th" — ไทย
+    - "vi" — Tiếng Việt
+    - "ko" — 한국어
 
-## response
+- _api\_uri_
 
-Return response from WG API
+    URL for which a request is sent.
 
-## meta
+- _status_
 
-Fetch meta from response
+    Request status - 'ok', 'error' or undef, if request not finished.
 
-## error
+- _response_
 
-Return WG::API::Error object
+    Response from WG API
+
+- _meta_
+
+    Meta from response
+
+- _error_
+
+    Once an error occurred, the following values are returned:
+
+    - code
+    - message
+    - field
+    - value
 
 # BUGS
 
