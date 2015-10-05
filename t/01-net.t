@@ -7,7 +7,6 @@ use warnings;
 use lib ( 'lib' );
 
 use Test::More;
-use DDP;
 
 BEGIN: {
     use_ok( 'WG::API::NET'              || say "WG::API::NET loaded" );
