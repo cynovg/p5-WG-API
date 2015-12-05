@@ -1,10 +1,10 @@
 package WG::API::Auth;
 
 use 5.014;
-use strict;
-use warnings;
-use base qw/WG::API/;
- 
+use Moo;
+
+extends 'WG::API';
+
 =head1 NAME
 
 WG::API::Auth  - Auth-module with using OpenID for work with WG PAPI
@@ -41,9 +41,10 @@ Information on authorization status is sent to URL specified in redirect_uri par
 =cut
 
 sub login { 
-    $_[0]->_request( 'post', 'auth/login', ['expires_at', 'redirect_uri', 'display', 'nofollow'], undef, $_[1] );
+    my $self = shift;
+    $self->_request( 'get', 'auth/login', ['expires_at', 'redirect_uri', 'display', 'nofollow'], undef, @_ );
 
-    return $_[0]->status eq 'ok' ? $_[0]->response : undef;
+    return $self->status eq 'ok' ? $self->response : undef;
 }  
 
 =head3 prolongate
@@ -54,7 +55,7 @@ This method is used when the player is still using the application but the curre
 
 =cut
 
-sub prolongate { $_[0]->_request( 'post', 'auth/prolongate', ['access_token', 'expires_at'], ['access_token'], $_[1] ) }
+sub prolongate { shift->_request( 'get', 'auth/prolongate', ['access_token', 'expires_at'], ['access_token'], @_ ) }
 
 =head3 logout
 
@@ -64,16 +65,12 @@ After this method is called, access_token becomes invalid.
 
 =cut
 
-sub logout { $_[0]->_request( 'post', 'auth/logout', ['access_token'], ['access_token'], $_[1] ) }
+sub logout { shift->_request( 'get', 'auth/logout', ['access_token'], ['access_token'], @_ ) }
 
-sub _init {
-    my $self = shift;
-
-    $self->{ 'api_uri' } = 'api.worldoftanks.ru/wot';
-    $self->SUPER::_init();
-
-    return $self;
-}
+has api_uri => (
+    is      => 'ro',
+    default => 'api.worldoftanks.ru/wot',
+);
 
 =head1 BUGS
 
