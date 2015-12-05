@@ -27,7 +27,7 @@ Wargaming.net Public API is a set of API methods that provide access to Wargamin
 
 This module provide access to WG Public API
 
-    use WG::API::WoT::NET;
+    use WG::API::NET;
 
     my $wot = WG::API::NET->new( application_id => 'demo' );
     ...
