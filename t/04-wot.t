@@ -18,14 +18,21 @@ BEGIN {
     use_ok( 'WG::API::WoT::Tanks' || say "WG::API::WoT::Tanks loaded");
     use_ok( 'WG::API::WoT::Regularteams' || say "WG::API::WoT::Regularteams loaded");
 }
-diag( "WG::API::WoT                 $WG::API::WoT::VERSION,                 Perl $], $^X" );
-diag( "WG::API::WoT::Accounts       $WG::API::WoT::Accounts::VERSION,       Perl $], $^X" );
-diag( "WG::API::WoT::Clans          $WG::API::WoT::Clans::VERSION,          Perl $], $^X" );
-diag( "WG::API::WoT::Stronghold     $WG::API::WoT::Stronghold::VERSION,     Perl $], $^X" );  
-diag( "WG::API::WoT::Globalwar      $WG::API::WoT::Globalwar::VERSION,      Perl $], $^X" );
-diag( "WG::API::WoT::Ratings        $WG::API::WoT::Ratings::VERSION,        Perl $], $^X" );
-diag( "WG::API::WoT::ClansRatings   $WG::API::WoT::ClansRatings::VERSION,   Perl $], $^X" );
-diag( "WG::API::WoT::Tanks          $WG::API::WoT::Tanks::VERSION,          Perl $], $^X" );
-diag( "WG::API::WoT::Regularteams   $WG::API::WoT::Regularteams::VERSION,   Perl $], $^X" );
+
+my $wot = WG::API::WoT->new( application_id => 'demo' );
+ok( $wot && ref $wot, 'create class' );
+
+#can_ok( $wot, qw// );
+#can_ok( $wot, qw// );
+#can_ok( $wot, qw// );
+#
+#SKIP: {
+#    skip 'developers only', 5 unless $ENV{ 'WGMODE' } && $ENV{ 'WGMODE' } eq 'dev';
+#    ok( $wot->test, '' );
+#    ok( $wot->test, '' );
+#    ok( $wot->test, '' );
+#    ok( $wot->test, '' );
+#    ok( $wot->test, '' );
+#};
 
 done_testing();

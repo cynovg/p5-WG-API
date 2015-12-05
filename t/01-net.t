@@ -11,14 +11,13 @@ use Test::More;
 BEGIN: {
     use_ok( 'WG::API::NET'              || say "WG::API::NET loaded" );
 }
-diag( "Testing WG::API::NET             $WG::API::NET::VERSION, Perl $], $^X" );
-
-can_ok( 'WG::API::NET', qw/new/ );
 
 my $wg = WG::API::NET->new( application_id => 'demo' );
 ok( $wg && ref $wg, 'create class' );
 
 can_ok( $wg, qw/servers_info/ );
+can_ok( $wg, qw/accounts_list account_info/ );
+can_ok( $wg, qw/clans_list clans_info clans_membersinfo clans_glossary clans_messageboard/ );
 
 SKIP: {
     skip 'developers only', 8 unless $ENV{ 'WGMODE' } && $ENV{ 'WGMODE' } eq 'dev';
@@ -31,9 +30,6 @@ SKIP: {
     ok( $wg->servers_info( fields => 'server' ), 'get servers info with params' );
     ok( ! $wg->servers_info( fields => 'sever' ), 'get servers info with invalid params' );
     ok( $wg->error, 'error with invalid field name' );
-}
-
-can_ok( $wg, qw/accounts_list account_info/ );
-can_ok( $wg, qw/clans_list clans_info clans_membersinfo clans_glossary clans_messageboard/ );
+};
 
 done_testing();
