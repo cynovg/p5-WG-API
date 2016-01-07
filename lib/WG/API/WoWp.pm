@@ -25,9 +25,9 @@ This module provide access to WG Public API
 
     use WG::API::WoWp;
 
-    my $wowp = WG::API::WoWp->new( { application_id => 'demo' } );
+    my $wowp = WG::API::WoWp->new( application_id => 'demo' );
     ...
-    my $player = $wowp->account_info( { account_id => '1' } );
+    my $player = $wowp->account_info( account_id => '1' );
 
 
 =head1 CONSTRUCTOR
