@@ -1,4 +1,4 @@
-package WG::API::WoWp::Accounts;
+package WG::API::WoWp::Account;
 
 use Moo::Role;
 
@@ -26,5 +26,5 @@ sub account_planes {
     return $self->status eq 'ok' ? $self->response : undef;
 }
 
-1; # End of WG::API::WoWp::Accounts
+1; # End of WG::API::WoWp::Account
 

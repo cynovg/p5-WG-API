@@ -2,7 +2,7 @@ package WG::API::WoWp;
 
 use Moo;
 extends 'WG::API';
-with 'WG::API::WoWp::Accounts';
+with 'WG::API::WoWp::Account';
 with 'WG::API::WoWp::Ratings';
 
 =head1 NAME
