@@ -62,7 +62,7 @@ User agent, default - LWP::UserAgent.
 
 has ua => ( 
     is  => 'ro',
-    default => sub { LWP::UserAgent->new() },
+    default => sub{ LWP::UserAgent->new() },
 );
 
 =over 1
@@ -105,7 +105,7 @@ Localization language. Default - 'ru', Valid values:
 
 has language => (
     is  => 'ro',
-    default => 'ru',
+    default => sub{ 'ru' },
 );
 
 =over 1
@@ -120,7 +120,7 @@ URL for which a request is sent.
 
 has api_uri => (
     is  => 'ro',
-    default => 'api.worldoftanks.ru/wgn',
+    default => sub{ 'api.worldoftanks.ru/wgn' },
 );
 
 =over 1 
