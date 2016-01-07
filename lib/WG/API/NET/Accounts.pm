@@ -1,10 +1,6 @@
 package WG::API::NET::Accounts;
 
-use 5.014;
-use strict;
-use warnings;
-
-our $VERSION = 'v0.05';
+use Moo::Role;
 
 sub accounts_list {
     my $self = shift;
@@ -23,3 +19,4 @@ sub account_info {
 }
 
 1; # End of WG::API::NET::Accounts 
+

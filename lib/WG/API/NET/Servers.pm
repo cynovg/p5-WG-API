@@ -1,10 +1,6 @@
 package WG::API::NET::Servers;
 
-use 5.014;
-use strict;
-use warnings;
-
-our $VERSION = 'v0.05';
+use Moo::Role;
 
 sub servers_info { 
     my ( $self, %params ) = @_;
@@ -17,3 +13,4 @@ sub servers_info {
 }
 
 1; # End of WG::API::NET::Servers
+

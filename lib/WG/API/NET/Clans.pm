@@ -1,10 +1,6 @@
 package WG::API::NET::Clans;
 
-use 5.014;
-use strict;
-use warnings;
-
-our $VERSION = 'v0.05';
+use Moo::Role;
 
 sub clans_list {
     my ( $self, $params ) = @_;
@@ -47,3 +43,4 @@ sub clans_messageboard {
 }
 
 1; # End of WG::API::NET::Clans
+
