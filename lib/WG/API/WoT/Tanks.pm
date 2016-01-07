@@ -2,7 +2,7 @@ package WG::API::WoT::Tanks;
 
 use Moo::Role;
 
-our $VERSION = 'v0.7';
+our $VERSION = 'v0.8';
 
 sub tanks_stats {
     my $self = shift;

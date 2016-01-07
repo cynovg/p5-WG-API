@@ -65,7 +65,7 @@
          "web" : "https://github.com/cynovg/WG-API"
       }
    },
-   "version" : "v0.7",
+   "version" : "v0.8",
    "x_contributors" : [
       "root <root@cynovg-debian.local>",
       "Cyrill Novgorodcev <cynovg@gmail.com>"

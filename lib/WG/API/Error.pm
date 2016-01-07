@@ -9,11 +9,11 @@ WG::API::Error - module for work with API error
 
 =head1 VERSION
 
-Version v0.7
+Version v0.8
 
 =cut
 
-our $VERSION = 'v0.7';
+our $VERSION = 'v0.8';
 
 
 =head1 SYNOPSIS

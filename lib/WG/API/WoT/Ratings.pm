@@ -2,7 +2,7 @@ package WG::API::WoT::Ratings;
 
 use Moo::Role;
 
-our $VERSION = 'v0.7';
+our $VERSION = 'v0.8';
 
 sub ratings_types {
     my $self = shift;
