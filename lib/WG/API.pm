@@ -303,8 +303,7 @@ sub _parse {
         };
     }
 
-    $self->status( $response->{ 'status' } );
-    delete $self->{ 'response' };
+    $self->status( delete $response->{ 'status' } );
 
     if ( $self->status eq 'error' ) {
         $self->error( WG::API::Error->new( $response->{ 'error' } ) );
