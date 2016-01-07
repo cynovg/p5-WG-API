@@ -196,9 +196,27 @@ sub _request {
 
     $self->status( undef );
 
-    return undef unless $self->_validate_params( $required_params, %passed_params );    #check required params
+    unless ( $self->_validate_params( $required_params, %passed_params ) ) {    #check required params
+            $self->status( 'error' );
+            $self->error( WG::API::Error->new(
+                code    => '997',
+                message => 'missing a required field',
+                field   => 'xxx',
+                value   => 'xxx',
+                raw     => 'xxx',
+            ) );
+    }
 
-    return undef unless $method =~ /^(?:get|post)$/;
+    unless ( $method =~ /^(?:get|post)$/ ) {
+            $self->status( 'error' );
+            $self->error( WG::API::Error->new(
+                code    => '996',
+                message => 'unknow method',
+                field   => 'xxx',
+                value   => 'xxx',
+                raw     => 'xxx',
+            ) );
+    }
 
     $method = "_".$method;                                                              # add prefix for private methods
 
