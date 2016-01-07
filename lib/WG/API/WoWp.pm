@@ -1,9 +1,9 @@
 package WG::API::WoWp;
 
-use 5.014;
-use strict;
-use warnings;
-use base qw/WG::API/;
+use Moo;
+extends 'WG::API';
+with 'WG::API::WoWp::Accounts';
+with 'WG::API::WoWp::Ratings';
 
 =head1 NAME
 
@@ -17,24 +17,22 @@ Version v0.05
 
 our $VERSION = 'v0.05';
 
-
 =head1 SYNOPSIS
 
 Wargaming.net Public API is a set of API methods that provide access to Wargaming.net content, including in-game and game-related content, as well as player statistics.
 
 This module provide access to WG Public API
 
-    use WG::API::WoWp::Account;
+    use WG::API::WoWp;
 
-    my $wowp = WG::API::WoWp::Account->new( { application_id => 'demo' } );
+    my $wowp = WG::API::WoWp->new( { application_id => 'demo' } );
     ...
     my $player = $wowp->account_info( { account_id => '1' } );
 
-=head1 METHODS
 
-=head2 CONSTRUCTOR
+=head1 CONSTRUCTOR
 
-=head3 new
+=head2 new
 
 Create new object with params. Rerquired application id: http://ru.wargaming.net/developers/documentation/guide/getting-started/
 
@@ -46,14 +44,64 @@ Params:
 
 =cut
 
-sub _init {
-    my $self = shift;
+has api_uri => (
+    is  => 'ro',
+    default => sub{ 'api.worldofwarplanes.ru/wowp' },
+);
 
-    $self->{ 'api_uri' }    = 'api.worldofwarplanes.ru/wowp';
-    $self->SUPER::_init();
+=head1 METHODS
 
-    return $self;
-}
+=head2 Accounts
+
+=head3 B<account_list( [ %params ] )>
+
+Method returns partial list of players. The list is filtered by initial characters of user name and sorted alphabetically.
+
+=cut 
+
+=head3 B<account_info( [ %params ] )>
+
+Method returns player details.
+
+=cut 
+
+=head3 B<account_planes( [ %params ] )>
+
+Method returns details on player's aircrafts.
+
+=cut 
+
+=head2 Ratings
+
+=head3 B<ratings_types( [ %params ] )>
+
+Method returns dictionary of rating periods and ratings details.
+
+=cut
+
+=head3 B<ratings_accounts( [ %params ] )>
+
+Method returns player ratings by specified IDs.
+
+=cut
+
+=head3 B<ratings_neighbors( [ %params ] )>
+
+Method returns list of adjacent positions in specified rating.
+
+=cut
+
+=head3 B<ratings_top( [ %params ] )>
+
+Method returns the list of top players by specified parameter.
+
+=cut
+
+=head3 B<ratings_dates( [ %params ] )>
+
+Method returns dates with available rating data.
+
+=cut
 
 =head1 BUGS
 
@@ -144,3 +192,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 =cut
 
 1; # End of WG::API::WoWp
+
