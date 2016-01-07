@@ -2,6 +2,9 @@ Revision history for WG-API
 
 {{$NEXT}}
 
+v0.06 2016-01-07T20:43:00Z
+  - reworked all modules
+
 v0.05 2015-09-09T16:09:14Z
 	- add work with global accounts
   - changed response format for scalar context

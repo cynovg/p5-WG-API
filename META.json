@@ -4,7 +4,7 @@
       "cynovg , C<< <cynovg at cpan.org> >>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v2.5.0, CPAN::Meta::Converter version 2.150005",
+   "generated_by" : "Minilla/v2.5.0, CPAN::Meta::Converter version 2.142690",
    "license" : [
       "artistic_2"
    ],
@@ -65,9 +65,9 @@
          "web" : "https://github.com/cynovg/WG-API"
       }
    },
-   "version" : "v0.05",
+   "version" : "v0.06",
    "x_contributors" : [
+      "root <root@cynovg-debian.local>",
       "Cyrill Novgorodcev <cynovg@gmail.com>"
-   ],
-   "x_serialization_backend" : "JSON::PP version 2.27300"
+   ]
 }
