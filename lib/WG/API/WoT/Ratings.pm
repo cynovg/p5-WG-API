@@ -2,6 +2,8 @@ package WG::API::WoT::Ratings;
 
 use Moo::Role;
 
+our $VERSION = 'v0.06';
+
 sub ratings_types {
     my $self = shift;
 

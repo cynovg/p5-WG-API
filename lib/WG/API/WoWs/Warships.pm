@@ -2,6 +2,8 @@ package WG::API::WoWs::Warships;
 
 use Moo::Role;
 
+our $VERSION = 'v0.06';
+
 sub ships_stats {
     my $self = shift;
 

@@ -2,6 +2,8 @@ package WG::API::NET::Servers;
 
 use Moo::Role;
 
+our $VERSION = 'v0.06';
+
 sub servers_info { 
     my ( $self, %params ) = @_;
 

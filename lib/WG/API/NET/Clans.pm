@@ -2,6 +2,8 @@ package WG::API::NET::Clans;
 
 use Moo::Role;
 
+our $VERSION = 'v0.06';
+
 sub clans_list {
     my ( $self, $params ) = @_;
 

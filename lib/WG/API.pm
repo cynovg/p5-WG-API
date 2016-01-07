@@ -5,7 +5,6 @@ use Moo;
 use WG::API::Error;
 use LWP;
 use JSON;
-use Data::Dumper;
 
 =encoding utf8
 
