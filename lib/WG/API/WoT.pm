@@ -1,13 +1,14 @@
 package WG::API::WoT;
 
-use 5.014;
-use strict;
-use warnings;
-use base qw/WG::API/;
+use Moo;
+extends 'WG::API';
+with 'WG::API::WoT::Account';
+with 'WG::API::WoT::Ratings';
+with 'WG::API::WoT::Tanks';
 
 =head1 NAME
 
-WG::API::WoWp - Modules to work with Wargaming.net Public API for World of Warplanes
+WG::API::WoT - Modules to work with Wargaming.net Public API for World of Tanks
 
 =head1 VERSION
 
@@ -24,11 +25,11 @@ Wargaming.net Public API is a set of API methods that provide access to Wargamin
 
 This module provide access to WG Public API
 
-    use WG::API::WoT::Account;
+    use WG::API::WoT;
 
-    my $wot = WG::API::WoT::Account->new( { application_id => 'demo' } );
+    my $wot = WG::API::WoT->new( application_id => 'demo' );
     ...
-    my $player = $wot->account_info( { account_id => '1' } );
+    my $player = $wot->account_info( account_id => '1' );
 
 
 
@@ -36,7 +37,7 @@ This module provide access to WG Public API
 
 =head2 new
 
-Create new object with params. Rerquired application id: http://ru.wargaming.net/developers/documentation/guide/getting-started/
+Create new object with params. Rerquired application id: L<http://ru.wargaming.net/developers/documentation/guide/getting-started/>
 
 Params:
 
@@ -46,14 +47,74 @@ Params:
 
 =cut
 
-sub _init {
-    my $self = shift;
+has api_uri => (
+    is      => 'ro',
+    default => sub{ 'api.worldoftanks.ru/wot' },
+);
 
-    $self->{ 'api_uri' }    = 'api.worldoftanks.ru/wot';
-    $self->SUPER::_init();
+=head1 METHODS
 
-    return $self;
-}
+=head2 Account
+
+=head3 B<account_list( [ %params ] )>
+
+Method returns partial list of players. The list is filtered by initial characters of user name and sorted alphabetically
+
+=head3 B<account_info( [ %params ] )>
+
+Method returns player details.
+
+=head3 B<account_tanks( [ %params ] )>
+
+Method returns details on player's vehicles.
+
+=head3 B<account_achievements( [ %params ] )>
+
+Method returns players' achievement details.
+
+Achievement properties define the achievements field values (ref. L<WG::API::WoT::Achievements> ):
+
+    1-4 for Mastery Badges and Stage Achievements (type: "class");
+    maximum value of Achievement series (type: "series");
+    number of achievements earned from sections: Battle Hero, Epic Achievements, Group Achievements, Special Achievements, etc. (type: "repeatable, single, custom").
+
+=head2 Player ratings
+
+=head3 B<ratings_types( [ %params ] )>
+
+Method returns dictionary of rating periods and ratings details.
+
+=head3 B<ratings_dates( [ %params ] )>
+
+Method returns dates with available rating data.
+
+=head3 B<ratings_accounts( [ %params ] )>
+
+Method returns player ratings by specified IDs.
+
+=head3 B<ratings_neighbors( [ %params ] )>
+
+Method returns list of adjacent positions in specified rating.
+
+=head3 B<ratings_top( [ %params ] )>
+
+Method returns the list of top players by specified parameter.
+
+=head2 Player's vehicles
+
+=head3 B<tanks_stats( [ %params ] )>
+
+Method returns overall statistics, Tank Company statistics, and clan statistics per each vehicle for each user.
+
+=head3 B<tanks_achievements( [ %params ] )>
+
+Method returns list of achievements on all vehicles.
+
+Achievement properties define the achievements field values (ref. L<WG::API::WoT::Achievements> ):
+
+    1-4 for Mastery Badges and Stage Achievements (type: "class");
+    maximum value of Achievement series (type: "series");
+    number of achievements earned from sections: Battle Hero, Epic Achievements, Group Achievements, Special Achievements, etc. (type: "repeatable, single, custom").
 
 =head1 BUGS
 
