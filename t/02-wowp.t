@@ -2,6 +2,7 @@
 use 5.014;
 use strict;
 use warnings;
+use lib ('lib');
 use Test::More;
 
 BEGIN {
