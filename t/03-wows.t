@@ -19,7 +19,7 @@ can_ok( $wows, qw/account_list account_info account_achievements/ );
 can_ok( $wows, qw/ships_stats/ );
 
 SKIP: {
-    skip 'developers only', 5 unless $ENV{ 'WGMODE' } && $ENV{ 'WGMODE' } eq 'dev';
+    skip 'developers only', 8 unless $ENV{ 'WGMODE' } && $ENV{ 'WGMODE' } eq 'dev';
     my $accounts;
     ok( ! $wows->account_list, 'account list without params' );
     ok(   $accounts = $wows->account_list( search => 'test' ), 'account list with params' );

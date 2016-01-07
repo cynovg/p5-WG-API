@@ -16,7 +16,7 @@ can_ok( $wowp, qw/account_list account_info account_planes/ );
 can_ok( $wowp, qw/ratings_types ratings_accounts ratings_neighbors ratings_top ratings_dates/ );
 
 SKIP: {
-    skip 'developers only', 5  unless $ENV{ 'WGMODE' } && $ENV{ 'WGMODE' } eq 'dev';
+    skip 'developers only', 21  unless $ENV{ 'WGMODE' } && $ENV{ 'WGMODE' } eq 'dev';
     my $accounts;
     ok( ! $wowp->account_list,                                                                  'get accounts list without params' );
     ok(   $accounts = $wowp->account_list( search => 'test' ),                                  'get accounts list with params' );
