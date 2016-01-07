@@ -2,7 +2,7 @@ package WG::API::WoT::Account;
 
 use Moo::Role;
 
-our $VERSION = 'v0.06';
+our $VERSION = 'v0.7';
 
 sub account_list {
     my $self = shift;

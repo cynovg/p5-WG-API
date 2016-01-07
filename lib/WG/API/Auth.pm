@@ -11,11 +11,11 @@ WG::API::Auth  - Auth-module with using OpenID for work with WG PAPI
 
 =head1 VERSION
 
-Version v0.06
+Version v0.7
 
 =cut
 
-our $VERSION = 'v0.06';
+our $VERSION = 'v0.7';
 
 =head1 SYNOPSIS
 

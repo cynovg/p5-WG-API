@@ -12,11 +12,11 @@ WG::API::NET - Modules to work with Wargaming.net Public API
 
 =head1 VERSION
 
-Version v0.06
+Version v0.7
 
 =cut
 
-our $VERSION = 'v0.06';
+our $VERSION = 'v0.7';
 
 =head1 SYNOPSIS
 
