@@ -11,8 +11,7 @@ BEGIN {
     use_ok( 'WG::API::WoWs' || say 'WG::API::WoWs loaded' );
 }
 
-#my $wows = WG::API::WoWs->new( application_id => 'demo' );
-my $wows = WG::API::WoWs->new( application_id => 'd7b121cb9253f4e609b6ef258e8203f6' );
+my $wows = WG::API::WoWs->new( application_id => $ENV{ 'WG_KEY' } || 'demo' );
 ok( $wows && ref $wows, 'create class' );
 
 can_ok( $wows, qw/account_list account_info account_achievements/ );

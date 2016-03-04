@@ -9,7 +9,7 @@ BEGIN {
     use_ok( 'WG::API::WoWp' )               || say "WG::API::WoWp loaded";
 }
 
-my $wowp = WG::API::WoWp->new( application_id =>'demo' );
+my $wowp = WG::API::WoWp->new( application_id => $ENV{ 'WG_KEY' } || 'demo' );
 ok( $wowp && ref $wowp, 'create class' );
 
 can_ok( $wowp, qw/account_list account_info account_planes/ );

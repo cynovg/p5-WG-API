@@ -12,7 +12,7 @@ BEGIN: {
     use_ok( 'WG::API::NET'              || say "WG::API::NET loaded" );
 }
 
-my $wg = WG::API::NET->new( application_id => 'demo' );
+my $wg = WG::API::NET->new( application_id => $ENV{ 'WG_KEY' } || 'demo' );
 ok( $wg && ref $wg, 'create class' );
 
 can_ok( $wg, qw/servers_info/ );

@@ -12,7 +12,7 @@ BEGIN {
     use_ok( 'WG::API::WoT' || say "WG::API::WoT loaded");
 }
 
-my $wot = WG::API::WoT->new( application_id => 'demo' );
+my $wot = WG::API::WoT->new( application_id => $ENV{ 'WG_KEY' } || 'demo' );
 ok( $wot && ref $wot, 'create class' );
 
 can_ok( $wot, qw/account_list account_info account_tanks account_achievements/ );
