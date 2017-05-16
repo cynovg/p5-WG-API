@@ -15,11 +15,11 @@ WG::API - Module for work with Wargaming.net Public API
 
 =head1 VERSION
 
-Version v0.8.1
+Version v0.8.2
 
 =cut
 
-our $VERSION = 'v0.8.1';
+our $VERSION = 'v0.8.2';
 
 =head1 SYNOPSIS
 
@@ -191,6 +191,21 @@ has error => (
     is  => 'rw',
 );
 
+=over 1
+
+=item I<debug>
+
+Show debug info if enabled
+
+=back
+
+=cut
+
+has debug => (
+    is => 'ro',
+    default => '0',
+);
+
 sub _request {
     my ( $self, $method, $uri, $params, $required_params, %passed_params ) = @_;
 
@@ -250,6 +265,9 @@ sub _get {
     }
 
     my $response = $self->ua->get( $url ); 
+
+    warn $url if $self->debug;
+
     $self->_parse( $response->is_success ? decode_json $response->decoded_content : undef );
     return;
 }
@@ -270,6 +288,8 @@ sub _post {
     }
 
     $passed_params{ 'application_id' } = $self->application_id;
+
+    warn $url if $self->debug;
 
     my $response = $self->{ 'ua' }->post( $url, %passed_params ); 
     $self->_parse( $response->is_success ? decode_json $response->decoded_content : undef );

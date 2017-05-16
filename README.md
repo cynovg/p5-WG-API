@@ -5,7 +5,7 @@ WG::API - Module for work with Wargaming.net Public API
 
 # VERSION
 
-Version v0.8.1
+Version v0.8.2
 
 # SYNOPSIS
 
@@ -70,6 +70,10 @@ This module provide access to WG Public API
     - message
     - field
     - value
+
+- _debug_
+
+    Show debug info if enabled
 
 # BUGS
 
