@@ -206,6 +206,85 @@ has debug => (
     default => '0',
 );
 
+=over 1
+
+=item I<wot>
+
+Returns a WoT instance
+
+=back
+
+=cut
+
+has wot => (
+    is      => 'lazy',
+);
+
+sub _build_wot {
+    my $self = shift;
+
+    return WG::API::WoT->new(
+        application_id  => $self->application_id,
+        api_uri         => $self->api_uri,
+        language        => $self->language,
+        debug           => $self->debug,
+        @_
+    );
+}
+
+=over 1
+
+=item I<wowp>
+
+Returns A WoWp instance
+
+=back
+
+=cut
+
+has wowp => (
+    is      => 'lazy',
+);
+
+sub _build_wowp {
+    my $self = shift;
+
+    return WG::API::WoWp->new(
+        application_id => $self->application_id,
+        api_uri        => $self->api_uri,
+        language        => $self->language,
+        debug          => $self->debug,
+        @_
+    );
+}
+
+=over 1
+
+=item I<wows>
+
+Returns a WoWs instance
+
+=back
+
+=cut
+
+has wows => (
+    is      => 'lazy',
+);
+
+sub _build_wows {
+    my $self = shift;
+
+    return WG::API::WoWs->new(
+        application_id  => $self->application_id,
+        api_uri         => $self->api_uri,
+        language        => $self->language,
+        debug           => $self->debug,
+        @_
+    );
+}
+
+
 sub _request {
     my ( $self, $method, $uri, $params, $required_params, %passed_params ) = @_;
 

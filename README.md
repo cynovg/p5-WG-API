@@ -75,6 +75,18 @@ This module provide access to WG Public API
 
     Show debug info if enabled
 
+- _wot_
+
+    Returns a WoT instance
+
+- _wowp_
+
+    Returns A WoWp instance
+
+- _wows_
+
+    Returns a WoWs instance
+
 # BUGS
 
 Please report any bugs or feature requests to `cynovg at cpan.org`, or through the web interface at [https://github.com/cynovg/WG-API/issues](https://github.com/cynovg/WG-API/issues).  I will be notified, and then you'll automatically be notified of progress on your bug as I make changes.
