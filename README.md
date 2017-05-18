@@ -13,9 +13,9 @@ Wargaming.net Public API is a set of API methods that provide access to Wargamin
 
 This module provide access to WG Public API
 
-    use WG::API::NET;
+    use WG::API;
 
-    my $wg = WG::API::NET->new( application_id => 'demo' );
+    my $wg = WG::API->new( application_id => 'demo' );
     ...
     my $player = $wg->account_info( account_id => '1' );
 
@@ -86,6 +86,10 @@ This module provide access to WG Public API
 - _wows_
 
     Returns a WoWs instance
+
+- _net_
+
+    Returns a NET instance
 
 # BUGS
 
