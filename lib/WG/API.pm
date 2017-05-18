@@ -31,7 +31,7 @@ This module provide access to WG Public API
 
     my $wg = WG::API->new( application_id => 'demo' );
     ...
-    my $player = $wg->account_info( account_id => '1' );
+    my $player = $wg->net->account_info( account_id => '1' );
 
 =head1 ATTRIBUTES
 
