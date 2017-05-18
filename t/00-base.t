@@ -33,4 +33,17 @@ ok( $error->code eq $error_params{ 'code' }, 'error->code checked' );
 ok( $error->value eq $error_params{ 'value' }, 'error->value checked' );
 ok( ! ref $error->raw, 'error->raw checked' );
 
+my $wg;
+eval {
+    $wg = WG::API->new(application_id => $ENV{'WG_KEY'} || 'demo');
+};
+ok( $wg && ! $@, 'create general object');
+
+isa_ok( $wg->net, 'WG::API::NET');
+isa_ok( $wg->wot, 'WG::API::WoT');
+isa_ok( $wg->wowp, 'WG::API::WoWp');
+isa_ok( $wg->wows, 'WG::API::WoWs');
+
+isa_ok( $wg->net->ua, 'LWP::UserAgent');
+
 done_testing();
