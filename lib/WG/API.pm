@@ -33,7 +33,7 @@ This module provide access to WG Public API
 
     my $wg = WG::API->new( application_id => 'demo' );
     ...
-    my $player = $wg->net->account_info( account_id => '1' );
+    my $player = $wg->net( language => 'en' )->account_info( account_id => '1' );
 
 =head1 ATTRIBUTES
 
@@ -160,9 +160,6 @@ sub _build_wot {
 
     return WG::API::WoT->new(
         application_id  => $self->application_id,
-        api_uri         => $self->api_uri,
-        language        => $self->language,
-        debug           => $self->debug,
         @_
     );
 }
@@ -186,9 +183,6 @@ sub _build_wowp {
 
     return WG::API::WoWp->new(
         application_id => $self->application_id,
-        api_uri        => $self->api_uri,
-        language        => $self->language,
-        debug          => $self->debug,
         @_
     );
 }
@@ -212,9 +206,6 @@ sub _build_wows {
 
     return WG::API::WoWs->new(
         application_id  => $self->application_id,
-        api_uri         => $self->api_uri,
-        language        => $self->language,
-        debug           => $self->debug,
         @_
     );
 }
@@ -238,9 +229,6 @@ sub _build_net {
 
     return WG::API::NET->new(
         application_id  => $self->application_id,
-        api_uri         => $self->api_uri,
-        language        => $self->language,
-        debug           => $self->debug,
         @_
     );
 }
