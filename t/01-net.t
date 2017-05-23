@@ -30,6 +30,13 @@ SKIP: {
     ok( $wg->servers_info( fields => 'server' ), 'get servers info with params' );
     ok( ! $wg->servers_info( fields => 'sever' ), 'get servers info with invalid params' );
     ok( $wg->error, 'error with invalid field name' );
+
+    #accounts
+    my $accounts;
+    ok( $accounts = $wg->accounts_list( search => 'test' ), 'Search accounts' );
+    is( $accounts = $wg->accounts_list( game => 'wot' ), undef, 'Get accounts without search field' );
+    is( $wg->error->code, '997', 'get error' );
+    
 };
 
 done_testing();
