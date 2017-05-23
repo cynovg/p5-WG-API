@@ -180,7 +180,7 @@ sub _parse {
         $self->error( WG::API::Error->new( $response->{ 'error' } ) );
     } else {
         $self->error( undef );
-        $self->meta( $response->{ 'meta' } );
+        $self->meta_data( $response->{ 'meta' } );
         $self->response( $response->{ 'data' } );
     }
 
