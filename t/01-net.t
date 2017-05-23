@@ -6,14 +6,14 @@ use strict;
 use warnings;
 use lib ( 'lib' );
 
+use WG::API;
+
 use Test::More;
 
-BEGIN: {
-    use_ok( 'WG::API::NET'              || say "WG::API::NET loaded" );
-}
-
-my $wg = WG::API::NET->new( application_id => $ENV{ 'WG_KEY' } || 'demo' );
+my $wg = WG::API->new( application_id => $ENV{ 'WG_KEY' } || 'demo' );
 ok( $wg && ref $wg, 'create class' );
+ok( $wg = $wg->net, 'get WG::API::NET instance');
+isa_ok( $wg, 'WG::API::NET', 'valid instance');
 
 can_ok( $wg, qw/servers_info/ );
 can_ok( $wg, qw/accounts_list account_info/ );

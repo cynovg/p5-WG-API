@@ -1,18 +1,15 @@
 #!/usr/bin/env perl
-#
-#
-
 use 5.014;
 use warnings;
 use lib ( 'lib' );
+
+use WG::API;
+
 use Test::More;
 
-BEGIN {
-    use_ok( 'WG::API::WoWs' || say 'WG::API::WoWs loaded' );
-}
-
-my $wows = WG::API::WoWs->new( application_id => $ENV{ 'WG_KEY' } || 'demo' );
+my $wows = WG::API->new( application_id => $ENV{ 'WG_KEY' } || 'demo' )->wows;
 ok( $wows && ref $wows, 'create class' );
+isa_ok( $wows, 'WG::API::WoWs');
 
 can_ok( $wows, qw/account_list account_info account_achievements/ );
 can_ok( $wows, qw/ships_stats/ );

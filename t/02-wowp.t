@@ -3,14 +3,14 @@ use 5.014;
 use strict;
 use warnings;
 use lib ('lib');
+
+use WG::API;
+
 use Test::More;
 
-BEGIN {
-    use_ok( 'WG::API::WoWp' )               || say "WG::API::WoWp loaded";
-}
-
-my $wowp = WG::API::WoWp->new( application_id => $ENV{ 'WG_KEY' } || 'demo' );
+my $wowp = WG::API->new( application_id => $ENV{ 'WG_KEY' } || 'demo' )->wowp;
 ok( $wowp && ref $wowp, 'create class' );
+isa_ok( $wowp, 'WG::API::WoWp');
 
 can_ok( $wowp, qw/account_list account_info account_planes/ );
 can_ok( $wowp, qw/ratings_types ratings_accounts ratings_neighbors ratings_top ratings_dates/ );
