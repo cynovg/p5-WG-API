@@ -7,7 +7,7 @@ our $VERSION = 'v0.8.1';
 sub accounts_list {
     my $self = shift;
 
-    $self->_request( 'get', 'account/list', ['fields', 'game', 'type', 'search', 'limit'], undef, @_ );
+    $self->_request( 'get', 'account/list', ['fields', 'game', 'type', 'search', 'limit'], ['search'], @_ );
     
     return $self->status eq 'ok' ? $self->response : undef;
 }
