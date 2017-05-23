@@ -1,7 +1,6 @@
 package WG::API::NET;
 
 use Moo;
-extends 'WG::API';
 with 'WG::API::NET::Clans';
 with 'WG::API::NET::Accounts';
 with 'WG::API::NET::Servers';
@@ -79,6 +78,15 @@ Method returns information on clan entities.
 =head3 B<servers_info( [ %params ] )>
 
 Method returns the number of online players on the servers.
+
+=cut
+
+has api_uri => (
+    is  => 'ro',
+    default => sub{ 'api.worldoftanks.ru/wgn' },
+);
+
+with 'WG::API::Base';
 
 =head1 BUGS
 
