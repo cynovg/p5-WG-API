@@ -33,10 +33,18 @@ SKIP: {
 
     #accounts
     my $accounts;
-    ok( $accounts = $wg->accounts_list( search => 'test' ), 'Search accounts' );
     is( $accounts = $wg->accounts_list( game => 'wot' ), undef, 'Get accounts without search field' );
     is( $wg->error->code, '997', 'get error' );
+    ok( $accounts = $wg->accounts_list( search => 'test' ), 'Search accounts' );
+    is( $wg->error, undef, 'search accounts without errors' );
     
+    my $account;
+    ok( $account = $wg->account_info( account_id => $accounts->[0]->{'account_id'} ), 'Get account info' );
+    is( $wg->error, undef, 'Get account info without errors' );
+    like( $account->{nickname}, qr/test/i, 'Verified account' );
+    
+    is( $wg->account_info( account_id => undef ), undef, 'Get account info without account_id' );
+    is( $wg->account_info( account_id => 'test' ), undef, 'Get account info with invalid account_id' );
 };
 
 done_testing();
