@@ -37,7 +37,7 @@ This module provide access to WG Public API
 
 =head2 new
 
-Create new object with params. Rerquired application id: L<http://ru.wargaming.net/developers/documentation/guide/getting-started/>
+Create new object with params. Rerquired application id: L<https://developers.wargaming.net/documentation/guide/getting-started/>
 
 Params:
 
@@ -157,7 +157,7 @@ L<http://search.cpan.org/dist/WG-API/>
 
 =head1 SEE ALSO
 
-WG API Reference L<http://ru.wargaming.net/developers/>
+WG API Reference L<https://developers.wargaming.net/>
 
 =head1 AUTHOR
 

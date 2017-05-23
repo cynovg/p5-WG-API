@@ -23,7 +23,7 @@ This module provide access to WG Public API
 
 - _application\_id\*_
 
-    Rerquired application id: http://ru.wargaming.net/developers/documentation/guide/getting-started/
+    Rerquired application id: [https://developers.wargaming.net/documentation/guide/getting-started/](https://developers.wargaming.net/documentation/guide/getting-started/)
 
 - _wot_
 
@@ -75,7 +75,7 @@ You can also look for information at:
 
 # SEE ALSO
 
-WG API Reference [http://ru.wargaming.net/developers/](http://ru.wargaming.net/developers/)
+WG API Reference [https://developers.wargaming.net/](https://developers.wargaming.net/)
 
 # AUTHOR
 
