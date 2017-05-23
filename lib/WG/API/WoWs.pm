@@ -1,7 +1,7 @@
 package WG::API::WoWs;
 
 use Moo;
-extends 'WG::API';
+
 with 'WG::API::WoWs::Account';
 with 'WG::API::WoWs::Warships';
 
@@ -47,6 +47,8 @@ has api_uri => (
     is      => 'ro',
     default => sub{ 'api.worldofwarships.ru/wows' },
 );
+
+with 'WG::API::Base';
 
 =head1 METHODS
 

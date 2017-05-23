@@ -3,7 +3,7 @@ package WG::API::Auth;
 use 5.014;
 use Moo;
 
-extends 'WG::API';
+with 'WG::API::Base';
 
 =head1 NAME
 
@@ -67,10 +67,7 @@ After this method is called, access_token becomes invalid.
 
 sub logout { shift->_request( 'get', 'auth/logout', ['access_token'], ['access_token'], @_ ) }
 
-has api_uri => (
-    is      => 'ro',
-    default => 'api.worldoftanks.ru/wot',
-);
+sub api_uri {'api.worldoftanks.ru/wot'}
 
 =head1 BUGS
 

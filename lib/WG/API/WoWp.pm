@@ -1,7 +1,7 @@
 package WG::API::WoWp;
 
 use Moo;
-extends 'WG::API';
+
 with 'WG::API::WoWp::Account';
 with 'WG::API::WoWp::Ratings';
 
@@ -48,6 +48,8 @@ has api_uri => (
     is  => 'ro',
     default => sub{ 'api.worldofwarplanes.ru/wowp' },
 );
+
+with 'WG::API::Base';
 
 =head1 METHODS
 

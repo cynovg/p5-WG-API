@@ -1,7 +1,7 @@
 package WG::API::WoT;
 
 use Moo;
-extends 'WG::API';
+
 with 'WG::API::WoT::Account';
 with 'WG::API::WoT::Ratings';
 with 'WG::API::WoT::Tanks';
@@ -51,6 +51,8 @@ has api_uri => (
     is      => 'ro',
     default => sub{ 'api.worldoftanks.ru/wot' },
 );
+
+with 'WG::API::Base';
 
 =head1 METHODS
 
