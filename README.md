@@ -50,27 +50,6 @@ This module provide access to WG Public API
 
     URL for which a request is sent.
 
-- _status_
-
-    Request status - 'ok', 'error' or undef, if request not finished.
-
-- _response_
-
-    Response from WG API
-
-- _meta_
-
-    Meta from response
-
-- _error_
-
-    Once an error occurred, the following values are returned:
-
-    - code
-    - message
-    - field
-    - value
-
 - _debug_
 
     Show debug info if enabled
