@@ -17,7 +17,7 @@ sub account_info {
 
     $self->_request( 'get', 'account/info', ['fields', 'access_token', 'account_id'], ['account_id'], %params );
     
-    return $self->status eq 'ok' &&  $self->response->{ $params{ 'account_id' } } ? $self->response->{ $params{ 'account_id' } } : undef;
+    return $self->status eq 'ok' ? $self->response->{ $params{ 'account_id' } } : undef;
 }
 
 1; # End of WG::API::NET::Accounts 
