@@ -17,42 +17,13 @@ This module provide access to WG Public API
 
     my $wg = WG::API->new( application_id => 'demo' );
     ...
-    my $player = $wg->net->account_info( account_id => '1' );
+    my $player = $wg->net( language => 'en' )->account_info( account_id => '1' );
 
 # ATTRIBUTES
 
 - _application\_id\*_
 
     Rerquired application id: http://ru.wargaming.net/developers/documentation/guide/getting-started/
-
-- _ua_
-
-    User agent, default - LWP::UserAgent.
-
-- _language_
-
-    Localization language. Default - 'ru', Valid values:
-
-    - "en" — English
-    - "ru" — Русский (by default)
-    - "pl" — Polski
-    - "de" — Deutsch
-    - "fr" — Français
-    - "es" — Español
-    - "zh-cn" — 简体中文
-    - "tr" — Türkçe
-    - "cs" — Čeština
-    - "th" — ไทย
-    - "vi" — Tiếng Việt
-    - "ko" — 한국어
-
-- _api\_uri_
-
-    URL for which a request is sent.
-
-- _debug_
-
-    Show debug info if enabled
 
 - _wot_
 
