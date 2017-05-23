@@ -2,10 +2,7 @@ package WG::API;
 
 use 5.014;
 use Moo;
-use WG::API::Error;
 use LWP::UserAgent;
-use JSON;
-use Data::Dumper;
 
 use WG::API::NET;
 use WG::API::WoT;
