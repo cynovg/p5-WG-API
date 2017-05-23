@@ -5,6 +5,9 @@ matrix:
   include:
     - perl: 5.18
       env: COVERAGE=1
+env:
+  - WGMODE = dev
+  - WG_KEY = 8d6d512ab2061e3710acf09114e74661
 sudo: false
 before_install:
   - git clone git://github.com/travis-perl/helpers ~/travis-perl-helpers
