@@ -142,7 +142,7 @@ sub _post {
 
     warn $url if $self->debug;
 
-    my $response = $self->{ 'ua' }->post( $url, %passed_params ); 
+    my $response = $self->ua->post( $url, %passed_params ); 
     $self->_parse( $response->is_success ? decode_json $response->decoded_content : undef );
     return;
 }
