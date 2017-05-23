@@ -62,11 +62,7 @@ Returns a WoT instance
 
 =cut
 
-has wot => (
-    is      => 'lazy',
-);
-
-sub _build_wot {
+sub wot {
     my $self = shift;
 
     return WG::API::WoT->new(
@@ -85,11 +81,7 @@ Returns A WoWp instance
 
 =cut
 
-has wowp => (
-    is      => 'lazy',
-);
-
-sub _build_wowp {
+sub wowp {
     my $self = shift;
 
     return WG::API::WoWp->new(
@@ -108,11 +100,7 @@ Returns a WoWs instance
 
 =cut
 
-has wows => (
-    is      => 'lazy',
-);
-
-sub _build_wows {
+sub wows {
     my $self = shift;
 
     return WG::API::WoWs->new(
@@ -131,11 +119,7 @@ Returns a NET instance
 
 =cut
 
-has net => (
-    is      => 'lazy',
-);
-
-sub _build_net {
+sub net {
     my $self = shift;
 
     return WG::API::NET->new(
