@@ -69,6 +69,7 @@ sub _request {
                 value   => 'xxx',
                 raw     => 'xxx',
             ) );
+        return;
     }
 
     unless ( $method =~ /^(?:get|post)$/ ) {
@@ -80,6 +81,7 @@ sub _request {
                 value   => 'xxx',
                 raw     => 'xxx',
             ) );
+        return;
     }
 
     $method = "_".$method;                                                              # add prefix for private methods
