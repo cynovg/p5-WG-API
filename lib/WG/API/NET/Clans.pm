@@ -31,7 +31,7 @@ sub clans_membersinfo {
 sub clans_glossary {
     my $self = shift;
 
-    $self->_request( 'get', 'clans/glossary', ['language', 'fields'], undef, @_ );
+    $self->_request( 'get', 'clans/glossary', ['language', 'fields', 'game'], undef, @_ );
 
     return $self->status eq 'ok' ? $self->response : undef;
 }
