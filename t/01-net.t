@@ -45,6 +45,23 @@ SKIP: {
     
     is( $wg->account_info( account_id => undef ), undef, 'Get account info without account_id' );
     is( $wg->account_info( account_id => 'test' ), undef, 'Get account info with invalid account_id' );
+
+    #clans
+    my ($clans, $clan_info);
+    is( $clans = $wg->clans_list( game => 'wox', search => 'hellenes' ), undef, 'Search clan with invalid game' );
+    is( $wg->clans_info( clan_id => 'clan_id' ), undef, 'Get clan info with invalid clan_id' );
+
+    ok( $clans = $wg->clans_list( game => 'wot', search => 'hellenes' ), 'Search clan with valid params' );
+    ok( $clan_info = $wg->clans_info( clan_id => $clans->[0]->{clan_id} ), 'Get clan info' );
+
+    my ($clan_id) = keys %$clan_info;
+    ok( $wg->clans_membersinfo( account_id => $clan_info->{$clan_id}->{members}->[0]->{account_id} ), 'Get member info with valid account_id' );
+    is( $wg->clans_membersinfo( account_id => 'xxx' ), undef, 'Get member info with invalid account_id' );
+
+    ok( $wg->clans_glossary( game => 'wot' ), 'Get clans glossary with valid game' );
+    is( $wg->clans_glossary( game => 'xxx' ), undef, 'Get clans glossary with invalid game' );
+
+    is( $wg->clans_messageboard( game => 'wot' ), undef, 'Get clan messageboard without access token' );
 };
 
 done_testing();
