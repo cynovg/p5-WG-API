@@ -26,6 +26,7 @@ ok( ! $error && $@, 'create error object without params' );
 
 eval { $error = WG::API::Error->new( %error_params ) };
 ok( $error && ! $@, 'create error object with valid params' );
+isa_ok( $error, 'WG::API::Error', 'ISA ok for Error object' );
 
 ok( $error->field eq $error_params{ 'field' }, 'error->field checked' );
 ok( $error->message eq $error_params{ 'message' }, 'error->message checked' );
@@ -43,7 +44,15 @@ isa_ok( $wg->net, 'WG::API::NET');
 isa_ok( $wg->wot, 'WG::API::WoT');
 isa_ok( $wg->wowp, 'WG::API::WoWp');
 isa_ok( $wg->wows, 'WG::API::WoWs');
+isa_ok( $wg->auth, 'WG::API::Auth');
 
 isa_ok( $wg->net->ua, 'LWP::UserAgent');
+
+my $auth = $wg->auth();
+ok( $auth->login( nofollow => 1, redirect_uri => 'http://localhost/response' ), 'Get redirect uri' );
+is( $auth->prolongate( access_token => 'xxx' ), undef, 'Prolongate with invalid access token' );
+is( $auth->error->message, 'INVALID_ACCESS_TOKEN', 'Vaidate error message' );
+
+ok( $auth->logout( access_token => 'xxx' ), 'Logout with invalid access token' );
 
 done_testing();
