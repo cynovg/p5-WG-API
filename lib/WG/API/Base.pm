@@ -88,7 +88,7 @@ sub _request {
 
     $self->$method( $uri, $params, %passed_params );
 
-    return 1;
+    return $self->status eq 'ok' ? $self->response : undef;
 }
 
 sub _validate_params {
@@ -117,10 +117,9 @@ sub _get {
 
     warn sprintf "METHOD GET, URL: %s\n", $url if $self->debug;
 
-    warn $url if $self->debug;
+    my $response = $self->ua->get( $url ); 
 
-    $self->_parse( $response->is_success ? decode_json $response->decoded_content : undef );
-    return;
+    return $self->_parse( $response->is_success ? decode_json $response->decoded_content : undef );
 }
 
 sub _post {
@@ -142,9 +141,9 @@ sub _post {
 
     warn sprintf "METHOD POST, URL %s, %s\n", $url, Dumper \%passed_params if $self->debug;
 
-    my $response = $self->ua->post( $url, %passed_params ); 
-    $self->_parse( $response->is_success ? decode_json $response->decoded_content : undef );
-    return;
+    my $response = $self->ua->post( $url, \%passed_params ); 
+
+    return $self->_parse( $response->is_success ? decode_json $response->decoded_content : undef );
 }
 
 sub _parse {
