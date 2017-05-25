@@ -115,7 +115,7 @@ sub _get {
         $url .= sprintf "&%s=%s", $_, $passed_params{ $_ } if defined $passed_params{ $_ }; 
     }
 
-    my $response = $self->ua->get( $url ); 
+    warn sprintf "METHOD GET, URL: %s\n", $url if $self->debug;
 
     warn $url if $self->debug;
 
@@ -140,7 +140,7 @@ sub _post {
 
     $passed_params{ 'application_id' } = $self->application_id;
 
-    warn $url if $self->debug;
+    warn sprintf "METHOD POST, URL %s, %s\n", $url, Dumper \%passed_params if $self->debug;
 
     my $response = $self->ua->post( $url, %passed_params ); 
     $self->_parse( $response->is_success ? decode_json $response->decoded_content : undef );
