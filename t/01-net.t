@@ -38,10 +38,11 @@ SKIP: {
     ok( $accounts = $wg->accounts_list( search => 'test' ), 'Search accounts' );
     is( $wg->error, undef, 'search accounts without errors' );
     
-    my $account;
-    ok( $account = $wg->account_info( account_id => $accounts->[0]->{'account_id'} ), 'Get account info' );
+    my $account_ref;
+    ok( $account_ref = $wg->account_info( account_id => $accounts->[0]->{'account_id'} ), 'Get account info' );
     is( $wg->error, undef, 'Get account info without errors' );
-    like( $account->{nickname}, qr/test/i, 'Verified account' );
+    my ($account_id) = keys %$account_ref;
+    like( $account_ref->{$account_id}->{nickname}, qr/test/i, 'Verified account' );
     
     is( $wg->account_info( account_id => undef ), undef, 'Get account info without account_id' );
     is( $wg->account_info( account_id => 'test' ), undef, 'Get account info with invalid account_id' );
