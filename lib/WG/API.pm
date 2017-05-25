@@ -8,6 +8,7 @@ use WG::API::NET;
 use WG::API::WoT;
 use WG::API::WoWs;
 use WG::API::WoWp;
+use WG::API::Auth;
 
 =encoding utf8
 
@@ -124,6 +125,24 @@ sub net {
 
     return WG::API::NET->new(
         application_id  => $self->application_id,
+        @_
+    );
+}
+
+=over 1
+
+=item I<auth>
+
+Return a Auth instance
+
+=back
+
+=cut
+
+sub auth {
+    my $self = shift;
+    return WG::API::Auth->new(
+        application_id => $self->application_id,
         @_
     );
 }
