@@ -183,6 +183,8 @@ sub _parse {
         $self->response( $response->{ 'data' } );
     }
 
+    warn Dumper $self->error if $self->debug;
+
     return;
 }
 
