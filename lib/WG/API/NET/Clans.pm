@@ -2,7 +2,7 @@ package WG::API::NET::Clans;
 
 use Moo::Role;
 
-our $VERSION = 'v0.8.1';
+our $VERSION = 'v0.8.2';
 
 sub clans_list {
     my $self = shift;

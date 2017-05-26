@@ -69,7 +69,6 @@
    },
    "version" : "v0.8.2",
    "x_contributors" : [
-      "root <root@cynovg-debian.local>",
       "Cyrill Novgorodcev <cynovg@gmail.com>"
    ],
    "x_serialization_backend" : "JSON::PP version 2.27300_01"

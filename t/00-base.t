@@ -48,7 +48,7 @@ isa_ok( $wg->auth, 'WG::API::Auth');
 
 isa_ok( $wg->net->ua, 'LWP::UserAgent');
 
-my $auth = $wg->auth();
+my $auth = $wg->auth(debug=>1);
 ok( $auth->login( nofollow => 1, redirect_uri => 'http://localhost/response' ), 'Get redirect uri' );
 is( $auth->prolongate( access_token => 'xxx' ), undef, 'Prolongate with invalid access token' );
 is( $auth->error->message, 'INVALID_ACCESS_TOKEN', 'Vaidate error message' );
