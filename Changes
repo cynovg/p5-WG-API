@@ -2,6 +2,10 @@ Revision history for WG-API
 
 {{$NEXT}}
 
+v0.8.3 2017-05-26T19:03:53Z
+
+  - fix contributors
+
 v0.8.2 2017-05-26T18:55:24Z
 
   - add debug info, enable by param
