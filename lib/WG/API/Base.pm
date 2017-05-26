@@ -72,18 +72,6 @@ sub _request {
         return;
     }
 
-    unless ( $method =~ /^(?:get|post)$/ ) {
-            $self->status( 'error' );
-            $self->error( WG::API::Error->new(
-                code    => '996',
-                message => 'unknow method',
-                field   => 'xxx',
-                value   => 'xxx',
-                raw     => 'xxx',
-            ) );
-        return;
-    }
-
     $method = "_".$method;                                                              # add prefix for private methods
 
     $self->$method( $uri, $params, %passed_params );
