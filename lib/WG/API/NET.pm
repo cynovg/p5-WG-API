@@ -67,11 +67,19 @@ Method returns detailed clan information.
 
 =head3 B<clans_membersinfo( [ %params ] )>
 
-Method returns clan member info and short info on the clan.
+=item B<clans_messageboard>
 
-=head3 B<clans_glossary( [ %params ] )>
+Method returns messages of clan message board.
 
-Method returns information on clan entities.
+=over 2
+
+=item I<required fields:>
+
+    access_token - Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
+
+=back
+
+=back
 
 =head2 Servers
 
