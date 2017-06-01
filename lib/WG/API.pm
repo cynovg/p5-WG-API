@@ -53,9 +53,11 @@ has application_id => (
     require => 1,
 );
 
+=head1 METHODS
+
 =over 1
 
-=item I<wot>
+=item B<wot>
 
 Returns a WoT instance
 
@@ -74,7 +76,7 @@ sub wot {
 
 =over 1
 
-=item I<wowp>
+=item B<wowp>
 
 Returns A WoWp instance
 
@@ -93,7 +95,7 @@ sub wowp {
 
 =over 1
 
-=item I<wows>
+=item B<wows>
 
 Returns a WoWs instance
 
@@ -112,7 +114,7 @@ sub wows {
 
 =over 1
 
-=item I<net>
+=item B<net>
 
 Returns a NET instance
 
@@ -131,7 +133,7 @@ sub net {
 
 =over 1
 
-=item I<auth>
+=item B<auth>
 
 Return a Auth instance
 
