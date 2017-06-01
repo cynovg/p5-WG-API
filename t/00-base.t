@@ -48,11 +48,11 @@ isa_ok( $wg->auth, 'WG::API::Auth');
 
 isa_ok( $wg->net->ua, 'LWP::UserAgent');
 
-my $auth = $wg->auth(debug=>1);
-ok( $auth->login( nofollow => 1, redirect_uri => 'http://localhost/response' ), 'Get redirect uri' );
+my $auth = $wg->auth(debug=> $ENV{'WGMODE'} && $ENV{'WGMODE'} eq 'dev' ? 1 : 0);
+ok( $auth->login( nofollow => 1, redirect_uri => 'http://localhost/response' ) || $auth->error->message eq 'REQUEST_LIMIT_EXCEEDED', 'Get redirect uri' );
 is( $auth->prolongate( access_token => 'xxx' ), undef, 'Prolongate with invalid access token' );
-is( $auth->error->message, 'INVALID_ACCESS_TOKEN', 'Vaidate error message' );
+like( $auth->error->message, qr/INVALID_ACCESS_TOKEN|REQUEST_LIMIT_EXCEEDED/, 'Vaidate error message' );
 
-ok( $auth->logout( access_token => 'xxx' ), 'Logout with invalid access token' );
+ok( $auth->logout( access_token => 'xxx' || $auth->error->message eq 'REQUEST_LIMIT_EXCEEDED' ), 'Logout with invalid access token' );
 
 done_testing();
