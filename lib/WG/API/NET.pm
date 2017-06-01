@@ -23,11 +23,11 @@ Wargaming.net Public API is a set of API methods that provide access to Wargamin
 
 This module provide access to WG Public API
 
-    use WG::API::NET;
+    use WG::API;
 
-    my $wot = WG::API::NET->new( application_id => 'demo' );
+    my $net = WG::API->new( application_id => 'demo' )->net;
     ...
-    my $player = $wot->account_info( account_id => '1' );
+    my $player = $net->account_info( account_id => '1' );
 
 
 
@@ -41,31 +41,74 @@ Params:
 
  - application_id *
  - languare
- - api_uri
 
 =head1 METHODS
 
 =head2 Accounts
 
-=head3 B<accounts_list( [ %params ] )>
+=over 1
+
+=item B<accounts_list>
 
 Method returns partial list of players. The list is filtered by initial characters of user name and sorted alphabetically.
 
-=head3 B<account_info( [ %account_id ] )>
+=over 2
+
+=item I<required fields:>
+
+    search - Player name search string. Parameter "type" defines minimum length and type of search. Using the exact search type, you can enter several names, separated with commas. Maximum length: 24.
+
+=back
+
+=item B<account_info>
 
 Method returns Wargaming account details.
 
+=over 2
+
+=item I<required fields:>
+
+    account_id - Account ID. Max limit is 100. Min value is 1.
+
+=back
+
+=back
+
 =head2 Clans
 
-=head3 B<clans_list( [ %params ] )>
+=over 1
+
+=item B<clans_list>
 
 Method searches through clans and sorts them in a specified order.
 
-=head3 B<clans_info( [ %params ] )>
+=item B<clans_info>
 
 Method returns detailed clan information.
 
-=head3 B<clans_membersinfo( [ %params ] )>
+=over 2
+
+=item I<required fields:>
+
+    clan_id - Clan ID. Max limit is 100.
+
+=back
+
+=item B<clans_membersinfo>
+
+Method returns clan member info and short info on the clan. Information is available for World of Tanks and World of Warplanes clans.
+
+=over 2
+
+=item I<required fields:>
+
+    account_id - Account ID. Max limit is 100. Min value is 1.
+
+=back
+
+=item B<clans_glossary>
+
+Method returns information on clan entities in World of Tanks and World of Warplanes.
 
 =item B<clans_messageboard>
 
@@ -83,9 +126,13 @@ Method returns messages of clan message board.
 
 =head2 Servers
 
-=head3 B<servers_info( [ %params ] )>
+=over 1
+
+=item B<servers_info>
 
 Method returns the number of online players on the servers.
+
+=back
 
 =cut
 
