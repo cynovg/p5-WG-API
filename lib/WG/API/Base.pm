@@ -2,6 +2,7 @@ package WG::API::Base;
 
 use Modern::Perl '2015';
 use Moo::Role;
+
 use WG::API::Error;
 use LWP::UserAgent;
 use JSON;
@@ -81,12 +82,12 @@ sub _request {
 }
 
 sub _validate_params {
-    my ( $self, $required_params, %passed_params ) = @_;
+    my ( undef, $required_params, %passed_params ) = @_;
 
-    return undef if $required_params && ! keys %passed_params;                               #without params when they are needed
+    return if $required_params && ! keys %passed_params;                               #without params when they are needed
 
     for ( @$required_params ) {
-        return undef unless defined $passed_params{ $_ };
+        return unless defined $passed_params{ $_ };
     }
 
     return 'passed';
