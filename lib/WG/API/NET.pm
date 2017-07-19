@@ -2,6 +2,7 @@ package WG::API::NET;
 
 use Moo;
 
+with 'WG::API::Base';
 with 'WG::API::NET::Clans';
 with 'WG::API::NET::Accounts';
 with 'WG::API::NET::Servers';
@@ -17,6 +18,8 @@ Version v0.8.3
 =cut
 
 our $VERSION = 'v0.8.3';
+
+use constant api_uri => 'api.worldoftanks.ru/wgn';
 
 =head1 SYNOPSIS
 
@@ -134,15 +137,6 @@ Method returns messages of clan message board.
 Method returns the number of online players on the servers.
 
 =back
-
-=cut
-
-has api_uri => (
-    is  => 'ro',
-    default => sub{ 'api.worldoftanks.ru/wgn' },
-);
-
-with 'WG::API::Base';
 
 =head1 BUGS
 

@@ -2,6 +2,7 @@ package WG::API::WoWp;
 
 use Moo;
 
+with 'WG::API::Base';
 with 'WG::API::WoWp::Account';
 with 'WG::API::WoWp::Ratings';
 
@@ -16,6 +17,8 @@ Version v0.8.3
 =cut
 
 our $VERSION = 'v0.8.3';
+
+use constant api_uri => 'api.worldofwarplanes.ru/wowp';
 
 =head1 SYNOPSIS
 
@@ -41,15 +44,6 @@ Params:
  - application_id *
  - languare
  - api_uri
-
-=cut
-
-has api_uri => (
-    is  => 'ro',
-    default => sub{ 'api.worldofwarplanes.ru/wowp' },
-);
-
-with 'WG::API::Base';
 
 =head1 METHODS
 

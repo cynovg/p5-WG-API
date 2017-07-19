@@ -18,6 +18,8 @@ Version v0.8.3
 
 our $VERSION = 'v0.8.3';
 
+requires 'api_uri';
+
 has application_id => (
     is  => 'ro',
     require => 1,
@@ -33,8 +35,6 @@ has language => (
     is  => 'ro',
     default => sub{ 'ru' },
 );
-
-requires 'api_uri';
 
 has status => (
     is  => 'rw',

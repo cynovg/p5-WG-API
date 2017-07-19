@@ -2,6 +2,7 @@ package WG::API::WoT;
 
 use Moo;
 
+with 'WG::API::Base';
 with 'WG::API::WoT::Account';
 with 'WG::API::WoT::Ratings';
 with 'WG::API::WoT::Tanks';
@@ -18,6 +19,7 @@ Version v0.8.3
 
 our $VERSION = 'v0.8.3';
 
+use constant api_uri => 'api.worldoftanks.ru/wot';
 
 =head1 SYNOPSIS
 
@@ -44,15 +46,6 @@ Params:
  - application_id *
  - languare
  - api_uri
-
-=cut
-
-has api_uri => (
-    is      => 'ro',
-    default => sub{ 'api.worldoftanks.ru/wot' },
-);
-
-with 'WG::API::Base';
 
 =head1 METHODS
 

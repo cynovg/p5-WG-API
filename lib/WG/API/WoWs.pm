@@ -2,6 +2,7 @@ package WG::API::WoWs;
 
 use Moo;
 
+with 'WG::API::Base';
 with 'WG::API::WoWs::Account';
 with 'WG::API::WoWs::Warships';
 
@@ -16,6 +17,8 @@ Version v0.8.3
 =cut
 
 our $VERSION = 'v0.8.3';
+
+use constant api_uri => 'api.worldofwarships.ru/wows';
 
 =head1 SYNOPSIS
 
@@ -40,15 +43,6 @@ Params:
  - application_id *
  - languare
  - api_uri
-
-=cut
-
-has api_uri => (
-    is      => 'ro',
-    default => sub{ 'api.worldofwarships.ru/wows' },
-);
-
-with 'WG::API::Base';
 
 =head1 METHODS
 

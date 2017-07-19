@@ -1,13 +1,9 @@
 package WG::API::Auth;
 
 use Moo;
-
-has api_uri => (
-    is      => 'ro',
-    default => sub{ 'api.worldoftanks.ru/wot' },
-);
-
 with 'WG::API::Base';
+
+use constant api_uri => 'api.worldoftanks.ru/wot';
 
 =head1 NAME
 
