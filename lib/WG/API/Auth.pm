@@ -1,6 +1,5 @@
 package WG::API::Auth;
 
-use 5.014;
 use Moo;
 
 has api_uri => (

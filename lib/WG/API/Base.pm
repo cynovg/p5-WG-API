@@ -1,6 +1,6 @@
 package WG::API::Base;
 
-use 5.014;
+use Modern::Perl '2015';
 use Moo::Role;
 use WG::API::Error;
 use LWP::UserAgent;

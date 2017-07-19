@@ -1,6 +1,7 @@
 package WG::API::NET;
 
 use Moo;
+
 with 'WG::API::NET::Clans';
 with 'WG::API::NET::Accounts';
 with 'WG::API::NET::Servers';

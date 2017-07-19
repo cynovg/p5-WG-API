@@ -1,7 +1,6 @@
 package WG::API::Error;
 
 use Moo;
-use 5.014;
 
 =head1 NAME
 
