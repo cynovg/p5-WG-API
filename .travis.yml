@@ -15,11 +15,9 @@ before_install:
   - perl -V
   - build-dist
   - cd $BUILD_DIR             # $BUILD_DIR is set by the build-dist command
-  - cpanm Minilla
 install:
   - cpan-install --deps       # installs prereqs, including recommends
   - cpan-install --coverage   # installs converage prereqs, if enabled
-  - minil install
 before_script:
   - coverage-setup
 script:
