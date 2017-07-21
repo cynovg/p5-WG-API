@@ -13,6 +13,8 @@ before_install:
   - source ~/travis-perl-helpers/init
   - build-perl
   - perl -V
+  - build-dist
+  - cd $BUILD_DIR             # $BUILD_DIR is set by the build-dist command
   - cpanm Minilla
 install:
   - cpan-install --deps       # installs prereqs, including recommends
@@ -21,6 +23,6 @@ install:
 before_script:
   - coverage-setup
 script:
-  - prove -l $(test-files)   # 
+  - prove -l -j$(test-jobs) $(test-files)   # parallel testing
 after_success:
   - coverage-report
