@@ -48,6 +48,7 @@ has meta_data => (
     is  => 'rw',
 );
 
+#@returns WG::API::Error
 has error => (
     is  => 'rw',
 );
