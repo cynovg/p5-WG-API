@@ -3,7 +3,7 @@ perl:
   - "5.20"
 matrix:
   include:
-    - perl: 5.20
+    - perl: 5.20.2
       env: WGMODE=dev WG_KEY=8d6d512ab2061e3710acf09114e74661 COVERAGE=1
 sudo: false
 before_install:
