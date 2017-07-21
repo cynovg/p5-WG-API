@@ -1,8 +1,7 @@
 package WG::API;
 
-use 5.014;
+use Modern::Perl '2015';
 use Moo;
-use LWP::UserAgent;
 
 use WG::API::NET;
 use WG::API::WoT;
