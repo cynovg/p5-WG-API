@@ -98,8 +98,8 @@ sub _get {
     my ( $self, $uri, $params, %passed_params ) = @_;
 
     my $url = sprintf 'https://%s/%s/?application_id=%s',
-            $passed_params{ 'api_uri' } ? $passed_params{ 'api_uri' } : $self->api_uri,
-            $uri ? $uri : '',
+            $self->api_uri,
+            $uri,
             $self->application_id,
     ;
     for ( @$params ) {
@@ -117,16 +117,15 @@ sub _post {
     my ( $self, $uri, $params, %passed_params ) = @_;
 
     my $url = sprintf 'https://%s/%s/', 
-        $passed_params{ 'api_uri' } ? $passed_params{ 'api_uri' } : $self->api_uri,
-        $uri ? $uri : '';
+        $self->api_uri,
+        $uri,
+    ;
 
     #remove unused fields
-    if ( $params && %passed_params ) {
-        my %params;
-        @params{ keys %passed_params } = ();
-        delete @params{ @$params };
-        delete $passed_params{ $_ } for keys %params;
-    }
+    my %params;
+    @params{ keys %passed_params } = ();
+    delete @params{ @$params };
+    delete $passed_params{ $_ } for keys %params;
 
     $passed_params{ 'application_id' } = $self->application_id;
 
