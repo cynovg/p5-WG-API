@@ -91,7 +91,7 @@ sub account_tanks {
 
 Method returns players' achievement details.
 
-Achievement properties define the achievements field values (ref. L<WG::API::WoT::Achievements> ):
+Achievement properties define the achievements field values:
 
     1-4 for Mastery Badges and Stage Achievements (type: "class");
     maximum value of Achievement series (type: "series");
@@ -200,7 +200,7 @@ sub tanks_stats {
 
 Method returns list of achievements on all vehicles.
 
-Achievement properties define the achievements field values (ref. L<WG::API::WoT::Achievements> ):
+Achievement properties define the achievements field values:
 
     1-4 for Mastery Badges and Stage Achievements (type: "class");
     maximum value of Achievement series (type: "series");
