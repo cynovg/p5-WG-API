@@ -1,11 +1,13 @@
 package WG::API::Base;
 
-use 5.014;
+use Modern::Perl '2015';
 use Moo::Role;
+
 use WG::API::Error;
 use LWP::UserAgent;
 use JSON;
 use Data::Dumper;
+use Log::Any qw($log);
 
 =encoding utf8
 
@@ -17,62 +19,66 @@ Version v0.8.3
 
 our $VERSION = 'v0.8.3';
 
+requires 'api_uri';
+
 has application_id => (
-    is  => 'ro',
+    is      => 'ro',
     require => 1,
 );
 
-has ua => ( 
-    is  => 'ro',
-    default => sub{ LWP::UserAgent->new() },
+#@returns LWP::UserAgent
+has ua => (
+    is      => 'ro',
+    default => sub { LWP::UserAgent->new() },
 );
 
 has language => (
-    is  => 'ro',
-    default => sub{ 'ru' },
+    is      => 'ro',
+    default => sub {'ru'},
 );
 
-requires 'api_uri';
+has status => ( is => 'rw', );
 
-has status => (
-    is  => 'rw',
-);
+has response => ( is => 'rw', );
 
-has response => (
-    is  => 'rw',
-);
+has meta_data => ( is => 'rw', );
 
-has meta_data => (
-    is  => 'rw',
-);
-
-has error => (
-    is  => 'rw',
-);
+#@returns WG::API::Error
+has error => ( is => 'rw', );
 
 has debug => (
-    is => 'ro',
+    is      => 'ro',
     default => '0',
 );
+
+sub log {
+    my ( $self, $event ) = @_;
+
+    return unless $self->debug;
+
+    $log->debug($event);
+}
 
 sub _request {
     my ( $self, $method, $uri, $params, $required_params, %passed_params ) = @_;
 
-    $self->status( undef );
+    $self->status(undef);
 
     unless ( $self->_validate_params( $required_params, %passed_params ) ) {    #check required params
-            $self->status( 'error' );
-            $self->error( WG::API::Error->new(
+        $self->status('error');
+        $self->error(
+            WG::API::Error->new(
                 code    => '997',
                 message => 'missing a required field',
                 field   => 'xxx',
                 value   => 'xxx',
                 raw     => 'xxx',
-            ) );
+            )
+        );
         return;
     }
 
-    $method = "_".$method;                                                              # add prefix for private methods
+    $method = "_" . $method;    # add prefix for private methods
 
     $self->$method( $uri, $params, %passed_params );
 
@@ -80,12 +86,12 @@ sub _request {
 }
 
 sub _validate_params {
-    my ( $self, $required_params, %passed_params ) = @_;
+    my ( undef, $required_params, %passed_params ) = @_;
 
-    return undef if $required_params && ! keys %passed_params;                               #without params when they are needed
+    return if $required_params && !keys %passed_params;    #without params when they are needed
 
-    for ( @$required_params ) {
-        return undef unless defined $passed_params{ $_ };
+    for (@$required_params) {
+        return unless defined $passed_params{$_};
     }
 
     return 'passed';
@@ -94,18 +100,14 @@ sub _validate_params {
 sub _get {
     my ( $self, $uri, $params, %passed_params ) = @_;
 
-    my $url = sprintf 'https://%s/%s/?application_id=%s',
-            $passed_params{ 'api_uri' } ? $passed_params{ 'api_uri' } : $self->api_uri,
-            $uri ? $uri : '',
-            $self->application_id,
-    ;
-    for ( @$params ) {
-        $url .= sprintf "&%s=%s", $_, $passed_params{ $_ } if defined $passed_params{ $_ }; 
+    my $url = sprintf 'https://%s/%s/?application_id=%s', $self->api_uri, $uri, $self->application_id;
+    for (@$params) {
+        $url .= sprintf "&%s=%s", $_, $passed_params{$_} if defined $passed_params{$_};
     }
 
-    warn sprintf "METHOD GET, URL: %s\n", $url if $self->debug;
+    $self->log( sprintf "METHOD GET, URL: %s\n", $url );
 
-    my $response = $self->ua->get( $url ); 
+    my HTTP::Response $response = $self->ua->get($url);
 
     return $self->_parse( $response->is_success ? decode_json $response->decoded_content : undef );
 }
@@ -113,23 +115,19 @@ sub _get {
 sub _post {
     my ( $self, $uri, $params, %passed_params ) = @_;
 
-    my $url = sprintf 'https://%s/%s/', 
-        $passed_params{ 'api_uri' } ? $passed_params{ 'api_uri' } : $self->api_uri,
-        $uri ? $uri : '';
+    my $url = sprintf 'https://%s/%s/', $self->api_uri, $uri;
 
     #remove unused fields
-    if ( $params && %passed_params ) {
-        my %params;
-        @params{ keys %passed_params } = ();
-        delete @params{ @$params };
-        delete $passed_params{ $_ } for keys %params;
-    }
+    my %params;
+    @params{ keys %passed_params } = ();
+    delete @params{@$params};
+    delete $passed_params{$_} for keys %params;
 
-    $passed_params{ 'application_id' } = $self->application_id;
+    $passed_params{'application_id'} = $self->application_id;
 
-    warn sprintf "METHOD POST, URL %s, %s\n", $url, Dumper \%passed_params if $self->debug;
+    $self->log( sprintf "METHOD POST, URL %s, %s\n", $url, Dumper \%passed_params );
 
-    my $response = $self->ua->post( $url, \%passed_params ); 
+    my HTTP::Response $response = $self->ua->post( $url, \%passed_params );
 
     return $self->_parse( $response->is_success ? decode_json $response->decoded_content : undef );
 }
@@ -137,7 +135,7 @@ sub _post {
 sub _parse {
     my ( $self, $response ) = @_;
 
-    if ( ! $response ) { 
+    if ( !$response ) {
         $response = {
             status => 'error',
             error  => {
@@ -148,7 +146,8 @@ sub _parse {
                 raw     => Dumper $response,
             },
         };
-    } elsif ( ! $response->{ 'status' } ) {
+    }
+    elsif ( !$response->{'status'} ) {
         $response = {
             status => 'error',
             error  => {
@@ -161,17 +160,18 @@ sub _parse {
         };
     }
 
-    $self->status( delete $response->{ 'status' } );
+    $self->status( delete $response->{'status'} );
 
     if ( $self->status eq 'error' ) {
-        $self->error( WG::API::Error->new( $response->{ 'error' } ) );
-    } else {
-        $self->error( undef );
-        $self->meta_data( $response->{ 'meta' } );
-        $self->response( $response->{ 'data' } );
+        $self->error( WG::API::Error->new( $response->{'error'} ) );
+    }
+    else {
+        $self->error(undef);
+        $self->meta_data( $response->{'meta'} );
+        $self->response( $response->{'data'} );
     }
 
-    warn Dumper $self->error if $self->debug;
+    $self->log( $self->error );
 
     return;
 }
@@ -264,4 +264,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of WG::API::Base
+1;    # End of WG::API::Base

@@ -25,3 +25,5 @@ nytprof.out
 /Build.bat
 !META.json
 !LICENSE
+.idea/
+/_Deparsed_XSubs.pm
