@@ -1,9 +1,6 @@
 #!/usr/bin/env perl
-#
 
-use v5.014;
-use strict;
-use warnings;
+use Modern::Perl '2015';
 use lib ( 'lib' );
 
 use WG::API;

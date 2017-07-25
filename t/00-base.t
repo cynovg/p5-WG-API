@@ -1,8 +1,8 @@
 #!/usr/bin/env perl
-use 5.014;
-use strict;
-use warnings;
+
+use Modern::Perl '2015';
 use lib ('lib');
+
 use Test::More;
 
 BEGIN {
