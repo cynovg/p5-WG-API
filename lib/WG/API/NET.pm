@@ -26,7 +26,7 @@ This module provide access to WG Public API
 
     use WG::API;
 
-    my $net = WG::API->new( application_id => 'demo' )->net;
+    my $net = WG::API->new( application_id => 'demo' )->net();
     ...
     my $player = $net->account_info( account_id => '1' );
 

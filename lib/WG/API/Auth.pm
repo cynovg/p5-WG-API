@@ -23,7 +23,7 @@ This module implements the possibility of authorization, prolongate and logout f
 
     use WG::API;
 
-    my $response = WG::API->new( application_id => 'demo' )->auth->login( nofollow => '1', redirect_uri => 'yoursite.com/response' );
+    my $response = WG::API->new( application_id => 'demo' )->auth()->login( nofollow => '1', redirect_uri => 'yoursite.com/response' );
 
     my $redirect_uri = $response->{ 'location' };
     ...
