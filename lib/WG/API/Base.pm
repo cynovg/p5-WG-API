@@ -13,11 +13,11 @@ use Log::Any qw($log);
 
 =head1 VERSION
 
-Version v0.8.3
+Version v0.8.4
 
 =cut
 
-our $VERSION = 'v0.8.3';
+our $VERSION = 'v0.8.4';
 
 requires 'api_uri';
 

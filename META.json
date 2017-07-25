@@ -28,6 +28,7 @@
    "prereqs" : {
       "build" : {
          "requires" : {
+            "Log::Any::Test" : "1.049",
             "Test::More" : "0"
          }
       },
@@ -50,8 +51,10 @@
             "JSON" : "2.61",
             "LWP" : "6.08",
             "LWP::Protocol::https" : "6.07",
+            "Log::Any" : "1.049",
+            "Modern::Perl" : "1.20170117",
             "Moo" : "2.00",
-            "perl" : "5.014"
+            "perl" : "5.020"
          }
       }
    },
@@ -67,9 +70,9 @@
          "web" : "https://github.com/cynovg/WG-API"
       }
    },
-   "version" : "v0.8.3",
+   "version" : "v0.8.4",
    "x_contributors" : [
-      "Cyrill Novgorodcev <cynovg@gmail.com>"
+      "Cyrill Novgorodcev <cynovg@cpan.org>"
    ],
    "x_serialization_backend" : "JSON::PP version 2.27300_01"
 }
