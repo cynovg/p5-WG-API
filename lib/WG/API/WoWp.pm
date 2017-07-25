@@ -3,8 +3,7 @@ package WG::API::WoWp;
 use Moo;
 
 with 'WG::API::Base';
-with 'WG::API::WoWp::Account';
-with 'WG::API::WoWp::Ratings';
+
 
 =head1 NAME
 
@@ -55,17 +54,35 @@ Method returns partial list of players. The list is filtered by initial characte
 
 =cut 
 
+sub account_list {
+    my $self = shift;
+
+    return $self->_request( 'get', 'account/list', ['language', 'fields', 'type', 'search', 'limit'], ['search'], @_ );
+}
+
 =head3 B<account_info( [ %params ] )>
 
 Method returns player details.
 
 =cut 
 
+sub account_info {
+    my $self = shift;
+
+    return $self->_request( 'get', 'account/info', ['language', 'fields', 'access_token', 'account_id'], ['account_id'], @_ );
+}
+
 =head3 B<account_planes( [ %params ] )>
 
 Method returns details on player's aircrafts.
 
 =cut 
+
+sub account_planes {
+    my $self = shift;
+
+    return $self->_request( 'get', 'account/planes', ['language', 'fields', 'access_token', 'account_id'], ['account_id'], @_ );
+}
 
 =head2 Ratings
 
@@ -75,11 +92,23 @@ Method returns dictionary of rating periods and ratings details.
 
 =cut
 
+sub ratings_types {
+    my $self = shift;
+
+    return $self->_request( 'get', 'ratings/types', ['language', 'fields'], undef, @_ );
+}
+
 =head3 B<ratings_accounts( [ %params ] )>
 
 Method returns player ratings by specified IDs.
 
 =cut
+
+sub ratings_accounts {
+    my $self = shift;
+
+    return $self->_request( 'get', 'ratings/accounts', ['language', 'fields', 'type', 'date', 'account_id'], ['type', 'account_id'], @_ );
+}
 
 =head3 B<ratings_neighbors( [ %params ] )>
 
@@ -87,17 +116,35 @@ Method returns list of adjacent positions in specified rating.
 
 =cut
 
+sub ratings_neighbors {
+    my $self = shift;
+
+    return $self->_request( 'get', 'ratings/neighbors', ['language', 'fields', 'type', 'date', 'account_id', 'rank_field', 'limit'], ['type', 'account_id', 'rank_field'], @_ );
+}
+
 =head3 B<ratings_top( [ %params ] )>
 
 Method returns the list of top players by specified parameter.
 
 =cut
 
+sub ratings_top {
+    my $self = shift;
+
+    return $self->_request( 'get', 'ratings/top', ['language', 'fields', 'type', 'date', 'rank_field', 'limit'], ['type', 'rank_field'], @_ );
+}
+
 =head3 B<ratings_dates( [ %params ] )>
 
 Method returns dates with available rating data.
 
 =cut
+
+sub ratings_dates {
+    my $self = shift;
+
+    return $self->_request( 'get', 'ratings/dates', ['language', 'fields', 'type', 'account_id'], ['type'], @_ );
+}
 
 =head1 BUGS
 
