@@ -42,7 +42,7 @@ Rerquired application id: L<https://developers.wargaming.net/documentation/guide
 =cut 
 
 has application_id => (
-    is  => 'ro',
+    is      => 'ro',
     require => 1,
 );
 
@@ -64,8 +64,8 @@ sub wot {
     require WG::API::WoT;
 
     return WG::API::WoT->new(
-        application_id  => $self->application_id,
-        @_
+        application_id => $self->application_id,
+        @_,
     );
 }
 
@@ -86,7 +86,7 @@ sub wowp {
 
     return WG::API::WoWp->new(
         application_id => $self->application_id,
-        @_
+        @_,
     );
 }
 
@@ -106,8 +106,8 @@ sub wows {
     require WG::API::WoWs;
 
     return WG::API::WoWs->new(
-        application_id  => $self->application_id,
-        @_
+        application_id => $self->application_id,
+        @_,
     );
 }
 
@@ -127,8 +127,8 @@ sub net {
     require WG::API::NET;
 
     return WG::API::NET->new(
-        application_id  => $self->application_id,
-        @_
+        application_id => $self->application_id,
+        @_,
     );
 }
 
@@ -149,7 +149,7 @@ sub auth {
 
     return WG::API::Auth->new(
         application_id => $self->application_id,
-        @_
+        @_,
     );
 }
 
@@ -241,4 +241,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of WG::API
+1;    # End of WG::API

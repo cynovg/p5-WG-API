@@ -14,7 +14,6 @@ Version v0.8.3
 
 our $VERSION = 'v0.8.3';
 
-
 =head1 SYNOPSIS
 
 Quick summary of what the module does.
@@ -49,7 +48,7 @@ Error code.
 =cut
 
 has code => (
-    is  => 'ro',
+    is       => 'ro',
     required => 1,
 );
 
@@ -64,7 +63,7 @@ Error message.
 =cut
 
 has message => (
-    is  => 'ro',
+    is       => 'ro',
     required => 1,
 );
 
@@ -79,7 +78,7 @@ Error field.
 =cut
 
 has field => (
-    is  => 'ro',
+    is       => 'ro',
     required => 1,
 );
 
@@ -94,7 +93,7 @@ Error value.
 =cut
 
 has value => (
-    is  => 'ro',
+    is       => 'ro',
     required => 1,
 );
 
@@ -108,9 +107,7 @@ RAW data from invalid response
 
 =cut
 
-has raw => (
-    is  => 'ro',
-);
+has raw => ( is => 'ro', );
 
 =head1 BUGS
 
@@ -200,4 +197,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of WG::API::Error
+1;    # End of WG::API::Error

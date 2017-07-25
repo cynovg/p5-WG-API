@@ -55,7 +55,8 @@ Method returns partial list of players. The list is filtered by initial characte
 sub account_list {
     my $self = shift;
 
-    return $self->_request( 'get', 'account/list', ['language', 'fields', 'type', 'search', 'limit'], ['search'], @_ );
+    return $self->_request( 'get', 'account/list', [ 'language', 'fields', 'type', 'search', 'limit' ], ['search'],
+        @_ );
 }
 
 =head3 B<account_info( [ %params ] )>
@@ -67,7 +68,8 @@ Method returns player details. Players may hide their game profiles, use field h
 sub account_info {
     my $self = shift;
 
-    return $self->_request( 'get', 'account/info', ['language', 'fields', 'access_token', 'extra', 'account_id'], ['account_id'], @_ );
+    return $self->_request( 'get', 'account/info', [ 'language', 'fields', 'access_token', 'extra', 'account_id' ],
+        ['account_id'], @_ );
 }
 
 =head3 B<account_achievements( [ %params ] )>
@@ -79,7 +81,7 @@ Method returns information about players' achievements. Accounts with hidden gam
 sub account_achievements {
     my $self = shift;
 
-    return $self->_request( 'get', 'account/achievements', ['language', 'fields', 'account_id'], ['account_id'], @_ );
+    return $self->_request( 'get', 'account/achievements', [ 'language', 'fields', 'account_id' ], ['account_id'], @_ );
 }
 
 =head2 Warships
@@ -93,7 +95,9 @@ Method returns general statistics for each ship of a player. Accounts with hidde
 sub ships_stats {
     my $self = shift;
 
-    return $self->_request( 'get', 'ships/stats', ['language', 'fields', 'access_token', 'extra', 'account_id', 'ship_id', 'in_garage'], ['account_id'], @_ );
+    return $self->_request( 'get', 'ships/stats',
+        [ 'language', 'fields', 'access_token', 'extra', 'account_id', 'ship_id', 'in_garage' ],
+        ['account_id'], @_ );
 }
 
 =head1 BUGS
@@ -184,5 +188,5 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of WG::API::WoWs
+1;    # End of WG::API::WoWs
 

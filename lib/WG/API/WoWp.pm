@@ -4,7 +4,6 @@ use Moo;
 
 with 'WG::API::Base';
 
-
 =head1 NAME
 
 WG::API::WoWp - Modules to work with Wargaming.net Public API for World of Warplanes
@@ -57,7 +56,8 @@ Method returns partial list of players. The list is filtered by initial characte
 sub account_list {
     my $self = shift;
 
-    return $self->_request( 'get', 'account/list', ['language', 'fields', 'type', 'search', 'limit'], ['search'], @_ );
+    return $self->_request( 'get', 'account/list', [ 'language', 'fields', 'type', 'search', 'limit' ], ['search'],
+        @_ );
 }
 
 =head3 B<account_info( [ %params ] )>
@@ -69,7 +69,8 @@ Method returns player details.
 sub account_info {
     my $self = shift;
 
-    return $self->_request( 'get', 'account/info', ['language', 'fields', 'access_token', 'account_id'], ['account_id'], @_ );
+    return $self->_request( 'get', 'account/info', [ 'language', 'fields', 'access_token', 'account_id' ],
+        ['account_id'], @_ );
 }
 
 =head3 B<account_planes( [ %params ] )>
@@ -81,7 +82,8 @@ Method returns details on player's aircrafts.
 sub account_planes {
     my $self = shift;
 
-    return $self->_request( 'get', 'account/planes', ['language', 'fields', 'access_token', 'account_id'], ['account_id'], @_ );
+    return $self->_request( 'get', 'account/planes', [ 'language', 'fields', 'access_token', 'account_id' ],
+        ['account_id'], @_ );
 }
 
 =head2 Ratings
@@ -95,7 +97,7 @@ Method returns dictionary of rating periods and ratings details.
 sub ratings_types {
     my $self = shift;
 
-    return $self->_request( 'get', 'ratings/types', ['language', 'fields'], undef, @_ );
+    return $self->_request( 'get', 'ratings/types', [ 'language', 'fields' ], undef, @_ );
 }
 
 =head3 B<ratings_accounts( [ %params ] )>
@@ -107,7 +109,11 @@ Method returns player ratings by specified IDs.
 sub ratings_accounts {
     my $self = shift;
 
-    return $self->_request( 'get', 'ratings/accounts', ['language', 'fields', 'type', 'date', 'account_id'], ['type', 'account_id'], @_ );
+    return $self->_request(
+        'get', 'ratings/accounts',
+        [ 'language', 'fields', 'type', 'date', 'account_id' ],
+        [ 'type',     'account_id' ], @_
+    );
 }
 
 =head3 B<ratings_neighbors( [ %params ] )>
@@ -119,7 +125,11 @@ Method returns list of adjacent positions in specified rating.
 sub ratings_neighbors {
     my $self = shift;
 
-    return $self->_request( 'get', 'ratings/neighbors', ['language', 'fields', 'type', 'date', 'account_id', 'rank_field', 'limit'], ['type', 'account_id', 'rank_field'], @_ );
+    return $self->_request(
+        'get', 'ratings/neighbors',
+        [ 'language', 'fields',     'type', 'date', 'account_id', 'rank_field', 'limit' ],
+        [ 'type',     'account_id', 'rank_field' ], @_
+    );
 }
 
 =head3 B<ratings_top( [ %params ] )>
@@ -131,7 +141,11 @@ Method returns the list of top players by specified parameter.
 sub ratings_top {
     my $self = shift;
 
-    return $self->_request( 'get', 'ratings/top', ['language', 'fields', 'type', 'date', 'rank_field', 'limit'], ['type', 'rank_field'], @_ );
+    return $self->_request(
+        'get', 'ratings/top',
+        [ 'language', 'fields', 'type', 'date', 'rank_field', 'limit' ],
+        [ 'type',     'rank_field' ], @_
+    );
 }
 
 =head3 B<ratings_dates( [ %params ] )>
@@ -143,7 +157,7 @@ Method returns dates with available rating data.
 sub ratings_dates {
     my $self = shift;
 
-    return $self->_request( 'get', 'ratings/dates', ['language', 'fields', 'type', 'account_id'], ['type'], @_ );
+    return $self->_request( 'get', 'ratings/dates', [ 'language', 'fields', 'type', 'account_id' ], ['type'], @_ );
 }
 
 =head1 BUGS
@@ -234,5 +248,5 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of WG::API::WoWp
+1;    # End of WG::API::WoWp
 

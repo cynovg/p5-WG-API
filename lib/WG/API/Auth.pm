@@ -42,11 +42,11 @@ Information on authorization status is sent to URL specified in redirect_uri par
 
 =cut
 
-sub login { 
+sub login {
     my $self = shift;
 
-    return $self->_request( 'get', 'auth/login', ['expires_at', 'redirect_uri', 'display', 'nofollow'], undef, @_ );
-}  
+    return $self->_request( 'get', 'auth/login', [ 'expires_at', 'redirect_uri', 'display', 'nofollow' ], undef, @_ );
+}
 
 =over 1
 
@@ -68,10 +68,10 @@ This method is used when the player is still using the application but the curre
 
 =cut
 
-sub prolongate { 
+sub prolongate {
     my $self = shift;
 
-    return $self->_request( 'post', 'auth/prolongate', ['access_token', 'expires_at'], ['access_token'], @_ );
+    return $self->_request( 'post', 'auth/prolongate', [ 'access_token', 'expires_at' ], ['access_token'], @_ );
 }
 
 =over 1
@@ -188,4 +188,4 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
 
-1; # End of WG::API::Auth
+1;    # End of WG::API::Auth
