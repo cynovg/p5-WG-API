@@ -7,9 +7,8 @@ use WG::API;
 
 use Test::More;
 
-my $wg = WG::API->new( application_id => $ENV{ 'WG_KEY' } || 'demo' );
-ok( $wg && ref $wg, 'create class' );
-ok( $wg = $wg->net, 'get WG::API::NET instance');
+my WG::API::NET $wg = WG::API->new(application_id => $ENV{ 'WG_KEY' } || 'demo')->net();
+ok($wg && ref $wg, 'get WG::API::NET instance');
 isa_ok( $wg, 'WG::API::NET', 'valid instance');
 
 can_ok( $wg, qw/servers_info/ );
@@ -17,7 +16,7 @@ can_ok( $wg, qw/accounts_list account_info/ );
 can_ok( $wg, qw/clans_list clans_info clans_membersinfo clans_glossary clans_messageboard/ );
 
 SKIP: {
-    skip 'developers only', 8 unless $ENV{ 'WGMODE' } && $ENV{ 'WGMODE' } eq 'dev';
+    skip 'developers only', 26 unless $ENV{ 'WGMODE' } && $ENV{ 'WGMODE' } eq 'dev';
 
     ok( $wg->servers_info, 'get servers info without params' );
     ok( $wg->servers_info( game => 'wot' ), 'get servers info with params' );
@@ -34,13 +33,13 @@ SKIP: {
     is( $wg->error->code, '997', 'get error' );
     ok( $accounts = $wg->accounts_list( search => 'test' ), 'Search accounts' );
     is( $wg->error, undef, 'search accounts without errors' );
-    
+
     my $account_ref;
     ok( $account_ref = $wg->account_info( account_id => $accounts->[0]->{'account_id'} ), 'Get account info' );
     is( $wg->error, undef, 'Get account info without errors' );
     my ($account_id) = keys %$account_ref;
     like( $account_ref->{$account_id}->{nickname}, qr/test/i, 'Verified account' );
-    
+
     is( $wg->account_info( account_id => undef ), undef, 'Get account info without account_id' );
     is( $wg->account_info( account_id => 'test' ), undef, 'Get account info with invalid account_id' );
 
