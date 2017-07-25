@@ -3,12 +3,6 @@ package WG::API;
 use Modern::Perl '2015';
 use Moo;
 
-use WG::API::NET;
-use WG::API::WoT;
-use WG::API::WoWs;
-use WG::API::WoWp;
-use WG::API::Auth;
-
 =encoding utf8
 
 =head1 NAME
@@ -67,6 +61,8 @@ Returns a WoT instance
 sub wot {
     my $self = shift;
 
+    require WG::API::WoT;
+
     return WG::API::WoT->new(
         application_id  => $self->application_id,
         @_
@@ -85,6 +81,8 @@ Returns A WoWp instance
 
 sub wowp {
     my $self = shift;
+
+    require WG::API::WoWp;
 
     return WG::API::WoWp->new(
         application_id => $self->application_id,
@@ -105,6 +103,8 @@ Returns a WoWs instance
 sub wows {
     my $self = shift;
 
+    require WG::API::WoWs;
+
     return WG::API::WoWs->new(
         application_id  => $self->application_id,
         @_
@@ -124,6 +124,8 @@ Returns a NET instance
 sub net {
     my $self = shift;
 
+    require WG::API::NET;
+
     return WG::API::NET->new(
         application_id  => $self->application_id,
         @_
@@ -142,6 +144,9 @@ Return a Auth instance
 
 sub auth {
     my $self = shift;
+
+    require WG::API::Auth;
+
     return WG::API::Auth->new(
         application_id => $self->application_id,
         @_
