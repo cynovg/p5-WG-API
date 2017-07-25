@@ -5,6 +5,8 @@ use lib('lib');
 
 use WG::API;
 
+use Log::Any::Test;
+use Log::Any qw($log);
 use Test::More;
 
 BEGIN {
@@ -33,6 +35,10 @@ ok( $error->message eq $error_params{ 'message' }, 'error->message checked' );
 ok( $error->code eq $error_params{ 'code' }, 'error->code checked' );
 ok( $error->value eq $error_params{ 'value' }, 'error->value checked' );
 ok( ! ref $error->raw, 'error->raw checked' );
+
+my WG::API::WoT $wot = WG::API->new( application_id => $ENV{ 'WG_KEY' } || 'demo' )->wot( debug => 1);
+$wot->account_info(account_id => '123');
+$log->contains_ok(qr/METHOD GET/, 'params for GET request logged');
 
 done_testing();
 

@@ -7,6 +7,7 @@ use WG::API::Error;
 use LWP::UserAgent;
 use JSON;
 use Data::Dumper;
+use Log::Any qw($log);
 
 =encoding utf8
 
@@ -58,6 +59,14 @@ has debug => (
     default => '0',
 );
 
+sub log {
+    my ($self, $event) = @_;
+
+    return unless $self->debug;
+
+    $log->debug($event);
+}
+
 sub _request {
     my ( $self, $method, $uri, $params, $required_params, %passed_params ) = @_;
 
@@ -106,7 +115,7 @@ sub _get {
         $url .= sprintf "&%s=%s", $_, $passed_params{ $_ } if defined $passed_params{ $_ }; 
     }
 
-    warn sprintf "METHOD GET, URL: %s\n", $url if $self->debug;
+    $self->log(sprintf "METHOD GET, URL: %s\n", $url);
 
     my HTTP::Response $response = $self->ua->get( $url );
 
@@ -129,7 +138,7 @@ sub _post {
 
     $passed_params{ 'application_id' } = $self->application_id;
 
-    warn sprintf "METHOD POST, URL %s, %s\n", $url, Dumper \%passed_params if $self->debug;
+    $self->log(sprintf "METHOD POST, URL %s, %s\n", $url, Dumper \%passed_params);
 
     my HTTP::Response $response = $self->ua->post( $url, \%passed_params );
 
@@ -173,7 +182,7 @@ sub _parse {
         $self->response( $response->{ 'data' } );
     }
 
-    warn Dumper $self->error if $self->debug;
+    $self->log($self->error);
 
     return;
 }
