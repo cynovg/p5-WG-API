@@ -3,9 +3,6 @@ package WG::API::NET;
 use Moo;
 
 with 'WG::API::Base';
-with 'WG::API::NET::Clans';
-with 'WG::API::NET::Accounts';
-with 'WG::API::NET::Servers';
 
 =head1 NAME
 
@@ -64,6 +61,14 @@ Method returns partial list of players. The list is filtered by initial characte
 
 =back
 
+=cut
+
+sub accounts_list {
+    my $self = shift;
+
+    return $self->_request( 'get', 'account/list', ['fields', 'game', 'type', 'search', 'limit'], ['search'], @_ );
+}
+
 =item B<account_info>
 
 Method returns Wargaming account details.
@@ -78,6 +83,14 @@ Method returns Wargaming account details.
 
 =back
 
+=cut
+
+sub account_info {
+    my ( $self, %params ) = @_;
+
+    return $self->_request( 'get', 'account/info', ['fields', 'access_token', 'account_id'], ['account_id'], %params );
+}
+
 =head2 Clans
 
 =over 1
@@ -85,6 +98,14 @@ Method returns Wargaming account details.
 =item B<clans_list>
 
 Method searches through clans and sorts them in a specified order.
+
+=cut
+
+sub clans_list {
+    my $self = shift;
+
+    return $self->_request( 'get', 'clans/list', ['language', 'fields', 'search', 'orded_by', 'limit', 'page_no', 'game' ], undef, @_ );
+}
 
 =item B<clans_info>
 
@@ -98,6 +119,14 @@ Method returns detailed clan information.
 
 =back
 
+=cut
+
+sub clans_info {
+    my $self = shift;
+
+    return $self->_request( 'get', 'clans/info', ['language', 'fields', 'access_token', 'clan_id'], ['clan_id'], @_ );
+}
+
 =item B<clans_membersinfo>
 
 Method returns clan member info and short info on the clan. Information is available for World of Tanks and World of Warplanes clans.
@@ -110,9 +139,25 @@ Method returns clan member info and short info on the clan. Information is avail
 
 =back
 
+=cut
+
+sub clans_membersinfo {
+    my $self = shift;
+
+    return $self->_request( 'get', 'clans/membersinfo', ['language', 'fields', 'account_id'], ['account_id'], @_ );
+}
+
 =item B<clans_glossary>
 
 Method returns information on clan entities in World of Tanks and World of Warplanes.
+
+=cut
+
+sub clans_glossary {
+    my $self = shift;
+
+    return $self->_request( 'get', 'clans/glossary', ['language', 'fields', 'game'], undef, @_ );
+}
 
 =item B<clans_messageboard>
 
@@ -128,6 +173,14 @@ Method returns messages of clan message board.
 
 =back
 
+=cut
+
+sub clans_messageboard {
+    my $self = shift;
+
+    return $self->_request( 'get', 'clans/mesageboard', ['language', 'fields', 'access_token'], ['access_token'], @_ );
+}
+
 =head2 Servers
 
 =over 1
@@ -137,6 +190,14 @@ Method returns messages of clan message board.
 Method returns the number of online players on the servers.
 
 =back
+
+=cut
+
+sub servers_info {
+    my ( $self, %params ) = @_;
+
+    return $self->_request( 'get', 'servers/info', ['language', 'fields', 'game'], undef, %params );
+}
 
 =head1 BUGS
 
