@@ -19,12 +19,107 @@ Version v0.8.4
 
 our $VERSION = 'v0.8.4';
 
+=head1 SYNOPSIS
+
+Base class for all instances
+
+=cut
+
 requires 'api_uri';
+
+=head1 ATTRIBUTES
+
+=over 1
+
+=item I<application_id*>
+
+Rerquired application id: L<https://developers.wargaming.net/documentation/guide/getting-started/>
+
+=back
+
+=cut
 
 has application_id => (
     is      => 'ro',
     require => 1,
 );
+
+=over 1
+
+=item I<language>
+
+=back
+
+=cut
+
+has language => (
+    is      => 'ro',
+    default => sub {'ru'},
+);
+
+=over 1
+
+=item I<status>
+
+Return request status
+
+=back
+
+=cut
+
+has status => ( is => 'rw', );
+
+=over 1
+
+=item I<response>
+
+Return response
+
+=back
+
+=cut
+
+has response => ( is => 'rw', );
+
+=over 1
+
+=item I<meta_data>
+
+Return meta data from response
+
+=back
+
+=cut
+
+has meta_data => ( is => 'rw', );
+
+=over 1
+
+=item I<debug>
+
+Get current debug mode
+
+=back
+
+=cut
+
+has debug => (
+    is      => 'rw',
+    writer => 'set_debug',
+    default => '0',
+);
+
+=head1 METHODS
+
+=over 1
+
+=item B<ua>
+
+Returns a user agent instance
+
+=back
+
+=cut
 
 #@returns LWP::UserAgent
 has ua => (
@@ -32,25 +127,36 @@ has ua => (
     default => sub { LWP::UserAgent->new() },
 );
 
-has language => (
-    is      => 'ro',
-    default => sub {'ru'},
-);
+=over 1
 
-has status => ( is => 'rw', );
+=item B<error>
 
-has response => ( is => 'rw', );
+Returns a WG::API::Error instance if defined;
 
-has meta_data => ( is => 'rw', );
+=back
+
+=cut
 
 #@returns WG::API::Error
 has error => ( is => 'rw', );
 
-has debug => (
-    is      => 'rw',
-    writer => 'set_debug',
-    default => '0',
-);
+=over 1
+
+=item B<set_debug>
+
+Set debug mode
+
+=back
+
+=over 1
+
+=item B<log>
+
+Logger
+
+=back
+
+=cut
 
 sub log {
     my ( $self, $event ) = @_;
@@ -220,7 +326,7 @@ WG API Reference L<https://developers.wargaming.net/>
 
 =head1 AUTHOR
 
-cynovg , C<< <cynovg at cpan.org> >>
+Cyrill Novgorodcev , C<< <cynovg at cpan.org> >>
 
 =head1 LICENSE AND COPYRIGHT
 
