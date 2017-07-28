@@ -1,10 +1,10 @@
 {
    "abstract" : "Module for work with Wargaming.net Public API",
    "author" : [
-      "cynovg , C<< <cynovg at cpan.org> >>"
+      "Cyrill Novgorodcev , C<< <cynovg at cpan.org> >>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v3.0.10, CPAN::Meta::Converter version 2.150005",
+   "generated_by" : "Minilla/v3.0.10, CPAN::Meta::Converter version 2.142690",
    "license" : [
       "artistic_2"
    ],
@@ -70,9 +70,10 @@
          "web" : "https://github.com/cynovg/WG-API"
       }
    },
-   "version" : "v0.8.4",
+   "version" : "v0.8.5",
    "x_contributors" : [
-      "Cyrill Novgorodcev <cynovg@cpan.org>"
-   ],
-   "x_serialization_backend" : "JSON::PP version 2.27300_01"
+      "root <root@cynovg-debian.local>",
+      "Cyrill Novgorodcev <cynovg@gmail.com>",
+      "Kirill Novgorodcev <novgorodtsev.kirill@220-volt.ru>"
+   ]
 }

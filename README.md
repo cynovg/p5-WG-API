@@ -5,7 +5,7 @@ WG::API - Module for work with Wargaming.net Public API
 
 # VERSION
 
-Version v0.8.4
+Version v0.8.5
 
 # SYNOPSIS
 
@@ -85,7 +85,7 @@ WG API Reference [https://developers.wargaming.net/](https://developers.wargamin
 
 # AUTHOR
 
-cynovg , `<cynovg at cpan.org>`
+Cyrill Novgorodcev , `<cynovg at cpan.org>`
 
 # LICENSE AND COPYRIGHT
 
