@@ -47,7 +47,8 @@ has meta_data => ( is => 'rw', );
 has error => ( is => 'rw', );
 
 has debug => (
-    is      => 'ro',
+    is      => 'rw',
+    writer => 'set_debug',
     default => '0',
 );
 
