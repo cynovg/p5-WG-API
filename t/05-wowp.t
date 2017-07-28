@@ -29,8 +29,7 @@ SKIP: {
 
     is( $wowp->ratings_top, undef, 'get rating top without params' );
     is( $wowp->ratings_top( type => '1', rank_field => 'xxx' ), undef, 'get rating top for invalid rank field' );
-    ok( $accounts = $wowp->ratings_top( type => '1', rank_field => 'battles_count' ),
-        'get rating top for valid rank field' );
+    ok( $accounts = $wowp->ratings_top( type => '1', rank_field => 'battles_count' ), 'get rating top for valid rank field' );
     is( ref $accounts, 'ARRAY', 'get real top list' );
 
     ok( $wowp->ratings_types, 'get ratings types' );

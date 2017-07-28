@@ -9,10 +9,12 @@ BEGIN {
     use_ok('WG::API') || say "WG::API loaded";
 }
 
-my WG::API $wg;
-eval { $wg = WG::API->new( application_id => $ENV{'WG_KEY'} || 'demo' ); };
-ok( $wg && !$@, 'create general object' );
+diag $WG::API::VERSION;
 
+my WG::API $wg;
+eval { $wg = WG::API->new( application_id => $ENV{'WG_KEY'} || 'demo' ) };
+
+isa_ok( $wg,       'WG::API' );
 isa_ok( $wg->net,  'WG::API::NET' );
 isa_ok( $wg->wot,  'WG::API::WoT' );
 isa_ok( $wg->wowp, 'WG::API::WoWp' );
