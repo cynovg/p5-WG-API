@@ -11,6 +11,5 @@ test:
       - cpm install -g
       - cpm install Devel::Cover -g
     script:
-      - ./script/wgu get /signature/wot/cynovg:RYANkQ.png 
       - HARNESS_PERL_SWITCHES=-MDevel::Cover=+ignore,\\.t$,\\.conf$ prove -r t/ 
       - cover
