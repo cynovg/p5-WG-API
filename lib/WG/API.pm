@@ -58,6 +58,7 @@ Returns a WoT instance
 
 =cut
 
+#@returns WG::API::WoT
 sub wot {
     my $self = shift;
 
@@ -79,6 +80,7 @@ Returns A WoWp instance
 
 =cut
 
+#@returns WG::API::WoWp
 sub wowp {
     my $self = shift;
 
@@ -100,6 +102,7 @@ Returns a WoWs instance
 
 =cut
 
+#@returns WG::API::WoWs
 sub wows {
     my $self = shift;
 
@@ -121,6 +124,7 @@ Returns a NET instance
 
 =cut
 
+#@returns WG::API::NET
 sub net {
     my $self = shift;
 
@@ -142,6 +146,7 @@ Return a Auth instance
 
 =cut
 
+#@returns WG::API::Auth
 sub auth {
     my $self = shift;
 
