@@ -16,7 +16,7 @@ can_ok( $wot, qw/account_list account_info account_tanks account_achievements/ )
 can_ok( $wot, qw/tanks_stats tanks_achievements/ );
 
 SKIP: {
-    skip 'developers only', 26 unless $ENV{'WGMODE'} && $ENV{'WGMODE'} eq 'dev';
+    skip 'developers only', 14 unless $ENV{'WGMODE'} && $ENV{'WGMODE'} eq 'dev';
 
     subtest 'accounts' => sub {
         ok( !$wot->account_list, 'get account list without params' );
