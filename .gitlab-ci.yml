@@ -1,6 +1,4 @@
 image: perl
-services:
-  - redis
 
 stages:
   - test
