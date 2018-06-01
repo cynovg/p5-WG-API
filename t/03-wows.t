@@ -7,7 +7,7 @@ use WG::API;
 
 use Test::More;
 
-my WG::API::WoWs $wows = WG::API->new( application_id => $ENV{'WG_KEY'} || 'demo' )->wows();
+my $wows = WG::API->new( application_id => $ENV{'WG_KEY'} || 'demo' )->wows();
 isa_ok( $wows, 'WG::API::WoWs' );
 
 can_ok( $wows, qw/account_list account_info account_achievements/ );

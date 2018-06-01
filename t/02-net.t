@@ -7,7 +7,7 @@ use WG::API;
 
 use Test::More;
 
-my WG::API::NET $net = WG::API->new( application_id => $ENV{'WG_KEY'} || 'demo' )->net();
+my $net = WG::API->new( application_id => $ENV{'WG_KEY'} || 'demo' )->net();
 isa_ok( $net, 'WG::API::NET', 'valid instance' );
 
 can_ok( $net, qw/servers_info/ );

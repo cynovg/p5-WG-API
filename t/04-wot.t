@@ -3,13 +3,11 @@
 use Modern::Perl '2015';
 use lib ('lib');
 
-use WG::API;
-
 use Log::Any::Test;
 use Log::Any qw($log);
 use Test::More;
 
-my WG::API::WoT $wot = WG::API->new( application_id => $ENV{'WG_KEY'} || 'demo' )->wot;
+my $wot = WG::API->new( application_id => $ENV{'WG_KEY'} || 'demo' )->wot;
 isa_ok( $wot, 'WG::API::WoT' );
 
 can_ok( $wot, qw/account_list account_info account_tanks account_achievements/ );

@@ -7,7 +7,7 @@ use WG::API;
 
 use Test::More;
 
-my WG::API::WoWp $wowp = WG::API->new( application_id => $ENV{'WG_KEY'} || 'demo' )->wowp;
+my $wowp = WG::API->new( application_id => $ENV{'WG_KEY'} || 'demo' )->wowp;
 ok( $wowp && ref $wowp, 'create class' );
 isa_ok( $wowp, 'WG::API::WoWp' );
 

@@ -11,7 +11,7 @@ BEGIN {
 
 diag $WG::API::VERSION;
 
-my WG::API $wg;
+my $wg;
 eval { $wg = WG::API->new( application_id => $ENV{'WG_KEY'} || 'demo' ) };
 
 isa_ok( $wg,       'WG::API' );
