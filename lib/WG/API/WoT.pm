@@ -105,24 +105,6 @@ sub account_achievements {
     return $self->_request( 'get', 'account/achievements', [ 'language', 'fields', 'account_id' ], ['account_id'], @_ );
 }
 
-=head2 Player ratings
-
-=head3 B<ratings_top( [ %params ] )>
-
-Method returns the list of top players by specified parameter.
-
-=cut
-
-sub ratings_top {
-    my $self = shift;
-
-    return $self->_request(
-        'get', 'ratings/top',
-        [ 'language', 'fields', 'battle_type', 'type', 'date', 'rank_field', 'limit', 'page_no' ],
-        [ 'type',     'rank_field' ], @_
-    );
-}
-
 =head2 Player's vehicles
 
 =head3 B<tanks_stats( [ %params ] )>

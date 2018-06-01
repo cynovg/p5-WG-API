@@ -13,7 +13,6 @@ my WG::API::WoT $wot = WG::API->new( application_id => $ENV{'WG_KEY'} || 'demo' 
 isa_ok( $wot, 'WG::API::WoT' );
 
 can_ok( $wot, qw/account_list account_info account_tanks account_achievements/ );
-can_ok( $wot, qw/ratings_top/ );
 can_ok( $wot, qw/tanks_stats tanks_achievements/ );
 
 SKIP: {
@@ -28,12 +27,6 @@ SKIP: {
         ok( $wot->account_tanks( account_id => '244468' ), 'get account tanks with params' );
         ok( !$wot->account_achievements, 'get account achievements without params' );
         ok( $wot->account_achievements( account_id => '244468' ), 'get account achievements with params' );
-    };
-
-    subtest 'ratings' => sub {
-        ok( !$wot->ratings_top, 'get ratings top without params' );
-        ok( !$wot->ratings_top( type => 'xxx', rank_field => 'damage_dealt' ), 'get ratings top with invalid params' );
-        ok( $wot->ratings_top( type => 'all', rank_field => 'damage_dealt' ), 'get ratings top with valid params' );
     };
 
     subtest 'tanks' => sub {
