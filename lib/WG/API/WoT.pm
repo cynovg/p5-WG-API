@@ -107,18 +107,6 @@ sub account_achievements {
 
 =head2 Player ratings
 
-=head3 B<ratings_types( [ %params ] )>
-
-Method returns dictionary of rating periods and ratings details.
-
-=cut
-
-sub ratings_types {
-    my $self = shift;
-
-    return $self->_request( 'get', 'ratings/types', [ 'language', 'fields', 'battle_type' ], undef, @_ );
-}
-
 =head3 B<ratings_dates( [ %params ] )>
 
 Method returns dates with available rating data.

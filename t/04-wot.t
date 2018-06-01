@@ -13,7 +13,7 @@ my WG::API::WoT $wot = WG::API->new( application_id => $ENV{'WG_KEY'} || 'demo' 
 isa_ok( $wot, 'WG::API::WoT' );
 
 can_ok( $wot, qw/account_list account_info account_tanks account_achievements/ );
-can_ok( $wot, qw/ratings_types ratings_dates ratings_accounts ratings_neighbors ratings_top/ );
+can_ok( $wot, qw/ratings_dates ratings_accounts ratings_neighbors ratings_top/ );
 can_ok( $wot, qw/tanks_stats tanks_achievements/ );
 
 SKIP: {
@@ -31,7 +31,6 @@ SKIP: {
     };
 
     subtest 'ratings' => sub {
-        ok( $wot->ratings_types,  'get ratings types without params' );
         ok( !$wot->ratings_dates, 'get ratings dates without params' );
         ok( $wot->ratings_dates( type => 'all' ), 'get ratings dates with params' );
         ok( !$wot->ratings_accounts, 'get ratings account without params' );
