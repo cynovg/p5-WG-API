@@ -3,6 +3,8 @@
 use Modern::Perl '2015';
 use lib ('lib');
 
+use WG::API;
+
 use Log::Any::Test;
 use Log::Any qw($log);
 use Test::More;
