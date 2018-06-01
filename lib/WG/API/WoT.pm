@@ -107,22 +107,6 @@ sub account_achievements {
 
 =head2 Player ratings
 
-=head3 B<ratings_neighbors( [ %params ] )>
-
-Method returns list of adjacent positions in specified rating.
-
-=cut
-
-sub ratings_neighbors {
-    my $self = shift;
-
-    return $self->_request(
-        'get', 'ratings/neighbors',
-        [ 'language', 'fields',     'battle_type', 'type', 'date', 'account_id', 'rank_field', 'limit' ],
-        [ 'type',     'account_id', 'rank_field' ], @_
-    );
-}
-
 =head3 B<ratings_top( [ %params ] )>
 
 Method returns the list of top players by specified parameter.

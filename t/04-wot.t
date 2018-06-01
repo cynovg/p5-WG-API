@@ -13,7 +13,7 @@ my WG::API::WoT $wot = WG::API->new( application_id => $ENV{'WG_KEY'} || 'demo' 
 isa_ok( $wot, 'WG::API::WoT' );
 
 can_ok( $wot, qw/account_list account_info account_tanks account_achievements/ );
-can_ok( $wot, qw/ratings_neighbors ratings_top/ );
+can_ok( $wot, qw/ratings_top/ );
 can_ok( $wot, qw/tanks_stats tanks_achievements/ );
 
 SKIP: {
@@ -31,15 +31,6 @@ SKIP: {
     };
 
     subtest 'ratings' => sub {
-        ok( !$wot->ratings_neighbors, 'get list of adjacent positions in specified rating without params' );
-        ok(
-            !$wot->ratings_neighbors( account_id => 'xxx', type => 'all', rank_field => 'damage_dealt' ),
-            'get list of adjacent positions in specified rating with invalid params'
-        );
-        ok(
-            $wot->ratings_neighbors( account_id => '244468', type => 'all', rank_field => 'damage_dealt' ),
-            'get list of adjacent positions in specified rating with valid params'
-        );
         ok( !$wot->ratings_top, 'get ratings top without params' );
         ok( !$wot->ratings_top( type => 'xxx', rank_field => 'damage_dealt' ), 'get ratings top with invalid params' );
         ok( $wot->ratings_top( type => 'all', rank_field => 'damage_dealt' ), 'get ratings top with valid params' );
