@@ -214,7 +214,8 @@ sub _get {
 
     $self->log( sprintf "METHOD GET, URL: %s\n", $url );
 
-    my HTTP::Response $response = $self->ua->get($url);
+    #@type HTTP::Response
+    my $response = $self->ua->get($url);
 
     return $self->_parse( $response->is_success ? decode_json $response->decoded_content : undef );
 }
@@ -234,7 +235,8 @@ sub _post {
 
     $self->log( sprintf "METHOD POST, URL %s, %s\n", $url, Dumper \%passed_params );
 
-    my HTTP::Response $response = $self->ua->post( $url, \%passed_params );
+    #@type HTTP::Response
+    my $response = $self->ua->post( $url, \%passed_params );
 
     return $self->_parse( $response->is_success ? decode_json $response->decoded_content : undef );
 }
