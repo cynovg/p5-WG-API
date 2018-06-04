@@ -9,4 +9,5 @@ requires 'Log::Any', '>=1.049';
 on build => sub {
     requires 'Test::More';
     requires 'Log::Any::Test', '>=1.049';
+    requires 'Test::Exception';
 };
