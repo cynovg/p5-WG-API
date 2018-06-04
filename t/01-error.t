@@ -24,11 +24,13 @@ dies_ok { $error = WG::API::Error->new() } "can't create error object without pa
 lives_ok { $error = WG::API::Error->new(%error_params) } "create error object with valid params";
 isa_ok( $error, 'WG::API::Error' );
 
-ok( $error->field eq $error_params{'field'},     'error->field checked' );
-ok( $error->message eq $error_params{'message'}, 'error->message checked' );
-ok( $error->code eq $error_params{'code'},       'error->code checked' );
-ok( $error->value eq $error_params{'value'},     'error->value checked' );
-ok( !ref $error->raw,                            'error->raw checked' );
+subtest 'error fields' => sub {
+    ok( $error->field eq $error_params{'field'},     'error->field checked' );
+    ok( $error->message eq $error_params{'message'}, 'error->message checked' );
+    ok( $error->code eq $error_params{'code'},       'error->code checked' );
+    ok( $error->value eq $error_params{'value'},     'error->value checked' );
+    ok( !ref $error->raw,                            'error->raw checked' );
+};
 
 done_testing();
 
