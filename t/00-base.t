@@ -3,6 +3,7 @@
 use Modern::Perl '2015';
 
 use Test::More;
+use Test::Exception;
 
 BEGIN {
     require_ok('WG::API') || say "WG::API loaded";
@@ -11,7 +12,7 @@ BEGIN {
 diag $WG::API::VERSION;
 
 my $wg;
-eval { $wg = WG::API->new( application_id => $ENV{'WG_KEY'} || 'demo' ) };
+lives_ok { $wg = WG::API->new( application_id => $ENV{'WG_KEY'} || 'demo' ) } 'create obj';
 
 isa_ok( $wg,       'WG::API' );
 isa_ok( $wg->net,  'WG::API::NET' );
