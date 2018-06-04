@@ -3,6 +3,7 @@
 use Modern::Perl '2015';
 
 use Test::More;
+use Test::Exception;
 
 BEGIN {
     require_ok('WG::API::Error') || say "WG::API::Error loaded";
@@ -18,11 +19,9 @@ my %error_params = (
 
 can_ok( 'WG::API::Error', qw/field message code value/ );
 
-eval { $error = WG::API::Error->new() };
-ok( !$error && $@, 'create error object without params' );
+dies_ok { $error = WG::API::Error->new() } "can't create error object without params";
 
-eval { $error = WG::API::Error->new(%error_params) };
-ok( $error && !$@, 'create error object with valid params' );
+lives_ok { $error = WG::API::Error->new(%error_params) } "create error object with valid params";
 isa_ok( $error, 'WG::API::Error' );
 
 ok( $error->field eq $error_params{'field'},     'error->field checked' );
