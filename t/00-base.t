@@ -5,7 +5,7 @@ use Modern::Perl '2015';
 use Test::More;
 
 BEGIN {
-    use_ok('WG::API') || say "WG::API loaded";
+    require_ok('WG::API') || say "WG::API loaded";
 }
 
 diag $WG::API::VERSION;

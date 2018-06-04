@@ -2,12 +2,10 @@
 
 use Modern::Perl '2015';
 
-use WG::API;
-
 use Test::More;
 
 BEGIN {
-    use_ok('WG::API::Error') || say "WG::API::Error loaded";
+    require_ok('WG::API::Error') || say "WG::API::Error loaded";
 }
 
 my $error;
