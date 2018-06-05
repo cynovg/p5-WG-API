@@ -10,6 +10,7 @@ test:
       - cpan install App::cpm
       - cpm install -g
       - cpm install Devel::Cover -g
+      - cpm install Minilla
     script:
-      - HARNESS_PERL_SWITCHES=-MDevel::Cover=+ignore,\\.t$,\\.conf$ prove -r t/ 
+      - HARNESS_PERL_SWITCHES=-MDevel::Cover=+ignore,\\.t$,\\.conf$ minil test 
       - cover
