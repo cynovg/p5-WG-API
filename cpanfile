@@ -11,3 +11,7 @@ on build => sub {
     requires 'Log::Any::Test', '>=1.049';
     requires 'Test::Exception';
 };
+
+on test => sub {
+    requires 'Software::License::Artistic_2_0';  
+};
