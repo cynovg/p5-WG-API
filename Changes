@@ -2,6 +2,11 @@ Revision history for WG-API
 
 {{$NEXT}}
 
+v0.8.6 2018-06-01T14:12:00Z
+
+  - migrate to gitlab.com
+  - remove deprecated methods
+
 v0.8.5 2017-07-28T07:38:56Z
   - fix tests
   - improved tests
