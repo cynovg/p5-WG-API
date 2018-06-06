@@ -29,6 +29,7 @@
       "build" : {
          "requires" : {
             "Log::Any::Test" : "1.049",
+            "Test::Exception" : "0",
             "Test::More" : "0"
          }
       },
@@ -55,6 +56,11 @@
             "Modern::Perl" : "1.20170117",
             "Moo" : "2.00",
             "perl" : "5.020"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "Software::License::Artistic_2_0" : "0"
          }
       }
    },
