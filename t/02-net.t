@@ -62,6 +62,7 @@ SKIP: {
 
         is( $net->clans_messageboard( game => 'wot' ), undef, 'Get clan messageboard without access token' );
 
+        isnt( $net->clans_memberhistory( account_id => $clan_info->{$clan_id}->{members}->[0]->{account_id} ), undef, 'Get clan members history with valid accout_id' );
     };
 }
 

@@ -117,7 +117,7 @@ sub tanks_stats {
     my $self = shift;
 
     return $self->_request( 'get', 'tanks/stats',
-        [ 'language', 'fields', 'access_token', 'account_id', 'tank_id', 'in_garage' ],
+        [ 'language', 'fields', 'access_token', 'account_id', 'tank_id', 'in_garage', 'extra' ],
         ['account_id'], @_ );
 }
 

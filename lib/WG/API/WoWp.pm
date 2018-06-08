@@ -82,7 +82,7 @@ Method returns details on player's aircrafts.
 sub account_planes {
     my $self = shift;
 
-    return $self->_request( 'get', 'account/planes', [ 'language', 'fields', 'access_token', 'account_id' ],
+    return $self->_request( 'get', 'account/planes', [ 'language', 'fields', 'access_token', 'account_id', 'in_garage', 'plane_id' ],
         ['account_id'], @_ );
 }
 
@@ -143,7 +143,7 @@ sub ratings_top {
 
     return $self->_request(
         'get', 'ratings/top',
-        [ 'language', 'fields', 'type', 'date', 'rank_field', 'limit' ],
+        [ 'language', 'fields', 'type', 'date', 'rank_field', 'limit', 'page_no' ],
         [ 'type',     'rank_field' ], @_
     );
 }

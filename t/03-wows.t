@@ -26,6 +26,8 @@ SKIP: {
         is( $wows->account_achievements, undef, 'account achievements without params' );
         is( $wows->account_achievements( account_id => 'xxx' ), undef, 'account achievements with invalid params' );
         ok( $wows->account_achievements( account_id => $accounts->[0]->{'account_id'} ), 'account achievements with valid params' );
+
+        isnt( $wows->account_statsbydate( account_id => $accounts->[0]->{account_id} ), undef, 'account stats by date with valid params' );
     };
 
     subtest 'ships' => sub {
