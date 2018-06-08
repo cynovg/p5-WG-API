@@ -106,7 +106,7 @@ sub clans_list {
     my $self = shift;
 
     return $self->_request( 'get', 'clans/list',
-        [ 'language', 'fields', 'search', 'orded_by', 'limit', 'page_no', 'game' ],
+        [ 'language', 'fields', 'search', 'limit', 'page_no', 'game' ],
         undef, @_ );
 }
 
