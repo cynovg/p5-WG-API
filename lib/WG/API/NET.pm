@@ -127,7 +127,7 @@ Method returns detailed clan information.
 sub clans_info {
     my $self = shift;
 
-    return $self->_request( 'get', 'clans/info', [ 'language', 'fields', 'access_token', 'clan_id' ], ['clan_id'], @_ );
+    return $self->_request( 'get', 'clans/info', [ 'language', 'fields', 'access_token', 'clan_id', 'extra', 'game', 'members_key' ], ['clan_id'], @_ );
 }
 
 =item B<clans_membersinfo>
