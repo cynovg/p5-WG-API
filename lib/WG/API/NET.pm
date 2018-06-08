@@ -181,7 +181,7 @@ Method returns messages of clan message board.
 sub clans_messageboard {
     my $self = shift;
 
-    return $self->_request( 'get', 'clans/mesageboard', [ 'language', 'fields', 'access_token' ], ['access_token'],
+    return $self->_request( 'get', 'clans/mesageboard', [ 'game', 'fields', 'access_token' ], ['access_token'],
         @_ );
 }
 
