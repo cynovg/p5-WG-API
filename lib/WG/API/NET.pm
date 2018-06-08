@@ -88,7 +88,7 @@ Method returns Wargaming account details.
 sub account_info {
     my ( $self, %params ) = @_;
 
-    return $self->_request( 'get', 'account/info', [ 'fields', 'access_token', 'account_id' ], ['account_id'],
+    return $self->_request( 'get', 'account/info', [ 'fields', 'access_token', 'account_id', 'language' ], ['account_id'],
         %params );
 }
 
