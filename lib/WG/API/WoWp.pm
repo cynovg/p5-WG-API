@@ -143,7 +143,7 @@ sub ratings_top {
 
     return $self->_request(
         'get', 'ratings/top',
-        [ 'language', 'fields', 'type', 'date', 'rank_field', 'limit' ],
+        [ 'language', 'fields', 'type', 'date', 'rank_field', 'limit', 'page_no' ],
         [ 'type',     'rank_field' ], @_
     );
 }
