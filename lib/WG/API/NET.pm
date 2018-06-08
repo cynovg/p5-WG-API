@@ -66,7 +66,7 @@ Method returns partial list of players. The list is filtered by initial characte
 sub accounts_list {
     my $self = shift;
 
-    return $self->_request( 'get', 'account/list', [ 'fields', 'game', 'type', 'search', 'limit' ], ['search'], @_ );
+    return $self->_request( 'get', 'account/list', [ 'fields', 'game', 'type', 'search', 'limit', 'language' ], ['search'], @_ );
 }
 
 =item B<account_info>
