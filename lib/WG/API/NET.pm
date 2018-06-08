@@ -88,8 +88,10 @@ Method returns Wargaming account details.
 sub account_info {
     my ( $self, %params ) = @_;
 
-    return $self->_request( 'get', 'account/info', [ 'fields', 'access_token', 'account_id', 'language' ], ['account_id'],
-        %params );
+    return $self->_request(
+        'get', 'account/info', [ 'fields', 'access_token', 'account_id', 'language' ], ['account_id'],
+        %params
+    );
 }
 
 =head2 Clans
@@ -105,9 +107,11 @@ Method searches through clans and sorts them in a specified order.
 sub clans_list {
     my $self = shift;
 
-    return $self->_request( 'get', 'clans/list',
+    return $self->_request(
+        'get', 'clans/list',
         [ 'language', 'fields', 'search', 'limit', 'page_no', 'game' ],
-        undef, @_ );
+        undef, @_
+    );
 }
 
 =item B<clans_info>
@@ -179,8 +183,10 @@ Method returns messages of clan message board.
 sub clans_messageboard {
     my $self = shift;
 
-    return $self->_request( 'get', 'clans/mesageboard', [ 'game', 'fields', 'access_token' ], ['access_token'],
-        @_ );
+    return $self->_request(
+        'get', 'clans/mesageboard', [ 'game', 'fields', 'access_token' ], ['access_token'],
+        @_
+    );
 }
 
 =item B<clans_memberhistory>
@@ -202,8 +208,10 @@ Method returns information about player's clan history. Data on 10 last clan mem
 sub clans_memberhistory {
     my $self = shift;
 
-    return $self->_request( 'get', 'clans/memberhistory', [ 'game', 'fields', 'account_id', 'language' ], ['account_id'],
-        @_ );
+    return $self->_request(
+        'get', 'clans/memberhistory', [ 'game', 'fields', 'account_id', 'language' ], ['account_id'],
+        @_
+    );
 }
 
 =head2 Servers
