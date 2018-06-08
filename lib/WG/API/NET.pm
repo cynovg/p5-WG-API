@@ -174,14 +174,35 @@ Method returns messages of clan message board.
 
 =back
 
-=back
-
 =cut
 
 sub clans_messageboard {
     my $self = shift;
 
     return $self->_request( 'get', 'clans/mesageboard', [ 'game', 'fields', 'access_token' ], ['access_token'],
+        @_ );
+}
+
+=item B<clans_memberhistory>
+
+Method returns information about player's clan history. Data on 10 last clan memberships are presented in the response.
+
+=over 2
+
+=item I<required fields:>
+
+    account_id - Account ID. Max limit is 100. Min value is 1.
+
+=back
+
+=back
+
+=cut
+
+sub clans_memberhistory {
+    my $self = shift;
+
+    return $self->_request( 'get', 'clans/memberhistory', [ 'game', 'fields', 'account_id', 'language' ], ['account_id'],
         @_ );
 }
 
