@@ -147,7 +147,7 @@ Method returns clan member info and short info on the clan. Information is avail
 sub clans_membersinfo {
     my $self = shift;
 
-    return $self->_request( 'get', 'clans/membersinfo', [ 'language', 'fields', 'account_id' ], ['account_id'], @_ );
+    return $self->_request( 'get', 'clans/membersinfo', [ 'language', 'fields', 'account_id', 'game' ], ['account_id'], @_ );
 }
 
 =item B<clans_glossary>
