@@ -25,6 +25,6 @@ release_staging:
       - echo "password $CPAN_PASSWORD" >> /tmp/pause
       - cat /tmp/pause
     script:
-      - echo | minil release
+      - echo -ne "\ny\n" | minil release
     only:
-      - build
+      - master
