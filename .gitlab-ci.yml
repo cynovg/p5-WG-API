@@ -21,9 +21,9 @@ release_staging:
       - cpan install App::cpm
       - cpm install -g
       - cpm install Minilla -g
-      - echo "user $CPAN_USER" > /builds/cynovg/WG-API/pause
-      - echo "password $CPAN_PASSWORD" >> /builds/cynovg/WG-API/pause
-      - cat /builds/cynovg/WG-API/pause
+      - echo "user $CPAN_USER" > /tmp/pause
+      - echo "password $CPAN_PASSWORD" >> /tmp/pause
+      - cat /tmp/pause
     script:
       - echo | minil release
     only:
