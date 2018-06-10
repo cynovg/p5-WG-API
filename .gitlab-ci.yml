@@ -21,6 +21,7 @@ release_staging:
       - cpan install App::cpm
       - cpm install -g
       - cpm install Minilla -g
+      - cpm install Version::Next
       - echo "user $CPAN_USER" > ~/.pause
       - echo "password $CPAN_PASSWORD" >> ~/.pause
     script:
