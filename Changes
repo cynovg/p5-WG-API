@@ -2,6 +2,10 @@ Revision history for WG-API
 
 {{$NEXT}}
 
+  - Release after merged request into master
+  - Actualize methods
+  - Change link from github to gitla
+
 v0.8.6 2018-06-01T14:12:00Z
 
   - migrate to gitlab.com
