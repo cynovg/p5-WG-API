@@ -24,6 +24,6 @@ release_staging:
       - echo "user $CPAN_USER" > ~/.pause
       - echo "password $CPAN_PASSWORD" >> ~/.pause
     script:
-      - echo | minila release
+      - echo | minil release
     only:
       - master
