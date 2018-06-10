@@ -23,7 +23,6 @@ release_staging:
       - cpm install Minilla -g
       - echo "user $CPAN_USER" > /tmp/pause
       - echo "password $CPAN_PASSWORD" >> /tmp/pause
-      - cat /tmp/pause
     script:
       - echo -ne "\ny\n" | minil release
     only:
