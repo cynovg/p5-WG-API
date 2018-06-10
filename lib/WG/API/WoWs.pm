@@ -81,7 +81,20 @@ Method returns information about players' achievements. Accounts with hidden gam
 sub account_achievements {
     my $self = shift;
 
-    return $self->_request( 'get', 'account/achievements', [ 'language', 'fields', 'account_id' ], ['account_id'], @_ );
+    return $self->_request( 'get', 'account/achievements', [ 'language', 'fields', 'account_id', 'access_token' ], ['account_id'], @_ );
+}
+
+=head3 B<account_statsbydate( [ %params ] )>
+
+Method returns statistics slices by dates in specified time span.
+
+=cut
+
+sub account_statsbydate {
+    my $self = shift;
+
+    return $self->_request( 'get', 'account/statsbydate', [ 'language', 'fields', 'dates', 'access_token', 'extra', 'account_id' ],
+        ['account_id'], @_ );
 }
 
 =head2 Warships

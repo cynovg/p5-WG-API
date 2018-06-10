@@ -66,7 +66,7 @@ Method returns partial list of players. The list is filtered by initial characte
 sub accounts_list {
     my $self = shift;
 
-    return $self->_request( 'get', 'account/list', [ 'fields', 'game', 'type', 'search', 'limit' ], ['search'], @_ );
+    return $self->_request( 'get', 'account/list', [ 'fields', 'game', 'type', 'search', 'limit', 'language' ], ['search'], @_ );
 }
 
 =item B<account_info>
@@ -88,8 +88,10 @@ Method returns Wargaming account details.
 sub account_info {
     my ( $self, %params ) = @_;
 
-    return $self->_request( 'get', 'account/info', [ 'fields', 'access_token', 'account_id' ], ['account_id'],
-        %params );
+    return $self->_request(
+        'get', 'account/info', [ 'fields', 'access_token', 'account_id', 'language' ], ['account_id'],
+        %params
+    );
 }
 
 =head2 Clans
@@ -105,9 +107,11 @@ Method searches through clans and sorts them in a specified order.
 sub clans_list {
     my $self = shift;
 
-    return $self->_request( 'get', 'clans/list',
-        [ 'language', 'fields', 'search', 'orded_by', 'limit', 'page_no', 'game' ],
-        undef, @_ );
+    return $self->_request(
+        'get', 'clans/list',
+        [ 'language', 'fields', 'search', 'limit', 'page_no', 'game' ],
+        undef, @_
+    );
 }
 
 =item B<clans_info>
@@ -127,7 +131,7 @@ Method returns detailed clan information.
 sub clans_info {
     my $self = shift;
 
-    return $self->_request( 'get', 'clans/info', [ 'language', 'fields', 'access_token', 'clan_id' ], ['clan_id'], @_ );
+    return $self->_request( 'get', 'clans/info', [ 'language', 'fields', 'access_token', 'clan_id', 'extra', 'game', 'members_key' ], ['clan_id'], @_ );
 }
 
 =item B<clans_membersinfo>
@@ -147,7 +151,7 @@ Method returns clan member info and short info on the clan. Information is avail
 sub clans_membersinfo {
     my $self = shift;
 
-    return $self->_request( 'get', 'clans/membersinfo', [ 'language', 'fields', 'account_id' ], ['account_id'], @_ );
+    return $self->_request( 'get', 'clans/membersinfo', [ 'language', 'fields', 'account_id', 'game' ], ['account_id'], @_ );
 }
 
 =item B<clans_glossary>
@@ -174,15 +178,40 @@ Method returns messages of clan message board.
 
 =back
 
-=back
-
 =cut
 
 sub clans_messageboard {
     my $self = shift;
 
-    return $self->_request( 'get', 'clans/mesageboard', [ 'language', 'fields', 'access_token' ], ['access_token'],
-        @_ );
+    return $self->_request(
+        'get', 'clans/mesageboard', [ 'game', 'fields', 'access_token' ], ['access_token'],
+        @_
+    );
+}
+
+=item B<clans_memberhistory>
+
+Method returns information about player's clan history. Data on 10 last clan memberships are presented in the response.
+
+=over 2
+
+=item I<required fields:>
+
+    account_id - Account ID. Max limit is 100. Min value is 1.
+
+=back
+
+=back
+
+=cut
+
+sub clans_memberhistory {
+    my $self = shift;
+
+    return $self->_request(
+        'get', 'clans/memberhistory', [ 'game', 'fields', 'account_id', 'language' ], ['account_id'],
+        @_
+    );
 }
 
 =head2 Servers
