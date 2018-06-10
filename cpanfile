@@ -10,6 +10,13 @@ on build => sub {
     requires 'Test::More';
     requires 'Log::Any::Test', '>=1.049';
     requires 'Test::Exception';
+    requires 'Test::CPAN::Meta';
+    requires 'Test::MinimumVersion::Fast';
+    requires 'Test::PAUSE::Permissions';
+    requires 'Test::Pod';
+    requires 'Test::Spellunker';
+    requires 'CPAN::Uploader';
+    requires 'Version::Next';
 };
 
 on test => sub {
