@@ -13,11 +13,11 @@ use Log::Any qw($log);
 
 =head1 VERSION
 
-Version v0.8.6
+Version v0.8.7
 
 =cut
 
-our $VERSION = 'v0.8.6';
+our $VERSION = 'v0.8.7';
 
 =head1 SYNOPSIS
 

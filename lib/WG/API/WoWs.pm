@@ -10,11 +10,11 @@ WG::API::WoWs - Moduled for work with Wargaming.net Public API for Worlf of Wars
 
 =head1 VERSION
 
-Version v0.8.6
+Version v0.8.7
 
 =cut
 
-our $VERSION = 'v0.8.6';
+our $VERSION = 'v0.8.7';
 
 use constant api_uri => 'api.worldofwarships.ru/wows';
 
