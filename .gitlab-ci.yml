@@ -22,6 +22,7 @@ release_staging:
       - cpm install -g
       - cpm install Minilla -g
       - cpm install Version::Next -g
+      - cpm install CPAN::Uploader -g
       - echo "user $CPAN_USER" > ~/.pause
       - echo "password $CPAN_PASSWORD" >> ~/.pause
     script:
