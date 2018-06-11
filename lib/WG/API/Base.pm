@@ -8,6 +8,8 @@ use LWP::UserAgent;
 use JSON;
 use Data::Dumper;
 use Log::Any qw($log);
+use URI;
+use URI::QueryParam;
 
 =encoding utf8
 
@@ -207,16 +209,8 @@ sub _validate_params {
 sub _get {
     my ( $self, $uri, $params, %passed_params ) = @_;
 
-    my $url = $self->_build_url($uri);
-    $url .= sprintf "?application_id=%s", $self->application_id;
-    for (@$params) {
-        $url .= sprintf "&%s=%s", $_, $passed_params{$_} if defined $passed_params{$_};
-    }
-
-    $self->log( sprintf "METHOD GET, URL: %s\n", $url );
-
     #@type HTTP::Response
-    my $response = $self->ua->get($url);
+    my $response = $self->ua->get( $self->_build_url($uri) . $self->_build_get_params( $params, %passed_params ) );
 
     return $self->_parse( $response->is_success ? decode_json $response->decoded_content : undef );
 }
@@ -281,6 +275,18 @@ sub _build_url {
     my $url = URI->new( $self->api_uri );
     $url->scheme("https");
     $url->path($uri);
+
+    return $url->as_string;
+}
+
+sub _build_get_params {
+    my ( $self, $params, %passed_params ) = @_;
+
+    my $url = URI->new( "", "https" );
+    $url->query_param( application_id => $self->application_id );
+    foreach my $param (@$params) {
+        $url->query_param( $param => $passed_params{$param} ) if defined $passed_params{$param};
+    }
 
     return $url->as_string;
 }
