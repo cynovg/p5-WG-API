@@ -162,7 +162,7 @@ sub log {
     my ( $self, $event ) = @_;
 
     return unless $self->debug;
-warn Dumper $event;
+
     $log->debug($event);
 }
 
