@@ -210,7 +210,7 @@ sub _get {
     my ( $self, $uri, $params, %passed_params ) = @_;
 
     #@type HTTP::Response
-    my $response = $self->ua->get( $self->_build_url($uri) . $self->_build_get_params( $params, %passed_params ) );
+    my $response = $self->_raw_get( $self->_build_url($uri) . $self->_build_get_params( $params, %passed_params ) );
 
     return $self->_parse( $response->is_success ? decode_json $response->decoded_content : undef );
 }
@@ -219,7 +219,7 @@ sub _post {
     my ( $self, $uri, $params, %passed_params ) = @_;
 
     #@type HTTP::Response
-    my $response = $self->ua->post( $self->_build_url($uri), $self->_build_post_params( $params, %passed_params ) );
+    my $response = $self->_raw_post( $self->_build_url($uri), $self->_build_post_params( $params, %passed_params ) );
 
     return $self->_parse( $response->is_success ? decode_json $response->decoded_content : undef );
 }
@@ -302,6 +302,22 @@ sub _build_post_params {
     $passed_params{'application_id'} = $self->application_id;
 
     return \%passed_params;
+}
+
+sub _raw_get {
+    my ( $self, $url ) = @_;
+
+    $self->log( sprintf "METHOD GET, URL: %s\n", $url );
+
+    return $self->ua->get($url);
+}
+
+sub _raw_post {
+    my ( $self, $url, $params ) = @_;
+
+    $self->log( sprintf "METHOD POST, URL %s, %s\n", $url, Dumper $params );
+
+    return $self->ua->post( $url, $params );
 }
 
 =head1 BUGS
