@@ -3,7 +3,7 @@ package WG::API::Auth;
 use Moo;
 with 'WG::API::Base';
 
-use constant api_uri => 'api.worldoftanks.ru/wot';
+use constant api_uri => '//api.worldoftanks.ru/';
 
 =head1 NAME
 
@@ -45,7 +45,7 @@ Information on authorization status is sent to URL specified in redirect_uri par
 sub login {
     my $self = shift;
 
-    return $self->_request( 'get', 'auth/login', [ 'expires_at', 'redirect_uri', 'display', 'nofollow' ], undef, @_ );
+    return $self->_request( 'get', 'wot/auth/login/', [ 'expires_at', 'redirect_uri', 'display', 'nofollow' ], undef, @_ );
 }
 
 =over 1
@@ -71,7 +71,7 @@ This method is used when the player is still using the application but the curre
 sub prolongate {
     my $self = shift;
 
-    return $self->_request( 'post', 'auth/prolongate', [ 'access_token', 'expires_at' ], ['access_token'], @_ );
+    return $self->_request( 'post', 'wot/auth/prolongate/', [ 'access_token', 'expires_at' ], ['access_token'], @_ );
 }
 
 =over 1
@@ -97,7 +97,7 @@ After this method is called, access_token becomes invalid.
 sub logout {
     my $self = shift;
 
-    return $self->_request( 'post', 'auth/logout', ['access_token'], ['access_token'], @_ );
+    return $self->_request( 'post', 'wot/auth/logout/', ['access_token'], ['access_token'], @_ );
 }
 
 =head1 BUGS

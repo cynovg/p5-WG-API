@@ -16,7 +16,7 @@ Version v0.8.7
 
 our $VERSION = 'v0.8.7';
 
-use constant api_uri => 'api.worldoftanks.ru/wgn';
+use constant api_uri => '//api.worldoftanks.ru/';
 
 =head1 SYNOPSIS
 
@@ -66,7 +66,7 @@ Method returns partial list of players. The list is filtered by initial characte
 sub accounts_list {
     my $self = shift;
 
-    return $self->_request( 'get', 'account/list', [ 'fields', 'game', 'type', 'search', 'limit', 'language' ], ['search'], @_ );
+    return $self->_request( 'get', 'wgn/account/list/', [ 'fields', 'game', 'type', 'search', 'limit', 'language' ], ['search'], @_ );
 }
 
 =item B<account_info>
@@ -89,7 +89,7 @@ sub account_info {
     my ( $self, %params ) = @_;
 
     return $self->_request(
-        'get', 'account/info', [ 'fields', 'access_token', 'account_id', 'language' ], ['account_id'],
+        'get', 'wgn/account/info/', [ 'fields', 'access_token', 'account_id', 'language' ], ['account_id'],
         %params
     );
 }
@@ -108,7 +108,7 @@ sub clans_list {
     my $self = shift;
 
     return $self->_request(
-        'get', 'clans/list',
+        'get', 'wgn/clans/list/',
         [ 'language', 'fields', 'search', 'limit', 'page_no', 'game' ],
         undef, @_
     );
@@ -131,7 +131,7 @@ Method returns detailed clan information.
 sub clans_info {
     my $self = shift;
 
-    return $self->_request( 'get', 'clans/info', [ 'language', 'fields', 'access_token', 'clan_id', 'extra', 'game', 'members_key' ], ['clan_id'], @_ );
+    return $self->_request( 'get', 'wgn/clans/info/', [ 'language', 'fields', 'access_token', 'clan_id', 'extra', 'game', 'members_key' ], ['clan_id'], @_ );
 }
 
 =item B<clans_membersinfo>
@@ -151,7 +151,7 @@ Method returns clan member info and short info on the clan. Information is avail
 sub clans_membersinfo {
     my $self = shift;
 
-    return $self->_request( 'get', 'clans/membersinfo', [ 'language', 'fields', 'account_id', 'game' ], ['account_id'], @_ );
+    return $self->_request( 'get', 'wgn/clans/membersinfo/', [ 'language', 'fields', 'account_id', 'game' ], ['account_id'], @_ );
 }
 
 =item B<clans_glossary>
@@ -163,7 +163,7 @@ Method returns information on clan entities in World of Tanks and World of Warpl
 sub clans_glossary {
     my $self = shift;
 
-    return $self->_request( 'get', 'clans/glossary', [ 'language', 'fields', 'game' ], undef, @_ );
+    return $self->_request( 'get', 'wgn/clans/glossary/', [ 'language', 'fields', 'game' ], undef, @_ );
 }
 
 =item B<clans_messageboard>
@@ -184,7 +184,7 @@ sub clans_messageboard {
     my $self = shift;
 
     return $self->_request(
-        'get', 'clans/mesageboard', [ 'game', 'fields', 'access_token' ], ['access_token'],
+        'get', 'wgn/clans/mesageboard/', [ 'game', 'fields', 'access_token' ], ['access_token'],
         @_
     );
 }
@@ -209,7 +209,7 @@ sub clans_memberhistory {
     my $self = shift;
 
     return $self->_request(
-        'get', 'clans/memberhistory', [ 'game', 'fields', 'account_id', 'language' ], ['account_id'],
+        'get', 'wgn/clans/memberhistory/', [ 'game', 'fields', 'account_id', 'language' ], ['account_id'],
         @_
     );
 }
@@ -229,7 +229,7 @@ Method returns the number of online players on the servers.
 sub servers_info {
     my ( $self, %params ) = @_;
 
-    return $self->_request( 'get', 'servers/info', [ 'language', 'fields', 'game' ], undef, %params );
+    return $self->_request( 'get', 'wgn/servers/info/', [ 'language', 'fields', 'game' ], undef, %params );
 }
 
 =head1 BUGS
