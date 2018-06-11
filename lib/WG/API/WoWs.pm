@@ -16,7 +16,7 @@ Version v0.8.7
 
 our $VERSION = 'v0.8.7';
 
-use constant api_uri => 'api.worldofwarships.ru/wows';
+use constant api_uri => '//api.worldofwarships.ru/';
 
 =head1 SYNOPSIS
 
@@ -55,7 +55,7 @@ Method returns partial list of players. The list is filtered by initial characte
 sub account_list {
     my $self = shift;
 
-    return $self->_request( 'get', 'account/list', [ 'language', 'fields', 'type', 'search', 'limit' ], ['search'],
+    return $self->_request( 'get', 'wows/account/list/', [ 'language', 'fields', 'type', 'search', 'limit' ], ['search'],
         @_ );
 }
 
@@ -68,7 +68,7 @@ Method returns player details. Players may hide their game profiles, use field h
 sub account_info {
     my $self = shift;
 
-    return $self->_request( 'get', 'account/info', [ 'language', 'fields', 'access_token', 'extra', 'account_id' ],
+    return $self->_request( 'get', 'wows/account/info/', [ 'language', 'fields', 'access_token', 'extra', 'account_id' ],
         ['account_id'], @_ );
 }
 
@@ -81,7 +81,7 @@ Method returns information about players' achievements. Accounts with hidden gam
 sub account_achievements {
     my $self = shift;
 
-    return $self->_request( 'get', 'account/achievements', [ 'language', 'fields', 'account_id', 'access_token' ], ['account_id'], @_ );
+    return $self->_request( 'get', 'wows/account/achievements/', [ 'language', 'fields', 'account_id', 'access_token' ], ['account_id'], @_ );
 }
 
 =head3 B<account_statsbydate( [ %params ] )>
@@ -93,7 +93,7 @@ Method returns statistics slices by dates in specified time span.
 sub account_statsbydate {
     my $self = shift;
 
-    return $self->_request( 'get', 'account/statsbydate', [ 'language', 'fields', 'dates', 'access_token', 'extra', 'account_id' ],
+    return $self->_request( 'get', 'wows/account/statsbydate/', [ 'language', 'fields', 'dates', 'access_token', 'extra', 'account_id' ],
         ['account_id'], @_ );
 }
 
@@ -108,7 +108,7 @@ Method returns general statistics for each ship of a player. Accounts with hidde
 sub ships_stats {
     my $self = shift;
 
-    return $self->_request( 'get', 'ships/stats',
+    return $self->_request( 'get', 'wows/ships/stats/',
         [ 'language', 'fields', 'access_token', 'extra', 'account_id', 'ship_id', 'in_garage' ],
         ['account_id'], @_ );
 }

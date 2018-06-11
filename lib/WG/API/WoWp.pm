@@ -16,7 +16,7 @@ Version v0.8.7
 
 our $VERSION = 'v0.8.7';
 
-use constant api_uri => 'api.worldofwarplanes.ru/wowp';
+use constant api_uri => '//api.worldofwarplanes.ru/';
 
 =head1 SYNOPSIS
 
@@ -56,7 +56,7 @@ Method returns partial list of players. The list is filtered by initial characte
 sub account_list {
     my $self = shift;
 
-    return $self->_request( 'get', 'account/list', [ 'language', 'fields', 'type', 'search', 'limit' ], ['search'],
+    return $self->_request( 'get', 'wowp/account/list/', [ 'language', 'fields', 'type', 'search', 'limit' ], ['search'],
         @_ );
 }
 
@@ -69,7 +69,7 @@ Method returns player details.
 sub account_info {
     my $self = shift;
 
-    return $self->_request( 'get', 'account/info', [ 'language', 'fields', 'access_token', 'account_id' ],
+    return $self->_request( 'get', 'wowp/account/info/', [ 'language', 'fields', 'access_token', 'account_id' ],
         ['account_id'], @_ );
 }
 
@@ -82,7 +82,7 @@ Method returns details on player's aircrafts.
 sub account_planes {
     my $self = shift;
 
-    return $self->_request( 'get', 'account/planes', [ 'language', 'fields', 'access_token', 'account_id', 'in_garage', 'plane_id' ],
+    return $self->_request( 'get', 'wowp/account/planes/', [ 'language', 'fields', 'access_token', 'account_id', 'in_garage', 'plane_id' ],
         ['account_id'], @_ );
 }
 
@@ -97,7 +97,7 @@ Method returns dictionary of rating periods and ratings details.
 sub ratings_types {
     my $self = shift;
 
-    return $self->_request( 'get', 'ratings/types', [ 'language', 'fields' ], undef, @_ );
+    return $self->_request( 'get', 'wowp/ratings/types/', [ 'language', 'fields' ], undef, @_ );
 }
 
 =head3 B<ratings_accounts( [ %params ] )>
@@ -110,7 +110,7 @@ sub ratings_accounts {
     my $self = shift;
 
     return $self->_request(
-        'get', 'ratings/accounts',
+        'get', 'wowp/ratings/accounts/',
         [ 'language', 'fields', 'type', 'date', 'account_id' ],
         [ 'type',     'account_id' ], @_
     );
@@ -126,7 +126,7 @@ sub ratings_neighbors {
     my $self = shift;
 
     return $self->_request(
-        'get', 'ratings/neighbors',
+        'get', 'wowp/ratings/neighbors/',
         [ 'language', 'fields',     'type', 'date', 'account_id', 'rank_field', 'limit' ],
         [ 'type',     'account_id', 'rank_field' ], @_
     );
@@ -142,7 +142,7 @@ sub ratings_top {
     my $self = shift;
 
     return $self->_request(
-        'get', 'ratings/top',
+        'get', 'wowp/ratings/top/',
         [ 'language', 'fields', 'type', 'date', 'rank_field', 'limit', 'page_no' ],
         [ 'type',     'rank_field' ], @_
     );
@@ -157,7 +157,7 @@ Method returns dates with available rating data.
 sub ratings_dates {
     my $self = shift;
 
-    return $self->_request( 'get', 'ratings/dates', [ 'language', 'fields', 'type', 'account_id' ], ['type'], @_ );
+    return $self->_request( 'get', 'wowp/ratings/dates/', [ 'language', 'fields', 'type', 'account_id' ], ['type'], @_ );
 }
 
 =head1 BUGS
