@@ -207,7 +207,8 @@ sub _validate_params {
 sub _get {
     my ( $self, $uri, $params, %passed_params ) = @_;
 
-    my $url = sprintf 'https://%s/%s/?application_id=%s', $self->api_uri, $uri, $self->application_id;
+    my $url = $self->_build_url($uri);
+    $url .= sprintf "?application_id=%s", $self->application_id;
     for (@$params) {
         $url .= sprintf "&%s=%s", $_, $passed_params{$_} if defined $passed_params{$_};
     }
@@ -223,7 +224,7 @@ sub _get {
 sub _post {
     my ( $self, $uri, $params, %passed_params ) = @_;
 
-    my $url = sprintf 'https://%s/%s/', $self->api_uri, $uri;
+    my $url = $self->_build_url($uri);
 
     #remove unused fields
     my %params;
@@ -283,6 +284,12 @@ sub _parse {
     $self->log( $self->error );
 
     return;
+}
+
+sub _build_url {
+    my ($self, $uri) = @_;
+
+    return sprintf 'https://%s/%s/', $self->api_uri, $uri;
 }
 
 =head1 BUGS
