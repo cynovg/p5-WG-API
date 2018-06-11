@@ -290,8 +290,10 @@ sub _parse {
 sub _build_url {
     my ( $self, $uri ) = @_;
 
-    my $url = URI->new( sprintf 'https://%s/', $self->api_uri );
+    my $url = URI->new( $self->api_uri);
+    $url->scheme("https");
     $url->path($uri);
+
     return $url->as_string;
 }
 
