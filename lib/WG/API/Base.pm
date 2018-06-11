@@ -208,7 +208,7 @@ sub _get {
     my ( $self, $uri, $params, %passed_params ) = @_;
 
     my $url = $self->_build_url($uri);
-    $url .= sprintf "/?application_id=%s", $self->application_id;
+    $url .= sprintf "?application_id=%s", $self->application_id;
     for (@$params) {
         $url .= sprintf "&%s=%s", $_, $passed_params{$_} if defined $passed_params{$_};
     }
