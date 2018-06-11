@@ -224,10 +224,8 @@ sub _get {
 sub _post {
     my ( $self, $uri, $params, %passed_params ) = @_;
 
-    my $url = $self->_build_url($uri);
-
     #@type HTTP::Response
-    my $response = $self->ua->post( $url, $self->_build_post_params( $params, %passed_params ) );
+    my $response = $self->ua->post( $self->_build_url($uri), $self->_build_post_params( $params, %passed_params ) );
 
     return $self->_parse( $response->is_success ? decode_json $response->decoded_content : undef );
 }
