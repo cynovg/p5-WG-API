@@ -226,18 +226,8 @@ sub _post {
 
     my $url = $self->_build_url($uri);
 
-    #remove unused fields
-    my %params;
-    @params{ keys %passed_params } = ();
-    delete @params{@$params};
-    delete $passed_params{$_} for keys %params;
-
-    $passed_params{'application_id'} = $self->application_id;
-
-    $self->log( sprintf "METHOD POST, URL %s, %s\n", $url, Dumper \%passed_params );
-
     #@type HTTP::Response
-    my $response = $self->ua->post( $url, \%passed_params );
+    my $response = $self->ua->post( $url, $self->_build_post_params( $params, %passed_params ) );
 
     return $self->_parse( $response->is_success ? decode_json $response->decoded_content : undef );
 }
@@ -290,11 +280,24 @@ sub _parse {
 sub _build_url {
     my ( $self, $uri ) = @_;
 
-    my $url = URI->new( $self->api_uri);
+    my $url = URI->new( $self->api_uri );
     $url->scheme("https");
     $url->path($uri);
 
     return $url->as_string;
+}
+
+sub _build_post_params {
+    my ( $self, $params, %passed_params ) = @_;
+
+    my %params;
+    @params{ keys %passed_params } = ();
+    delete @params{@$params};
+    delete $passed_params{$_} for keys %params;
+
+    $passed_params{'application_id'} = $self->application_id;
+
+    return \%passed_params;
 }
 
 =head1 BUGS
