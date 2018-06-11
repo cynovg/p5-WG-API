@@ -105,7 +105,7 @@ Get current debug mode
 
 has debug => (
     is      => 'rw',
-    writer => 'set_debug',
+    writer  => 'set_debug',
     default => '0',
 );
 
@@ -162,7 +162,7 @@ sub log {
     my ( $self, $event ) = @_;
 
     return unless $self->debug;
-
+warn Dumper $event;
     $log->debug($event);
 }
 
@@ -208,7 +208,7 @@ sub _get {
     my ( $self, $uri, $params, %passed_params ) = @_;
 
     my $url = $self->_build_url($uri);
-    $url .= sprintf "?application_id=%s", $self->application_id;
+    $url .= sprintf "/?application_id=%s", $self->application_id;
     for (@$params) {
         $url .= sprintf "&%s=%s", $_, $passed_params{$_} if defined $passed_params{$_};
     }
@@ -286,10 +286,13 @@ sub _parse {
     return;
 }
 
+#@returns URI;
 sub _build_url {
-    my ($self, $uri) = @_;
+    my ( $self, $uri ) = @_;
 
-    return sprintf 'https://%s/%s/', $self->api_uri, $uri;
+    my $url = URI->new( sprintf 'https://%s/', $self->api_uri );
+    $url->path($uri);
+    return $url->as_string;
 }
 
 =head1 BUGS
