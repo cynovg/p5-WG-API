@@ -48,9 +48,19 @@ Params:
 
 =head2 Account
 
-=head3 B<account_list( [ %params ] )>
+=over 1
+
+=item B<account_list( [ %params ] )>
 
 Method returns partial list of players. The list is filtered by initial characters of user name and sorted alphabetically
+
+=over 2
+
+=item I<required fields:>
+
+    search - Player name search string. Parameter "type" defines minimum length and type of search. Using the exact search type, you can enter several names, separated with commas. Maximum length: 24.
+
+=back
 
 =cut
 
@@ -61,9 +71,17 @@ sub account_list {
         @_ );
 }
 
-=head3 B<account_info( [ %params ] )>
+=item B<account_info( [ %params ] )>
 
 Method returns player details.
+
+=over 2
+
+=item I<required fields:>
+
+    account_id - Account ID. Max limit is 100. Min value is 1.
+
+=back
 
 =cut
 
@@ -74,9 +92,17 @@ sub account_info {
         ['account_id'], @_ );
 }
 
-=head3 B<account_tanks( [ %params ] )>
+=item B<account_tanks( [ %params ] )>
 
 Method returns details on player's vehicles.
+
+=over 2
+
+=item I<required fields:>
+
+    account_id - Account ID. Max limit is 100. Min value is 1.
+
+=back
 
 =cut
 
@@ -87,7 +113,7 @@ sub account_tanks {
         ['account_id'], @_ );
 }
 
-=head3 B<account_achievements( [ %params ] )>
+=item B<account_achievements( [ %params ] )>
 
 Method returns players' achievement details.
 
@@ -96,6 +122,16 @@ Achievement properties define the achievements field values:
     1-4 for Mastery Badges and Stage Achievements (type: "class");
     maximum value of Achievement series (type: "series");
     number of achievements earned from sections: Battle Hero, Epic Achievements, Group Achievements, Special Achievements, etc. (type: "repeatable, single, custom").
+
+=over 2
+
+=item I<required fields:>
+
+    account_id - Account ID. Max limit is 100. Min value is 1.
+
+=back
+
+=back
 
 =cut
 
@@ -107,9 +143,19 @@ sub account_achievements {
 
 =head2 Player's vehicles
 
-=head3 B<tanks_stats( [ %params ] )>
+=over 1
+
+=item B<tanks_stats( [ %params ] )>
 
 Method returns overall statistics, Tank Company statistics, and clan statistics per each vehicle for each user.
+
+=over 2
+
+=item I<required fields:>
+
+    account_id - Account ID. Max limit is 100. Min value is 1.
+
+=back
 
 =cut
 
@@ -121,7 +167,7 @@ sub tanks_stats {
         ['account_id'], @_ );
 }
 
-=head3 B<tanks_achievements( [ %params ] )>
+=item B<tanks_achievements( [ %params ] )>
 
 Method returns list of achievements on all vehicles.
 
@@ -130,6 +176,16 @@ Achievement properties define the achievements field values:
     1-4 for Mastery Badges and Stage Achievements (type: "class");
     maximum value of Achievement series (type: "series");
     number of achievements earned from sections: Battle Hero, Epic Achievements, Group Achievements, Special Achievements, etc. (type: "repeatable, single, custom").
+
+=over 2
+
+=item I<required fields:>
+
+    account_id - Account ID. Max limit is 100. Min value is 1.
+
+=back
+
+=back
 
 =cut
 
