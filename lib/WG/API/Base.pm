@@ -285,6 +285,7 @@ sub _build_get_params {
     my $url = URI->new( "", "https" );
     $url->query_param( application_id => $self->application_id );
     foreach my $param (@$params) {
+        $passed_params{$param} = $self->language if $param eq 'language' && !exists $passed_params{$param};
         $url->query_param( $param => $passed_params{$param} ) if defined $passed_params{$param};
     }
 
@@ -300,6 +301,7 @@ sub _build_post_params {
     delete $passed_params{$_} for keys %params;
 
     $passed_params{'application_id'} = $self->application_id;
+    $passed_params{'language'} = $self->language unless exists $passed_params{'language'};
 
     return \%passed_params;
 }
