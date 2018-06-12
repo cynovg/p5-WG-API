@@ -118,6 +118,8 @@ sub account_planes {
     );
 }
 
+=back
+
 =head2 Ratings
 
 =over 1
@@ -229,8 +231,6 @@ sub ratings_dates {
 
     return $self->_request( 'get', 'wowp/ratings/dates/', [ 'language', 'fields', 'type', 'account_id' ], ['type'], @_ );
 }
-
-=back
 
 =back
 
