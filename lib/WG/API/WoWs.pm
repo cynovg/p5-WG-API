@@ -46,9 +46,19 @@ Params:
 
 =head2 Account
 
-=head3 B<account_list( [ %params ] )>
+=over 1
+
+=item B<account_list( [ %params ] )>
 
 Method returns partial list of players. The list is filtered by initial characters of user name and sorted alphabetically.
+
+=over 2
+
+=item I<required fields:>
+
+    search - Player name search string. Parameter "type" defines minimum length and type of search. Using the exact search type, you can enter several names, separated with commas. Maximum length: 24.
+
+=back
 
 =cut
 
@@ -59,9 +69,17 @@ sub account_list {
         @_ );
 }
 
-=head3 B<account_info( [ %params ] )>
+=item B<account_info( [ %params ] )>
 
 Method returns player details. Players may hide their game profiles, use field hidden_profile for determination.
+
+=over 2
+
+=item I<required fields:>
+
+    account_id - Account ID. Max limit is 100. Min value is 1.
+
+=back
 
 =cut
 
@@ -72,7 +90,7 @@ sub account_info {
         ['account_id'], @_ );
 }
 
-=head3 B<account_achievements( [ %params ] )>
+=item B<account_achievements( [ %params ] )>
 
 Method returns information about players' achievements. Accounts with hidden game profiles are excluded from response. Hidden profiles are listed in the field meta.hidden.
 
@@ -84,9 +102,17 @@ sub account_achievements {
     return $self->_request( 'get', 'wows/account/achievements/', [ 'language', 'fields', 'account_id', 'access_token' ], ['account_id'], @_ );
 }
 
-=head3 B<account_statsbydate( [ %params ] )>
+=item B<account_statsbydate( [ %params ] )>
 
 Method returns statistics slices by dates in specified time span.
+
+=over 2
+
+=item I<required fields:>
+
+    account_id - Account ID. Max limit is 100. Min value is 1.
+
+=back
 
 =cut
 
@@ -97,11 +123,23 @@ sub account_statsbydate {
         ['account_id'], @_ );
 }
 
+=back
+
 =head2 Warships
 
-=head3 B<ships_stats( [ %params ] )>
+=over 1
+
+=item B<ships_stats( [ %params ] )>
 
 Method returns general statistics for each ship of a player. Accounts with hidden game profiles are excluded from response. Hidden profiles are listed in the field meta.hidden.
+
+=over 2
+
+=item I<required fields:>
+
+    account_id - Account ID. Max limit is 100. Min value is 1.
+
+=back
 
 =cut
 
@@ -112,6 +150,10 @@ sub ships_stats {
         [ 'language', 'fields', 'access_token', 'extra', 'account_id', 'ship_id', 'in_garage' ],
         ['account_id'], @_ );
 }
+
+=back
+
+=back
 
 =head1 BUGS
 
