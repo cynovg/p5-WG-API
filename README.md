@@ -5,7 +5,7 @@ WG::API - Module for work with Wargaming.net Public API
 
 # VERSION
 
-Version v0.8.6
+Version v0.8.7
 
 # SYNOPSIS
 
@@ -73,7 +73,7 @@ You can also look for information at:
 
 - Search CPAN
 
-    [http://search.cpan.org/dist/WG-API/](http://search.cpan.org/dist/WG-API/)
+    [https://metacpan.org/pod/WG::API](https://metacpan.org/pod/WG::API)
 
 # ACKNOWLEDGEMENTS
 

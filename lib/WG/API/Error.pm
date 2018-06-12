@@ -8,11 +8,11 @@ WG::API::Error - module for work with API error
 
 =head1 VERSION
 
-Version v0.8.6
+Version v0.8.7
 
 =cut
 
-our $VERSION = 'v0.8.6';
+our $VERSION = 'v0.8.7';
 
 =head1 SYNOPSIS
 
@@ -137,7 +137,7 @@ L<http://cpanratings.perl.org/d/WG-API>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/WG-API/>
+L<https://metacpan.org/pod/WG::API>
 
 =back
 
