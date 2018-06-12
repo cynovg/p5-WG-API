@@ -62,6 +62,7 @@
             "Log::Any" : "1.049",
             "Modern::Perl" : "1.20170117",
             "Moo" : "2.00",
+            "URI" : "0",
             "perl" : "5.020"
          }
       },
@@ -80,7 +81,7 @@
    },
    "version" : "v0.8.7",
    "x_contributors" : [
-      "Cyrill Novgorodcev <cynovg@gmail.com>",
+      "Novgorodcev Cyrill <cynovg@gmail.com>",
       "Novgorodcev Cyrill <novgorodtsev.kirill@220-volt.ru>",
       "root <root@cynovg-debian.local>"
    ],

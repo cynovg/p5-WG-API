@@ -73,7 +73,7 @@ You can also look for information at:
 
 - Search CPAN
 
-    [http://search.cpan.org/dist/WG-API/](http://search.cpan.org/dist/WG-API/)
+    [https://metacpan.org/pod/WG::API](https://metacpan.org/pod/WG::API)
 
 # ACKNOWLEDGEMENTS
 
