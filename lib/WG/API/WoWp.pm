@@ -10,13 +10,13 @@ WG::API::WoWp - Modules to work with Wargaming.net Public API for World of Warpl
 
 =head1 VERSION
 
-Version v0.8.6
+Version v0.8.7
 
 =cut
 
-our $VERSION = 'v0.8.6';
+our $VERSION = 'v0.8.7';
 
-use constant api_uri => 'api.worldofwarplanes.ru/wowp';
+use constant api_uri => '//api.worldofwarplanes.ru/';
 
 =head1 SYNOPSIS
 
@@ -47,48 +47,82 @@ Params:
 
 =head2 Accounts
 
-=head3 B<account_list( [ %params ] )>
+=over 1
+
+=item B<account_list( [ %params ] )>
 
 Method returns partial list of players. The list is filtered by initial characters of user name and sorted alphabetically.
+
+=over 2
+
+=item I<required fields:>
+
+    search - Player name search string. Parameter "type" defines minimum length and type of search. Using the exact search type, you can enter several names, separated with commas. Maximum length: 24.
+
+=back
 
 =cut 
 
 sub account_list {
     my $self = shift;
 
-    return $self->_request( 'get', 'account/list', [ 'language', 'fields', 'type', 'search', 'limit' ], ['search'],
-        @_ );
+    return $self->_request(
+        'get', 'wowp/account/list/', [ 'language', 'fields', 'type', 'search', 'limit' ], ['search'],
+        @_
+    );
 }
 
-=head3 B<account_info( [ %params ] )>
+=item B<account_info( [ %params ] )>
 
 Method returns player details.
+
+=over 2
+
+=item I<required fields:>
+
+    account_id - Account ID. Max limit is 100. Min value is 1.
+
+=back
 
 =cut 
 
 sub account_info {
     my $self = shift;
 
-    return $self->_request( 'get', 'account/info', [ 'language', 'fields', 'access_token', 'account_id' ],
-        ['account_id'], @_ );
+    return $self->_request(
+        'get', 'wowp/account/info/', [ 'language', 'fields', 'access_token', 'account_id' ],
+        ['account_id'], @_
+    );
 }
 
-=head3 B<account_planes( [ %params ] )>
+=item B<account_planes( [ %params ] )>
 
 Method returns details on player's aircrafts.
+
+=over 2
+
+=item I<required fields:>
+
+    account_id - Account ID. Max limit is 100. Min value is 1.
+
+=back
 
 =cut 
 
 sub account_planes {
     my $self = shift;
 
-    return $self->_request( 'get', 'account/planes', [ 'language', 'fields', 'access_token', 'account_id', 'in_garage', 'plane_id' ],
-        ['account_id'], @_ );
+    return $self->_request(
+        'get', 'wowp/account/planes/', [ 'language', 'fields', 'access_token', 'account_id', 'in_garage', 'plane_id' ],
+        ['account_id'], @_
+    );
 }
 
 =head2 Ratings
 
-=head3 B<ratings_types( [ %params ] )>
+=over 1
+
+=item B<ratings_types( [ %params ] )>
 
 Method returns dictionary of rating periods and ratings details.
 
@@ -97,12 +131,21 @@ Method returns dictionary of rating periods and ratings details.
 sub ratings_types {
     my $self = shift;
 
-    return $self->_request( 'get', 'ratings/types', [ 'language', 'fields' ], undef, @_ );
+    return $self->_request( 'get', 'wowp/ratings/types/', [ 'language', 'fields' ], undef, @_ );
 }
 
-=head3 B<ratings_accounts( [ %params ] )>
+=item B<ratings_accounts( [ %params ] )>
 
 Method returns player ratings by specified IDs.
+
+=over 2
+
+=item I<required fields:>
+
+    account_id - Account ID. Max limit is 100. Min value is 1.
+    type - Rating period. For valid values, check the Types of ratings method.
+
+=back
 
 =cut
 
@@ -110,15 +153,25 @@ sub ratings_accounts {
     my $self = shift;
 
     return $self->_request(
-        'get', 'ratings/accounts',
-        [ 'language', 'fields', 'type', 'date', 'account_id' ],
+        'get', 'wowp/ratings/accounts/',
+        [ 'language', 'fields',       'type', 'date', 'account_id' ],
         [ 'type',     'account_id' ], @_
     );
 }
 
-=head3 B<ratings_neighbors( [ %params ] )>
+=item B<ratings_neighbors( [ %params ] )>
 
 Method returns list of adjacent positions in specified rating.
+
+=over 2
+
+=item I<required fields:>
+
+    account_id - Account ID. Max limit is 100. Min value is 1.
+    type - Rating period. For valid values, check the Types of ratings method.
+    rank_field - Rating category.
+
+=back
 
 =cut
 
@@ -126,15 +179,24 @@ sub ratings_neighbors {
     my $self = shift;
 
     return $self->_request(
-        'get', 'ratings/neighbors',
-        [ 'language', 'fields',     'type', 'date', 'account_id', 'rank_field', 'limit' ],
+        'get', 'wowp/ratings/neighbors/',
+        [ 'language', 'fields',     'type',         'date', 'account_id', 'rank_field', 'limit' ],
         [ 'type',     'account_id', 'rank_field' ], @_
     );
 }
 
-=head3 B<ratings_top( [ %params ] )>
+=item B<ratings_top( [ %params ] )>
 
 Method returns the list of top players by specified parameter.
+
+=over 2
+
+=item I<required fields:>
+
+    type - Rating period. For valid values, check the Types of ratings method.
+    rank_field - Rating category.
+
+=back
 
 =cut
 
@@ -142,23 +204,35 @@ sub ratings_top {
     my $self = shift;
 
     return $self->_request(
-        'get', 'ratings/top',
-        [ 'language', 'fields', 'type', 'date', 'rank_field', 'limit', 'page_no' ],
+        'get', 'wowp/ratings/top/',
+        [ 'language', 'fields',       'type', 'date', 'rank_field', 'limit', 'page_no' ],
         [ 'type',     'rank_field' ], @_
     );
 }
 
-=head3 B<ratings_dates( [ %params ] )>
+=item B<ratings_dates( [ %params ] )>
 
 Method returns dates with available rating data.
+
+=over 2
+
+=item I<required fields:>
+
+    type - Rating period. For valid values, check the Types of ratings method.
+
+=back
 
 =cut
 
 sub ratings_dates {
     my $self = shift;
 
-    return $self->_request( 'get', 'ratings/dates', [ 'language', 'fields', 'type', 'account_id' ], ['type'], @_ );
+    return $self->_request( 'get', 'wowp/ratings/dates/', [ 'language', 'fields', 'type', 'account_id' ], ['type'], @_ );
 }
+
+=back
+
+=back
 
 =head1 BUGS
 
@@ -188,7 +262,7 @@ L<http://cpanratings.perl.org/d/WG-API>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/WG-API/>
+L<https://metacpan.org/pod/WG::API>
 
 =back
 
