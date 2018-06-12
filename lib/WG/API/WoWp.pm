@@ -262,7 +262,7 @@ L<http://cpanratings.perl.org/d/WG-API>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/WG-API/>
+L<https://metacpan.org/pod/WG::API>
 
 =back
 
