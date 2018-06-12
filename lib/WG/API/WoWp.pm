@@ -61,7 +61,7 @@ Method returns partial list of players. The list is filtered by initial characte
 
 =back
 
-=cut 
+=cut
 
 sub account_list {
     my $self = shift;
@@ -84,7 +84,7 @@ Method returns player details.
 
 =back
 
-=cut 
+=cut
 
 sub account_info {
     my $self = shift;
@@ -107,7 +107,7 @@ Method returns details on player's aircrafts.
 
 =back
 
-=cut 
+=cut
 
 sub account_planes {
     my $self = shift;
@@ -117,6 +117,8 @@ sub account_planes {
         ['account_id'], @_
     );
 }
+
+=back
 
 =head2 Ratings
 
@@ -229,8 +231,6 @@ sub ratings_dates {
 
     return $self->_request( 'get', 'wowp/ratings/dates/', [ 'language', 'fields', 'type', 'account_id' ], ['type'], @_ );
 }
-
-=back
 
 =back
 
