@@ -13,8 +13,8 @@ test:
       - cpm install Minilla -g
     script:
       - minil test
-    only:
-      - build
+    except:
+      - master
 
 release_staging:
     stage: release
