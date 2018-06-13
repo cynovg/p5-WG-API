@@ -258,6 +258,26 @@ sub planes_stats {
     return $self->_request( 'get', 'wowp/planes/stats/', [ 'account_id', 'access_token', 'fields', 'in_garage', 'language', 'plane_id' ], ['account_id'], @_ );
 }
 
+=item B<planes_achievements( [ %params ] )>
+
+Method returns achievements on player's aircraft.
+
+=over 2
+
+=item I<requires_fields:>
+
+        account_id - Account ID. Max limit is 100. Min value is 1.
+
+=back
+
+=cut
+
+sub planes_achievements {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wowp/planes/achievements/', [ 'account_id', 'fields', 'language', 'plane_id' ], ['account_id'], @_ );
+}
+
 =back
 
 =head1 BUGS
