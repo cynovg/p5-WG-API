@@ -4,7 +4,7 @@ stages:
   - build
   - release
 
-build_staging:
+test:
     stage: build
     before_script:
       - perl -V
