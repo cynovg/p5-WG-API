@@ -1,11 +1,11 @@
 image: perl
 
 stages:
-  - build
+  - test
   - release
 
 test:
-    stage: build
+    stage: test
     before_script:
       - perl -V
       - cpan install App::cpm
