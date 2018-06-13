@@ -114,7 +114,7 @@ You can also look for information at:
 
 =over 4
 
-=item * RT: Gitlab's request tracker (report bugs here)
+=item * RT: GitHub's request tracker (report bugs here)
 
 L<https://gitlab.com/cynovg/WG-API/issues>
 
