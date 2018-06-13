@@ -1,18 +1,20 @@
 image: perl
 
 stages:
-  - test
+  - build
   - release
 
-test:
-    stage: test
+build_staging:
+    stage: build
     before_script:
       - perl -V
       - cpan install App::cpm
       - cpm install -g
       - cpm install Minilla -g
     script:
-      - minil test 
+      - minil test
+    only:
+      - build
 
 release_staging:
     stage: release
