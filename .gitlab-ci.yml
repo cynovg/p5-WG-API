@@ -23,6 +23,8 @@ release_staging:
       - cpm install Minilla -g
       - echo "user $CPAN_USER" > /tmp/pause
       - echo "password $CPAN_PASSWORD" >> /tmp/pause
+      - git config --global user.email "cynovg@gmail.com"
+      - git config --global user.name "Cyrill Novgorodcev"
     script:
       - echo -ne "\ny\n" | minil release
     only:
