@@ -33,6 +33,7 @@ SKIP: {
     subtest 'strongholds' => sub {
         ok( !$wot->stronghold_claninfo, "can't get stronghold claninfo wo required fields" );
         ok( $wot->stronghold_claninfo( clan_id => _get_clan()->{clan_id} ), "get stronghold claninfo" );
+        ok( !$wot->stronghold_clanreserves, "can't get stronghold clanreserves wo required fields" );
     };
 
     subtest 'clan ratings' => sub {
@@ -70,4 +71,8 @@ done_testing();
 sub _get_clan {
     my $net = WG::API->new( application_id => $ENV{'WG_KEY'} )->net;
     return $net->clans_list( limit => 1, fields => 'clan_id' )->[0];
+}
+
+sub _get_account {
+    return $wot->account_list( search => 'test' )->[0];
 }
