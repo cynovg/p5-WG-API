@@ -36,7 +36,7 @@ SKIP: {
         ok( !$wot->clanratings_clans, "can't get clan ratings wo required fields" );
 
         my $net = WG::API->new( application_id => $ENV{'WG_KEY'} )->net;
-        my $clan = $net->clans_list( limit => 1 )->[0];
+        my $clan = $net->clans_list(limit => 1, fields => 'clan_id' )->[0];
         ok( $wot->clanratings_clans( clan_id => $clan->{clan_id} ), "get clan ratings clan" );
     };
 
