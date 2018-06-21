@@ -147,6 +147,30 @@ sub account_achievements {
     return $self->_request( 'get', 'wot/account/achievements/', [ 'language', 'fields', 'account_id' ], ['account_id'], @_ );
 }
 
+=head2 Clan ratings
+
+=over 1
+
+=item B<>
+
+=over 2
+
+=item I<required_fields:>
+
+...
+
+=back
+
+=back
+
+=cut
+
+sub clanratings_types {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wot/clanratings/types/', [], [], @_ );
+}
+
 =head2 Player's vehicles
 
 =over 1

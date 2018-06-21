@@ -28,6 +28,10 @@ SKIP: {
         ok( $wot->account_achievements( account_id => '244468' ), 'get account achievements with params' );
     };
 
+    subtest 'clan ratings' => sub {
+        ok( $wot->clanratings_types, "get clan rataings types" );
+    };
+
     subtest 'tanks' => sub {
         ok( !$wot->tanks_stats, 'get tanks stats without params' );
         ok( !$wot->tanks_stats( account_id => 'xxx' ), 'get tanks stats with invalid params' );
