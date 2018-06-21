@@ -187,14 +187,35 @@ Method returns clan ratings by specified IDs.
 
 =back
 
-=back
-
 =cut
 
 sub clanratings_clans {
     my $self = shift;
 
-    return $self->_request('get', 'wot/clanratings/clans/', ['clan_id', 'date', 'fields', 'language'], ['clan_id'], @_);
+    return $self->_request( 'get', 'wot/clanratings/clans/', [ 'clan_id', 'date', 'fields', 'language' ], ['clan_id'], @_ );
+}
+
+=item B<clanratings_neighbors( [ %params ] )>
+
+Method returns list of adjacent positions in specified clan rating
+
+=over 2
+
+=item I<required_fields:>
+
+    clan_id - Clan IDs. Maximum limit: 100
+    rank_field - Rating category
+
+=back
+
+=back
+
+=cut
+
+sub clanratings_neighbors {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wot/clanratings/neighbors/', [ 'clan_id', 'rank_field', 'date', 'fields', 'language', 'limit' ], [ 'clan_id', 'rank_field' ], @_ );
 }
 
 =head2 Player's vehicles
@@ -210,8 +231,6 @@ Method returns overall statistics, Tank Company statistics, and clan statistics 
 =item I<required fields:>
 
     account_id - Account ID. Max limit is 100. Min value is 1.
-
-=back
 
 =cut
 
