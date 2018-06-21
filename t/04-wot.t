@@ -38,9 +38,9 @@ SKIP: {
         my $clan = $net->clans_list( limit => 1, fields => 'clan_id' )->[0];
         ok( $wot->clanratings_clans( clan_id => $clan->{clan_id} ), "get clan ratings clan" );
 
-        my $type = $wot->clanratings_types()->[0];
+        my $type = $wot->clanratings_types();
         ok( !$wot->clanratings_neighbors, "can't get clan ratings neighbors wo required fields" );
-        ok( $wot->clanratings_neighbors( clan_id => $clan->{clan_id}, rank_field => $type->{rank_fields} ), "get clan ratings neighbors" );
+        ok( $wot->clanratings_neighbors( clan_id => $clan->{clan_id}, rank_field => $type->{all}->{rank_fields}->[0] ), "get clan ratings neighbors" );
     };
 
     subtest 'tanks' => sub {
