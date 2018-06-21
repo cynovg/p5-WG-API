@@ -12,7 +12,7 @@ my $wot = WG::API->new( application_id => $ENV{'WG_KEY'} || 'demo' )->wot;
 isa_ok( $wot, 'WG::API::WoT' );
 
 can_ok( $wot, qw/account_list account_info account_tanks account_achievements/ );
-can_ok( $wot, qw/stronghold_claninfo/ );
+can_ok( $wot, qw/stronghold_claninfo stronghold_clanreserves/ );
 can_ok( $wot, qw/clanratings_dates clanratings_dates clanratings_clans clanratings_neighbors clanratings_top/ );
 can_ok( $wot, qw/tanks_stats tanks_achievements/ );
 
