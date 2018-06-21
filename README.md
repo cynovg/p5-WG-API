@@ -59,7 +59,7 @@ You can find documentation for this module with the perldoc command.
 
 You can also look for information at:
 
-- RT: GitHub's request tracker (report bugs here)
+- RT: Gitlab's request tracker (report bugs here)
 
     [https://gitlab.com/cynovg/WG-API/issues](https://gitlab.com/cynovg/WG-API/issues)
 

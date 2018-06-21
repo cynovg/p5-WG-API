@@ -197,7 +197,8 @@ sub _request {
 sub _validate_params {
     my ( undef, $required_params, %passed_params ) = @_;
 
-    return if $required_params && !keys %passed_params;    #without params when they are needed
+    $required_params //= [];
+    return if @$required_params > keys %passed_params;
 
     for (@$required_params) {
         return unless defined $passed_params{$_};
