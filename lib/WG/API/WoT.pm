@@ -67,8 +67,10 @@ Method returns partial list of players. The list is filtered by initial characte
 sub account_list {
     my $self = shift;
 
-    return $self->_request( 'get', 'wot/account/list/', [ 'language', 'fields', 'type', 'search', 'limit' ], ['search'],
-        @_ );
+    return $self->_request(
+        'get', 'wot/account/list/', [ 'language', 'fields', 'type', 'search', 'limit' ], ['search'],
+        @_
+    );
 }
 
 =item B<account_info( [ %params ] )>
@@ -88,8 +90,10 @@ Method returns player details.
 sub account_info {
     my $self = shift;
 
-    return $self->_request( 'get', 'wot/account/info/', [ 'language', 'fields', 'access_token', 'extra', 'account_id' ],
-        ['account_id'], @_ );
+    return $self->_request(
+        'get', 'wot/account/info/', [ 'language', 'fields', 'access_token', 'extra', 'account_id' ],
+        ['account_id'], @_
+    );
 }
 
 =item B<account_tanks( [ %params ] )>
@@ -109,8 +113,10 @@ Method returns details on player's vehicles.
 sub account_tanks {
     my $self = shift;
 
-    return $self->_request( 'get', 'wot/account/tanks/', [ 'language', 'fields', 'access_token', 'account_id', 'tank_id' ],
-        ['account_id'], @_ );
+    return $self->_request(
+        'get', 'wot/account/tanks/', [ 'language', 'fields', 'access_token', 'account_id', 'tank_id' ],
+        ['account_id'], @_
+    );
 }
 
 =item B<account_achievements( [ %params ] )>
@@ -141,6 +147,97 @@ sub account_achievements {
     return $self->_request( 'get', 'wot/account/achievements/', [ 'language', 'fields', 'account_id' ], ['account_id'], @_ );
 }
 
+=head2 Clan ratings
+
+=over 1
+
+=item B<clanratings_types()>
+
+Method returns details on ratings types and categories.
+
+=cut
+
+sub clanratings_types {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wot/clanratings/types/', [], [], @_ );
+}
+
+=item B<calnratings_dates( [ %params ] )>
+
+Method returns dates with available rating data.
+
+=cut
+
+sub clanratings_dates {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wot/clanratings/dates/', ['limit'], undef, @_ );
+}
+
+=item B<clanratings_clans>
+
+Method returns clan ratings by specified IDs.
+
+=over 2
+
+=item I<required_fields:>
+
+    clan_id - Clan IDs. Maximum limit: 100
+
+=back
+
+=cut
+
+sub clanratings_clans {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wot/clanratings/clans/', [ 'clan_id', 'date', 'fields', 'language' ], ['clan_id'], @_ );
+}
+
+=item B<clanratings_neighbors( [ %params ] )>
+
+Method returns list of adjacent positions in specified clan rating
+
+=over 2
+
+=item I<required_fields:>
+
+    clan_id - Clan IDs. Maximum limit: 100
+    rank_field - Rating category
+
+=back
+
+=cut
+
+sub clanratings_neighbors {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wot/clanratings/neighbors/', [ 'clan_id', 'rank_field', 'date', 'fields', 'language', 'limit' ], [ 'clan_id', 'rank_field' ], @_ );
+}
+
+=item B<clanratings_top( [ %params ] )>
+
+Method returns the list of top clans by specified parameters
+
+=over 2
+
+=item I<required_fields:>
+
+    rank_field - Rating category
+
+=back
+
+=back
+
+=cut
+
+sub clanratings_top {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wot/clanratings/top/', [ 'rank_field', 'date', 'fields', 'language', 'limit', 'page_no' ], ['rank_field'], @_ );
+}
+
 =head2 Player's vehicles
 
 =over 1
@@ -155,16 +252,16 @@ Method returns overall statistics, Tank Company statistics, and clan statistics 
 
     account_id - Account ID. Max limit is 100. Min value is 1.
 
-=back
-
 =cut
 
 sub tanks_stats {
     my $self = shift;
 
-    return $self->_request( 'get', 'wot/tanks/stats/',
+    return $self->_request(
+        'get', 'wot/tanks/stats/',
         [ 'language', 'fields', 'access_token', 'account_id', 'tank_id', 'in_garage', 'extra' ],
-        ['account_id'], @_ );
+        ['account_id'], @_
+    );
 }
 
 =item B<tanks_achievements( [ %params ] )>
@@ -192,9 +289,11 @@ Achievement properties define the achievements field values:
 sub tanks_achievements {
     my $self = shift;
 
-    return $self->_request( 'get', 'wot/tanks/achievements/',
+    return $self->_request(
+        'get', 'wot/tanks/achievements/',
         [ 'language', 'fields', 'access_token', 'account_id', 'tank_id', 'in_garage' ],
-        ['account_id'], @_ );
+        ['account_id'], @_
+    );
 }
 
 =head1 BUGS
