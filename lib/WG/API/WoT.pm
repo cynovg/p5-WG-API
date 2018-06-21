@@ -175,6 +175,28 @@ sub clanratings_dates {
     return $self->_request( 'get', 'wot/clanratings/dates/', ['limit'], undef, @_ );
 }
 
+=item B<clanratings_clans>
+
+Method returns clan ratings by specified IDs.
+
+=over 2
+
+=item I<required_fields:>
+
+    clan_id - Clan IDs. Maximum limit: 100
+
+=back
+
+=back
+
+=cut
+
+sub clanratings_clans {
+    my $self = shift;
+
+    return $self->_request('get', 'wot/clanratings/clans/', ['clan_id', 'date', 'fields', 'language'], ['clan_id'], @_);
+}
+
 =head2 Player's vehicles
 
 =over 1
