@@ -30,6 +30,7 @@ SKIP: {
 
     subtest 'clan ratings' => sub {
         ok( $wot->clanratings_types, "get clan rataings types" );
+        ok( $wot->clanratings_dates, "get clan ratings dates");
     };
 
     subtest 'tanks' => sub {

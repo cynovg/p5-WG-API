@@ -151,17 +151,9 @@ sub account_achievements {
 
 =over 1
 
-=item B<>
+=item B<clanratings_types()>
 
-=over 2
-
-=item I<required_fields:>
-
-...
-
-=back
-
-=back
+Method returns details on ratings types and categories.
 
 =cut
 
@@ -169,6 +161,18 @@ sub clanratings_types {
     my $self = shift;
 
     return $self->_request( 'get', 'wot/clanratings/types/', [], [], @_ );
+}
+
+=item B<calnratings_dates( [ %params ] )>
+
+Method returns dates with available rating data.
+
+=cut
+
+sub clanratings_dates {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wot/clanratings/dates/', ['limit'], undef, @_ );
 }
 
 =head2 Player's vehicles
