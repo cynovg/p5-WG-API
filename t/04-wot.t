@@ -12,6 +12,7 @@ my $wot = WG::API->new( application_id => $ENV{'WG_KEY'} || 'demo' )->wot;
 isa_ok( $wot, 'WG::API::WoT' );
 
 can_ok( $wot, qw/account_list account_info account_tanks account_achievements/ );
+can_ok( $wot, qw/stronghold_claninfo/ );
 can_ok( $wot, qw/clanratings_dates clanratings_dates clanratings_clans clanratings_neighbors clanratings_top/ );
 can_ok( $wot, qw/tanks_stats tanks_achievements/ );
 
@@ -29,13 +30,17 @@ SKIP: {
         ok( $wot->account_achievements( account_id => '244468' ), 'get account achievements with params' );
     };
 
+    subtest 'strongholds' => sub {
+        ok( !$wot->stronghold_claninfo, "can't get stronghold claninfo wo required fields" );
+        ok( $wot->stronghold_claninfo( clan_id => _get_clan()->{clan_id} ), "get stronghold claninfo" );
+    };
+
     subtest 'clan ratings' => sub {
         ok( $wot->clanratings_types,  "get clan ratings types" );
         ok( $wot->clanratings_dates,  "get clan ratings dates" );
         ok( !$wot->clanratings_clans, "can't get clan ratings wo required fields" );
 
-        my $net = WG::API->new( application_id => $ENV{'WG_KEY'} )->net;
-        my $clan = $net->clans_list( limit => 1, fields => 'clan_id' )->[0];
+        my $clan = _get_clan();
         ok( $wot->clanratings_clans( clan_id => $clan->{clan_id} ), "get clan ratings clan" );
 
         my $type = $wot->clanratings_types();
@@ -61,3 +66,8 @@ $wot->account_info( account_id => '123' );
 $log->contains_ok( qr/METHOD GET/, 'params for GET request logged' );
 
 done_testing();
+
+sub _get_clan {
+    my $net = WG::API->new( application_id => $ENV{'WG_KEY'} )->net;
+    return $net->clans_list( limit => 1, fields => 'clan_id' )->[0];
+}
