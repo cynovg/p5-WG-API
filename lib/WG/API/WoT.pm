@@ -157,14 +157,34 @@ Method returns general information and the battle statistics of clans in the Str
 
 =back
 
-=back
-
 =cut
 
 sub stronghold_claninfo {
     my $self = shift;
 
     return $self->_request( 'get', 'wot/stronghold/claninfo/', [ 'clan_id', 'fields', 'language' ], ['clan_id'], @_ );
+}
+
+=item B<stronghold_clanreserves( [ %params ] )>
+
+Method returns information about available Reserves and their current status.
+
+=over 2
+
+=item I<required_fields:>
+
+    access_token - Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
+
+=back
+
+=back
+
+=cut
+
+sub stronghold_clanreserves {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wot/stronghold/clanreserves/', [ 'access_token', 'fields', 'language' ], ['access_token'], @_ );
 }
 
 =head2 Clan ratings
