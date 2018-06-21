@@ -137,14 +137,54 @@ Achievement properties define the achievements field values:
 
 =back
 
-=back
-
 =cut
 
 sub account_achievements {
     my $self = shift;
 
     return $self->_request( 'get', 'wot/account/achievements/', [ 'language', 'fields', 'account_id' ], ['account_id'], @_ );
+}
+
+=item B<stronghold_claninfo( [ %params ] )>
+
+Method returns general information and the battle statistics of clans in the Stronghold mode. Please note that information about the number of battles fought as well as the number of defeats and victories is updated once every 24 hours.
+
+=over 2
+
+=item I<required_fields:>
+
+    clan_id - Clan IDs. Maximum limit: 100
+
+=back
+
+=cut
+
+sub stronghold_claninfo {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wot/stronghold/claninfo/', [ 'clan_id', 'fields', 'language' ], ['clan_id'], @_ );
+}
+
+=item B<stronghold_clanreserves( [ %params ] )>
+
+Method returns information about available Reserves and their current status.
+
+=over 2
+
+=item I<required_fields:>
+
+    access_token - Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
+
+=back
+
+=back
+
+=cut
+
+sub stronghold_clanreserves {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wot/stronghold/clanreserves/', [ 'access_token', 'fields', 'language' ], ['access_token'], @_ );
 }
 
 =head2 Clan ratings
