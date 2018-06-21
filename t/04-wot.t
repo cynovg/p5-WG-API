@@ -12,6 +12,7 @@ my $wot = WG::API->new( application_id => $ENV{'WG_KEY'} || 'demo' )->wot;
 isa_ok( $wot, 'WG::API::WoT' );
 
 can_ok( $wot, qw/account_list account_info account_tanks account_achievements/ );
+can_ok( $wot, qw/clanratings_dates clanratings_dates clanratings_clans/);
 can_ok( $wot, qw/tanks_stats tanks_achievements/ );
 
 SKIP: {
@@ -29,8 +30,14 @@ SKIP: {
     };
 
     subtest 'clan ratings' => sub {
-        ok( $wot->clanratings_types, "get clan ratings types" );
-        ok( $wot->clanratings_dates, "get clan ratings dates");
+        ok( $wot->clanratings_types,  "get clan ratings types" );
+        ok( $wot->clanratings_dates,  "get clan ratings dates" );
+
+        ok( !$wot->clanratings_clans, "can't get clan ratings wo required fields" );
+
+        my $net = WG::API->new( application_id => $ENV{'WG_KEY'} )->net;
+        my $clan = $net->clans_list( limit => 1 )->[0];
+        ok( $wot->clanratings_clans( clan_id => $clan->{clan_id} ), "get clan ratings clan" );
     };
 
     subtest 'tanks' => sub {
