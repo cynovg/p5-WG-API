@@ -208,14 +208,34 @@ Method returns list of adjacent positions in specified clan rating
 
 =back
 
-=back
-
 =cut
 
 sub clanratings_neighbors {
     my $self = shift;
 
     return $self->_request( 'get', 'wot/clanratings/neighbors/', [ 'clan_id', 'rank_field', 'date', 'fields', 'language', 'limit' ], [ 'clan_id', 'rank_field' ], @_ );
+}
+
+=item B<clanratings_top( [ %params ] )>
+
+Method returns the list of top clans by specified parameters
+
+=over 2
+
+=item I<required_fields:>
+
+    rank_field - Rating category
+
+=back
+
+=back
+
+=cut
+
+sub clanratings_top {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wot/clanratings/top/', [ 'rank_field', 'date', 'fields', 'language', 'limit', 'page_no' ], ['rank_field'], @_ );
 }
 
 =head2 Player's vehicles
