@@ -201,14 +201,26 @@ Method returns player clan data. Player clan data exist only for accounts, that 
 
 =back
 
-=back
-
 =cut
 
 sub clans_accountinfo {
     my $self = shift;
 
     return $self->_request('get', 'wows/clans/accountinfo/', ['account_id','extra', 'fields', 'language'], ['account_id'], @_);
+}
+
+=item B<clans_glossary( [ %params ] )>
+
+Method returns information on clan entities.
+
+=back
+
+=cut
+
+sub clans_glossary {
+    my $self = shift;
+
+    return $self->_request('get', 'wows/clans/glossary/', ['fields', 'language'], [], @_);
 }
 
 =head1 BUGS
