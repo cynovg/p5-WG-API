@@ -12,7 +12,7 @@ isa_ok( $wows, 'WG::API::WoWs' );
 
 can_ok( $wows, qw/account_list account_info account_achievements/ );
 can_ok( $wows, qw/ships_stats/ );
-can_ok( $wows, qw/seasons_info seasons_shipstats/ );
+can_ok( $wows, qw/seasons_info seasons_shipstats seasons_accountinfo/ );
 can_ok( $wows, qw/clans clans_details clans_accountinfo clans_glossary clans_season/ );
 
 SKIP: {
@@ -46,6 +46,9 @@ SKIP: {
         my $clan = $wows->clans_details( clan_id => $clans->[0]->{clan_id} )->{ $clans->[0]->{clan_id} };
         ok( !$wows->seasons_shipstats, "Can't get seasons_shipstats wo required fields" );
         ok( $wows->seasons_shipstats( account_id => $clan->{members_ids}->[0] ), "Get seasons_shipstats" );
+
+        ok( !$wows->seasons_accountinfo, "Ca;n get seasons accountinfo wo required feilds" );
+        ok( $wows->seasons_accountinfo( account_id => $clan->{members_ids}->[0] ), "Get seasons accountinfo" );
     };
 
     subtest 'clans' => sub {
