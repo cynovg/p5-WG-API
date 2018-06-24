@@ -51,7 +51,7 @@ SKIP: {
         ok( !$wows->clans_accountinfo(), "Can't get clan account info wo required fields");
         ok( $wows->clans_accountinfo(account_id => $clan->{members_ids}->[0]), "Get clans account info");
 
-        ok( $wows->clans_glossary, "Get clans glossay");
+        lives_ok {$wows->clans_glossary} "Get clans glossay";
     };
 }
 
