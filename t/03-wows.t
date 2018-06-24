@@ -12,7 +12,7 @@ isa_ok( $wows, 'WG::API::WoWs' );
 
 can_ok( $wows, qw/account_list account_info account_achievements/ );
 can_ok( $wows, qw/ships_stats/ );
-can_ok( $wows, qw/clans clans_details clans_accountinfo clans_glossary/);
+can_ok( $wows, qw/clans clans_details clans_accountinfo clans_glossary clans_season/);
 
 SKIP: {
     skip 'developers only', 8 unless $ENV{'WGMODE'} && $ENV{'WGMODE'} eq 'dev';
@@ -52,6 +52,8 @@ SKIP: {
         ok( $wows->clans_accountinfo(account_id => $clan->{members_ids}->[0]), "Get clans account info");
 
         lives_ok {$wows->clans_glossary} "Get clans glossay";
+
+        lives_ok { $wows->clans_season} "Get clans season";
     };
 }
 
