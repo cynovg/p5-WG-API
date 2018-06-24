@@ -181,14 +181,34 @@ Method returns detailed clan information
 
 =back
 
-=back
-
 =cut
 
 sub clans_details {
     my $self = shift;
 
     return $self->_request('get', 'wows/clans/info/', ['clan_id', 'extra', 'fields', 'language'], ['clan_id'], @_);
+}
+
+=item B<clans_accountinfo( [ $params ] )>
+
+Method returns player clan data. Player clan data exist only for accounts, that were participating in clan activities: sent join requests, were clan members etc.
+
+=over 2
+
+=item I<required_fields:>
+
+    account_id - Account ID. Max limit is 100. Min value is 1.
+
+=back
+
+=back
+
+=cut
+
+sub clans_accountinfo {
+    my $self = shift;
+
+    return $self->_request('get', 'wows/clans/accountinfo/', ['account_id','extra', 'fields', 'language'], ['account_id'], @_);
 }
 
 =head1 BUGS
