@@ -79,9 +79,9 @@
          "url" : "git://gitlab.com/cynovg/WG-API.git"
       }
    },
-   "version" : "v0.8.8",
+   "version" : "v0.9",
    "x_contributors" : [
-      "Cyrill Novgorodcev <cynovg@gmail.com>",
+      "Novgorodcev Cyrill <cynovg@gmail.com>",
       "Novgorodcev Cyrill <novgorodtsev.kirill@220-volt.ru>",
       "root <root@cynovg-debian.local>"
    ],
