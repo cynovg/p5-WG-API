@@ -12,7 +12,7 @@ isa_ok( $wows, 'WG::API::WoWs' );
 
 can_ok( $wows, qw/account_list account_info account_achievements/ );
 can_ok( $wows, qw/ships_stats/ );
-can_ok( $wows, qw/clans clans_details clans_accountinfo clans_glossary clans_season/);
+can_ok( $wows, qw/clans clans_details clans_accountinfo clans_glossary clans_season/ );
 
 SKIP: {
     skip 'developers only', 8 unless $ENV{'WGMODE'} && $ENV{'WGMODE'} eq 'dev';
@@ -40,20 +40,19 @@ SKIP: {
 
     subtest 'clans' => sub {
         my $clans;
-        lives_ok { $clans = $wows->clans(limit => 1)} "Get clan list";
-        ok( @$clans, "clans list is not empty");
+        lives_ok { $clans = $wows->clans( limit => 1 ) } "Get clan list";
+        ok( @$clans, "clans list is not empty" );
 
         my $clan;
-        ok(!$wows->clans_details(), "Can't get clan details wo required fields");
-        lives_ok{ $clan = $wows->clans_details(clan_id => $clans->[0]->{clan_id})->{$clans->[0]->{clan_id}}} "Get clans details";
+        ok( !$wows->clans_details(), "Can't get clan details wo required fields" );
+        lives_ok { $clan = $wows->clans_details( clan_id => $clans->[0]->{clan_id} )->{ $clans->[0]->{clan_id} } } "Get clans details";
 
+        ok( !$wows->clans_accountinfo(), "Can't get clan account info wo required fields" );
+        ok( $wows->clans_accountinfo( account_id => $clan->{members_ids}->[0] ), "Get clans account info" );
 
-        ok( !$wows->clans_accountinfo(), "Can't get clan account info wo required fields");
-        ok( $wows->clans_accountinfo(account_id => $clan->{members_ids}->[0]), "Get clans account info");
+        lives_ok { $wows->clans_glossary } "Get clans glossay";
 
-        lives_ok {$wows->clans_glossary} "Get clans glossay";
-
-        lives_ok { $wows->clans_season} "Get clans season";
+        lives_ok { $wows->clans_season } "Get clans season";
     };
 }
 
