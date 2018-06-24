@@ -336,6 +336,8 @@ sub tanks_achievements {
     );
 }
 
+=back
+
 =head1 BUGS
 
 Please report any bugs or feature requests to C<cynovg at cpan.org>, or through the web interface at L<https://gitlab.com/cynovg/WG-API/issues>.  I will be notified, and then you'll automatically be notified of progress on your bug as I make changes.
