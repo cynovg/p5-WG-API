@@ -141,6 +141,8 @@ Method returns general statistics for each ship of a player. Accounts with hidde
 
 =back
 
+=back
+
 =cut
 
 sub ships_stats {
@@ -150,8 +152,6 @@ sub ships_stats {
         [ 'language', 'fields', 'access_token', 'extra', 'account_id', 'ship_id', 'in_garage' ],
         ['account_id'], @_ );
 }
-
-=back
 
 =head1 BUGS
 
