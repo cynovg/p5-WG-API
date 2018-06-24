@@ -213,14 +213,26 @@ sub clans_accountinfo {
 
 Method returns information on clan entities.
 
-=back
-
 =cut
 
 sub clans_glossary {
     my $self = shift;
 
     return $self->_request('get', 'wows/clans/glossary/', ['fields', 'language'], [], @_);
+}
+
+=item B<clans_season( [ %params ] )>
+
+Method returns information about Clan Battles season.
+
+=back
+
+=cut
+
+sub clans_season {
+    my $self = shift;
+
+    return $self->_request('get', 'wows/clans/season/', ['fields', 'language'], [], @_);
 }
 
 =head1 BUGS
