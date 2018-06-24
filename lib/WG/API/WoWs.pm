@@ -161,6 +161,22 @@ sub ships_stats {
     );
 }
 
+=head2 Seasons
+
+=over 1
+
+=item B<seasons_info( [ %params ] )>
+
+=back
+
+=cut
+
+sub seasons_info {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wows/seasons/info/', [ 'fields', 'language', 'season_id' ], [], @_ );
+}
+
 =head2 Clans
 
 =over 1
