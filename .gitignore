@@ -27,3 +27,4 @@ nytprof.out
 !LICENSE
 .idea/
 /_Deparsed_XSubs.pm
+/perltidy.LOG

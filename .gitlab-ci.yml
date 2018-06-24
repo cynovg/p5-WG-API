@@ -2,28 +2,17 @@ image: perl
 
 stages:
   - test
-  - release
 
 test:
     stage: test
     before_script:
       - perl -V
-      - cpan install App::cpm
-      - cpm install -g
-      - cpm install Minilla -g
+      - curl -sL --compressed https://git.io/cpm > cpm
+      - chmod +x cpm
+      - ./cpm install -g
+      - ./cpm install Devel::Cover -g
+      - ./cpm install Minilla -g
     script:
-      - minil test 
-
-release_staging:
-    stage: release
-    before_script:
-      - perl -V
-      - cpan install App::cpm
-      - cpm install -g
-      - cpm install Minilla -g
-      - echo "user $CPAN_USER" > /tmp/pause
-      - echo "password $CPAN_PASSWORD" >> /tmp/pause
-    script:
-      - echo -ne "\ny\n" | minil release
-    only:
+      - minil test
+    except:
       - master
