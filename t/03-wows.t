@@ -12,6 +12,7 @@ isa_ok( $wows, 'WG::API::WoWs' );
 
 can_ok( $wows, qw/account_list account_info account_achievements/ );
 can_ok( $wows, qw/ships_stats/ );
+can_ok( $wows, qw/seasons_info/ );
 can_ok( $wows, qw/clans clans_details clans_accountinfo clans_glossary clans_season/ );
 
 SKIP: {
@@ -36,6 +37,10 @@ SKIP: {
         my $accounts = $wows->account_list( search => 'test' );
         ok( $wows->ships_stats( account_id => $accounts->[0]->{account_id} ), 'Get ships info for valid account_id' );
         is( $wows->ships_stats( account_id => 'xxx' ), undef, 'Get ships info for invalid account_id' );
+    };
+
+    subtest 'seasons' => sub {
+        lives_ok { $wows->seasons_info } "Get seasons info";
     };
 
     subtest 'clans' => sub {
