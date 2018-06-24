@@ -12,7 +12,7 @@ isa_ok( $wows, 'WG::API::WoWs' );
 
 can_ok( $wows, qw/account_list account_info account_achievements/ );
 can_ok( $wows, qw/ships_stats/ );
-can_ok( $wows, qw/clans/);
+can_ok( $wows, qw/clans clans_details/);
 
 SKIP: {
     skip 'developers only', 8 unless $ENV{'WGMODE'} && $ENV{'WGMODE'} eq 'dev';
@@ -42,6 +42,9 @@ SKIP: {
         my $clans;
         lives_ok { $clans = $wows->clans(limit => 1)} "Get clan list";
         ok( @$clans, "clans list is not empty");
+
+        ok(!$wows->clans_details(), "Can't get clan details wo required fields");
+        ok( $wows->clans_details(clan_id => $clans->[0]->{clan_id}), "Get clans details");
     };
 }
 
