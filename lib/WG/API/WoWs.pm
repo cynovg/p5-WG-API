@@ -161,14 +161,34 @@ sub ships_stats {
 
 Method searches through clans and sorts them in a specified order
 
-=back
-
 =cut
 
 sub clans {
     my $self = shift;
 
     return $self->_request( 'get', 'wows/clans/list/', ['fields', 'language', 'limit', 'page_no', 'search'], [], @_);
+}
+
+=item B<clans_details( [ %params ] )>
+
+Method returns detailed clan information
+
+=over 2
+
+=item I<required_fields:>
+
+    clan_id - Clan ID. Max limit is 100.
+
+=back
+
+=back
+
+=cut
+
+sub clans_details {
+    my $self = shift;
+
+    return $self->_request('get', 'wows/clans/info/', ['clan_id', 'extra', 'fields', 'language'], ['clan_id'], @_);
 }
 
 =head1 BUGS
