@@ -11,6 +11,7 @@ isa_ok( $wows, 'WG::API::WoWs' );
 
 can_ok( $wows, qw/account_list account_info account_achievements/ );
 can_ok( $wows, qw/ships_stats/ );
+can_ok( $wows, qw/clans/);
 
 SKIP: {
     skip 'developers only', 8 unless $ENV{'WGMODE'} && $ENV{'WGMODE'} eq 'dev';
@@ -34,6 +35,10 @@ SKIP: {
         my $accounts = $wows->account_list( search => 'test' );
         ok( $wows->ships_stats( account_id => $accounts->[0]->{account_id} ), 'Get ships info for valid account_id' );
         is( $wows->ships_stats( account_id => 'xxx' ), undef, 'Get ships info for invalid account_id' );
+    };
+
+    subtest 'clans' => sub {
+        ok( $wows->clans(), "Get clan list");
     };
 }
 
