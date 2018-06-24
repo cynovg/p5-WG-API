@@ -5,6 +5,7 @@ use Modern::Perl '2015';
 use WG::API;
 
 use Test::More;
+use Test::Exception;
 
 my $wows = WG::API->new( application_id => $ENV{'WG_KEY'} || 'demo' )->wows();
 isa_ok( $wows, 'WG::API::WoWs' );
@@ -38,7 +39,10 @@ SKIP: {
     };
 
     subtest 'clans' => sub {
-        ok( $wows->clans(), "Get clan list");
+        my $clans;
+        lives_ok { $clans = $wows->clans} "Get clan list";
+        ok( @$clans, "clans list is not empty");
+
     };
 }
 
