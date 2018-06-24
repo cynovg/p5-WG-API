@@ -40,9 +40,8 @@ SKIP: {
 
     subtest 'clans' => sub {
         my $clans;
-        lives_ok { $clans = $wows->clans} "Get clan list";
+        lives_ok { $clans = $wows->clans(limit => 1)} "Get clan list";
         ok( @$clans, "clans list is not empty");
-
     };
 }
 
