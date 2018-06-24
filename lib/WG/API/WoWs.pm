@@ -153,6 +153,24 @@ sub ships_stats {
         ['account_id'], @_ );
 }
 
+=head2 Clans
+
+=over 1
+
+=item B<clans( [ %params ] )>
+
+Method searches through clans and sorts them in a specified order
+
+=back
+
+=cut
+
+sub clans {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wows/clans/list/', ['fields', 'language', 'limit', 'page_no', 'search'], [], @_);
+}
+
 =head1 BUGS
 
 Please report any bugs or feature requests to C<cynovg at cpan.org>, or through the web interface at L<https://gitlab.com/cynovg/WG-API/issues>.  I will be notified, and then you'll automatically be notified of progress on your bug as I make changes.
