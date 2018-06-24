@@ -65,8 +65,10 @@ Method returns partial list of players. The list is filtered by initial characte
 sub account_list {
     my $self = shift;
 
-    return $self->_request( 'get', 'wows/account/list/', [ 'language', 'fields', 'type', 'search', 'limit' ], ['search'],
-        @_ );
+    return $self->_request(
+        'get', 'wows/account/list/', [ 'language', 'fields', 'type', 'search', 'limit' ], ['search'],
+        @_
+    );
 }
 
 =item B<account_info( [ %params ] )>
@@ -86,8 +88,10 @@ Method returns player details. Players may hide their game profiles, use field h
 sub account_info {
     my $self = shift;
 
-    return $self->_request( 'get', 'wows/account/info/', [ 'language', 'fields', 'access_token', 'extra', 'account_id' ],
-        ['account_id'], @_ );
+    return $self->_request(
+        'get', 'wows/account/info/', [ 'language', 'fields', 'access_token', 'extra', 'account_id' ],
+        ['account_id'], @_
+    );
 }
 
 =item B<account_achievements( [ %params ] )>
@@ -119,8 +123,10 @@ Method returns statistics slices by dates in specified time span.
 sub account_statsbydate {
     my $self = shift;
 
-    return $self->_request( 'get', 'wows/account/statsbydate/', [ 'language', 'fields', 'dates', 'access_token', 'extra', 'account_id' ],
-        ['account_id'], @_ );
+    return $self->_request(
+        'get', 'wows/account/statsbydate/', [ 'language', 'fields', 'dates', 'access_token', 'extra', 'account_id' ],
+        ['account_id'], @_
+    );
 }
 
 =back
@@ -141,17 +147,101 @@ Method returns general statistics for each ship of a player. Accounts with hidde
 
 =back
 
+=back
+
 =cut
 
 sub ships_stats {
     my $self = shift;
 
-    return $self->_request( 'get', 'wows/ships/stats/',
+    return $self->_request(
+        'get', 'wows/ships/stats/',
         [ 'language', 'fields', 'access_token', 'extra', 'account_id', 'ship_id', 'in_garage' ],
-        ['account_id'], @_ );
+        ['account_id'], @_
+    );
 }
 
+=head2 Clans
+
+=over 1
+
+=item B<clans( [ %params ] )>
+
+Method searches through clans and sorts them in a specified order
+
+=cut
+
+sub clans {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wows/clans/list/', [ 'fields', 'language', 'limit', 'page_no', 'search' ], [], @_ );
+}
+
+=item B<clans_details( [ %params ] )>
+
+Method returns detailed clan information
+
+=over 2
+
+=item I<required_fields:>
+
+    clan_id - Clan ID. Max limit is 100.
+
 =back
+
+=cut
+
+sub clans_details {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wows/clans/info/', [ 'clan_id', 'extra', 'fields', 'language' ], ['clan_id'], @_ );
+}
+
+=item B<clans_accountinfo( [ $params ] )>
+
+Method returns player clan data. Player clan data exist only for accounts, that were participating in clan activities: sent join requests, were clan members etc.
+
+=over 2
+
+=item I<required_fields:>
+
+    account_id - Account ID. Max limit is 100. Min value is 1.
+
+=back
+
+=cut
+
+sub clans_accountinfo {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wows/clans/accountinfo/', [ 'account_id', 'extra', 'fields', 'language' ], ['account_id'], @_ );
+}
+
+=item B<clans_glossary( [ %params ] )>
+
+Method returns information on clan entities.
+
+=cut
+
+sub clans_glossary {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wows/clans/glossary/', [ 'fields', 'language' ], [], @_ );
+}
+
+=item B<clans_season( [ %params ] )>
+
+Method returns information about Clan Battles season.
+
+=back
+
+=cut
+
+sub clans_season {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wows/clans/season/', [ 'fields', 'language' ], [], @_ );
+}
 
 =head1 BUGS
 
