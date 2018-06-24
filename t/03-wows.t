@@ -43,8 +43,9 @@ SKIP: {
         lives_ok { $clans = $wows->clans(limit => 1)} "Get clan list";
         ok( @$clans, "clans list is not empty");
 
+        my $clan;
         ok(!$wows->clans_details(), "Can't get clan details wo required fields");
-        ok( $wows->clans_details(clan_id => $clans->[0]->{clan_id}), "Get clans details");
+        lives_ok{ $clan = $wows->clans_details(clan_id => $clans->[0]->{clan_id})->{$clans->[0]->{clan_id}}} "Get clans details";
     };
 }
 
