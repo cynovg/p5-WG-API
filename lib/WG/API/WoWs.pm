@@ -167,14 +167,34 @@ sub ships_stats {
 
 =item B<seasons_info( [ %params ] )>
 
-=back
-
 =cut
 
 sub seasons_info {
     my $self = shift;
 
     return $self->_request( 'get', 'wows/seasons/info/', [ 'fields', 'language', 'season_id' ], [], @_ );
+}
+
+=item B<seasons_shipstats( [ %params ] )>
+
+Method returns players' ships statistics in Ranked Battles seasons. Accounts with hidden game profiles are excluded from response. Hidden profiles are listed in the field meta.hidden.
+
+=over 2
+
+=item I<required_fields:>
+
+    account_id - Account ID. Max limit is 100. Min value is 1.
+
+=back
+
+=back
+
+=cut
+
+sub seasons_shipstats {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wows/seasons/shipstats/', [ 'account_id', 'access_token', 'fields', 'language', 'season_id', 'ship_id' ], ['account_id'], @_ );
 }
 
 =head2 Clans
