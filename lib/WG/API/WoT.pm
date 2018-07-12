@@ -250,6 +250,16 @@ sub encyclopedia_info {
     return $self->_request( 'get', 'wot/encyclopedia/info/', [ 'fields', 'language' ], undef, @_ );
 }
 
+=item B<encyclopedia_provisions( [ %params ] )>
+
+=cut
+
+sub encyclopedia_provisions {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wot/encyclopedia/provisions/', [ 'fields', 'language', 'limit', 'page_no', 'provision_id', 'type' ], undef, @_ );
+}
+
 =item B<encyclopedia_arenas( [ %params ] )>
 
 Method returns information about maps.
