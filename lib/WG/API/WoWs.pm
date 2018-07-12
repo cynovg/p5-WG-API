@@ -248,6 +248,18 @@ sub encyclopedia_crewskills {
     return $self->_request( 'get', 'wows/encyclopedia/crewskills/', [ 'fields', 'language', 'skill_id' ], undef, @_ );
 }
 
+=item B<encyclopedia_crewranks( [ %params ] )>
+
+Method returns information about Commanders' skills.
+
+=cut
+
+sub encyclopedia_crewranks {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wows/encyclopedia/crewranks/', [ 'fields', 'language', 'nation' ], undef, @_ );
+}
+
 =back
 
 =head2 Warships
