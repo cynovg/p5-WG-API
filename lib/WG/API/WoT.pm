@@ -318,6 +318,16 @@ sub encyclopedia_vehicleprofiles {
     return $self->_request( 'get', 'wot/encyclopedia/vehicleprofiles/', [ 'tank_id', 'fields', 'language', 'order_by' ], ['tank_id'], @_ );
 }
 
+=item B<encyclopedia_modules( [ %params ] )>
+
+=cut
+
+sub encyclopedia_modules {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wot/encyclopedia/modules/', [ 'extra', 'fields', 'language', 'limit', 'module_id', 'nation', 'page_no', 'type' ], undef, @_ );
+}
+
 =back
 
 =head2 Clan ratings

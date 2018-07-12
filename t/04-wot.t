@@ -16,7 +16,7 @@ can_ok( $wot, qw/stronghold_claninfo stronghold_clanreserves/ );
 can_ok(
     $wot, qw/encyclopedia_vehicles encyclopedia_vehicleprofile encyclopedia_achievements
         encyclopedia_info encyclopedia_arenas encyclopedia_provisions encyclopedia_personalmissions
-        encyclopedia_boosters encyclopedia_vehicleprofiles
+        encyclopedia_boosters encyclopedia_vehicleprofiles encyclopedia_modules
         /
 );
 can_ok( $wot, qw/clanratings_dates clanratings_dates clanratings_clans clanratings_neighbors clanratings_top/ );
@@ -61,6 +61,8 @@ SKIP: {
         is( $wot->encyclopedia_vehicleprofiles(), undef, "get information about vehicle configurations wo tank id" );
         is( $wot->encyclopedia_vehicleprofiles( tank_id => 'XXX' ), undef, "get information about vehicle configurations w invalid tank id" );
         ok( $wot->encyclopedia_vehicleprofiles( tank_id => $tank_id ), "get information about vehicle configurations w valid tank id" );
+
+        ok( $wot->encyclopedia_modules(), "get information about available modules" );
     };
 
     subtest 'clan ratings' => sub {
