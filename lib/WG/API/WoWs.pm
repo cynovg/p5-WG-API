@@ -171,6 +171,35 @@ sub encyclopedia_achievements {
     return $self->_request( 'get', 'wows/encyclopedia/achievements/', [ 'fields', 'language' ], undef, @_ );
 }
 
+=item B<encyclopedia_shipprofile( [ %params ] )>
+
+Method returns parameters of ships in all existing configurations.
+
+=over 2
+
+=item I<required fields>
+
+    ship_id - ship id
+
+=back
+
+=cut
+
+sub encyclopedia_shipprofile {
+    my $self = shift;
+
+    return $self->_request(
+        'get', 'wows/encyclopedia/shipprofile/',
+        [
+            'ship_id', 'artillery_id', 'dive_bomber_id',    'engine_id',
+            'fields',  'fighter_id',   'fire_control_id',   'flight_control_id',
+            'hull_id', 'language',     'torpedo_bomber_id', 'torpedoes_id'
+        ],
+        ['ship_id'],
+        @_
+    );
+}
+
 =back
 
 =head2 Warships
