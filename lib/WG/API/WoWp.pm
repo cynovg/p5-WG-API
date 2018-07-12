@@ -214,6 +214,18 @@ sub encyclopedia_planespecification {
     return $self->_request( 'get', 'wowp/encyclopedia/planespecification/', [ 'plane_id', 'bind_id', 'fields', 'language', 'module_id' ], ['plane_id'], @_ );
 }
 
+=item B<encyclopedia_achievements( [ %params ] )>
+
+Method returns dictionary of achievements from Encyclopedia.
+
+=cut
+
+sub encyclopedia_achievements {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wowp/encyclopedia/achievements/', [ 'fields', 'language' ], undef, @_ );
+}
+
 =back
 
 =head2 Ratings
