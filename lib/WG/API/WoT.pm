@@ -298,6 +298,26 @@ sub encyclopedia_boosters {
     return $self->_request( 'get', 'wot/encyclopedia/boosters/', [ 'fields', 'language' ], undef, @_ );
 }
 
+=item B<encyclopedia_vehicleprofiles( [ %params ] )>
+
+Method returns vehicle configuration characteristics.
+
+=over 2
+
+=item I<required fields>
+
+    tank_id - vehicle id.
+
+=back
+
+=cut
+
+sub encyclopedia_vehicleprofiles {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wot/encyclopedia/vehicleprofiles/', [ 'tank_id', 'fields', 'language', 'order_by' ], ['tank_id'], @_ );
+}
+
 =back
 
 =head2 Clan ratings
