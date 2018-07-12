@@ -196,6 +196,24 @@ sub encyclopedia_planeupgrades {
     return $self->_request( 'get', 'wowp/encyclopedia/planeupgrades/', [ 'plane_id', 'fields', 'language' ], ['plane_id'], @_ );
 }
 
+=item B<encyclopedia_planespecification( [ %params ] )>
+
+=over 2
+
+=item I<required fields>
+
+    plane_id - aircraft id
+
+=back
+
+=cut
+
+sub encyclopedia_planespecification {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wowp/encyclopedia/planespecification/', [ 'plane_id', 'bind_id', 'fields', 'language', 'module_id' ], ['plane_id'], @_ );
+}
+
 =back
 
 =head2 Ratings
