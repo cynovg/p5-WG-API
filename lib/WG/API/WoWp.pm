@@ -120,6 +120,126 @@ sub account_planes {
 
 =back
 
+=head2 Encyclopedia
+
+=over 1
+
+=item B<encyclopedia_planes( [ %params ] )>
+
+Method returns list of all aircrafts from Encyclopedia
+
+=cut
+
+sub encyclopedia_planes {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wowp/encyclopedia/planes/', [ 'fields', 'language', 'nation', 'type' ], undef, @_ );
+}
+
+=item B<encyclopedia_planeinfo( [ %params ] )>
+
+Method returns aircraft details from Encyclopedia.
+
+=over 2
+
+=item I<required fields>
+
+    plane_id - aircraft id
+
+=back
+
+=cut
+
+sub encyclopedia_planeinfo {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wowp/encyclopedia/planeinfo/', [ 'plane_id', 'fields', 'language' ], ['plane_id'], @_ );
+}
+
+=item B<encyclopedia_planemodules( [ %params ] )>
+
+Method returns information from Encyclopedia about modules available for specified aircrafts.
+
+=over 2
+
+=item I<required fields>
+
+    plane_id - aircraft id
+
+=back
+
+=cut
+
+sub encyclopedia_planemodules {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wowp/encyclopedia/planemodules/', [ 'plane_id', 'fields', 'language', 'type' ], ['plane_id'], @_ );
+}
+
+=item B<encyclopedia_planeupgrades( [ %params ] )>
+
+Method returns information from Encyclopedia about slots of aircrafts and lists of modules which are compatible with specified slots.
+
+=over 2
+
+=item I<required fields>
+
+    plane_id - aircraft id
+
+=back
+
+=cut
+
+sub encyclopedia_planeupgrades {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wowp/encyclopedia/planeupgrades/', [ 'plane_id', 'fields', 'language' ], ['plane_id'], @_ );
+}
+
+=item B<encyclopedia_planespecification( [ %params ] )>
+
+=over 2
+
+=item I<required fields>
+
+    plane_id - aircraft id
+
+=back
+
+=cut
+
+sub encyclopedia_planespecification {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wowp/encyclopedia/planespecification/', [ 'plane_id', 'bind_id', 'fields', 'language', 'module_id' ], ['plane_id'], @_ );
+}
+
+=item B<encyclopedia_achievements( [ %params ] )>
+
+Method returns dictionary of achievements from Encyclopedia.
+
+=cut
+
+sub encyclopedia_achievements {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wowp/encyclopedia/achievements/', [ 'fields', 'language' ], undef, @_ );
+}
+
+=item B<encyclopedia_info( [ %params ] )>
+
+Method returns information about Encyclopedia.
+
+=cut
+
+sub encyclopedia_info {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wowp/encyclopedia/info/', undef, undef, @_ );
+}
+
+=back
+
 =head2 Ratings
 
 =over 1
