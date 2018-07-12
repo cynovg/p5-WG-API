@@ -212,6 +212,18 @@ sub encyclopedia_modules {
     return $self->_request( 'get', 'wows/encyclopedia/modules/', [ 'fields', 'language', 'limit', 'module_id', 'page_no', 'type' ], undef, @_ );
 }
 
+=item B<encyclopedia_accountlevels( [ %params ] )>
+
+Method returns information about Service Record levels.
+
+=cut
+
+sub encyclopedia_accountlevels {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wows/encyclopedia/accountlevels/', ['fields'], undef, @_ );
+}
+
 =back
 
 =head2 Warships

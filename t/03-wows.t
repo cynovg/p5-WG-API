@@ -13,7 +13,7 @@ isa_ok( $wows, 'WG::API::WoWs' );
 can_ok( $wows, qw/account_list account_info account_achievements/ );
 can_ok(
     $wows, qw/encyclopedia_info encyclopedia_ships encyclopedia_achievements encyclopedia_shipprofile
-        encyclopedia_modules
+        encyclopedia_modules encyclopedia_accountlevels
         /
 );
 can_ok( $wows, qw/ships_stats/ );
@@ -49,7 +49,8 @@ SKIP: {
         is( $wows->encyclopedia_shipprofile( ship_id => 'XXX' ), undef, "get parameters of ships w invalid ship id" );
         ok( $wows->encyclopedia_shipprofile( ship_id => $ship_id ), "get parameters df ship w valid ship id" );
 
-        ok( $wows->encyclopedia_modules(), "get list of available modules" );
+        ok( $wows->encyclopedia_modules(),       "get list of available modules" );
+        ok( $wows->encyclopedia_accountlevels(), "get information about Service Record levels" );
     };
 
     subtest 'ships' => sub {
