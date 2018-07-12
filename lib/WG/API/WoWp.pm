@@ -120,6 +120,24 @@ sub account_planes {
 
 =back
 
+=head2 Encyclopedia
+
+=over 1
+
+=item B<encyclopedia_planes( [ %params ] )>
+
+Method returns list of all aircrafts from Encyclopedia
+
+=cut
+
+sub encyclopedia_planes {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wowp/encyclopedia/planes/', [ 'fields', 'language', 'nation', 'type' ], undef, @_ );
+}
+
+=back
+
 =head2 Ratings
 
 =over 1

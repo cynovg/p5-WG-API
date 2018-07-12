@@ -11,6 +11,7 @@ ok( $wowp && ref $wowp, 'create class' );
 isa_ok( $wowp, 'WG::API::WoWp' );
 
 can_ok( $wowp, qw/account_list account_info account_planes/ );
+can_ok( $wowp, qw/encyclopedia_planes/);
 can_ok( $wowp, qw/ratings_types ratings_accounts ratings_neighbors ratings_top ratings_dates/ );
 can_ok( $wowp, qw/planes_stats planes_achievements/ );
 
@@ -28,6 +29,10 @@ SKIP: {
         is( $wowp->account_planes, undef, 'get account planes without params' );
         ok( $wowp->account_planes( account_id => $accounts->[0]->{'account_id'} ), 'get account planes with valid params' );
         is( $wowp->account_planes( account_id => 'xxx' ), undef, 'get account planes with invalid params' );
+    };
+
+    subtest 'encylopedia' => sub {
+        ok( $wowp->encyclopedia_planes(), "get list of all aircrafts from Encyclopedia");
     };
 
     subtest 'ratings' => sub {
