@@ -13,7 +13,7 @@ isa_ok( $wowp, 'WG::API::WoWp' );
 can_ok( $wowp, qw/account_list account_info account_planes/ );
 can_ok(
     $wowp, qw/encyclopedia_planes encyclopedia_planeinfo encyclopedia_planemodules encyclopedia_planeupgrades
-        encyclopedia_planespecification encyclopedia_achievements
+        encyclopedia_planespecification encyclopedia_achievements encyclopedia_info
         /
 );
 can_ok( $wowp, qw/ratings_types ratings_accounts ratings_neighbors ratings_top ratings_dates/ );
@@ -57,6 +57,8 @@ SKIP: {
         ok( $wowp->encyclopedia_planespecification( plane_id => $plane_id ), "get plane spec. w valid plane id" );
 
         ok( $wowp->encyclopedia_achievements(), "get dictionary of achievements" );
+
+        ok( $wowp->encyclopedia_info(), "get information about encyclopedia" );
     };
 
     subtest 'ratings' => sub {

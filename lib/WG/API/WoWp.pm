@@ -226,6 +226,18 @@ sub encyclopedia_achievements {
     return $self->_request( 'get', 'wowp/encyclopedia/achievements/', [ 'fields', 'language' ], undef, @_ );
 }
 
+=item B<encyclopedia_info( [ %params ] )>
+
+Method returns information about Encyclopedia.
+
+=cut
+
+sub encyclopedia_info {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wowp/encyclopedia/info/', undef, undef, @_ );
+}
+
 =back
 
 =head2 Ratings
