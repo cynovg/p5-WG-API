@@ -340,6 +340,18 @@ sub encyclopedia_badges {
     return $self->_request( 'get', 'wot/encyclopedia/badges/', [ 'fields', 'language' ], undef, @_ );
 }
 
+=item B<encyclopedia_crewroles( [ %params ] )>
+
+Method returns full description of all crew qualifications.
+
+=cut
+
+sub encyclopedia_crewroles {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wot/encyclopedia/crewroles/', [ 'fields', 'language', 'role' ], undef, @_ );
+}
+
 =back
 
 =head2 Clan ratings
