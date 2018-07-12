@@ -260,6 +260,18 @@ sub encyclopedia_crewranks {
     return $self->_request( 'get', 'wows/encyclopedia/crewranks/', [ 'fields', 'language', 'nation' ], undef, @_ );
 }
 
+=item B<encyclopedia_battletypes( [ %params ] )>
+
+Method returns information about battle types.
+
+=cut
+
+sub encyclopedia_battletypes {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wows/encyclopedia/battletypes/', [ 'fields', 'language' ], undef, @_ );
+}
+
 =back
 
 =head2 Warships
