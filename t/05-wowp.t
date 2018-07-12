@@ -11,7 +11,7 @@ ok( $wowp && ref $wowp, 'create class' );
 isa_ok( $wowp, 'WG::API::WoWp' );
 
 can_ok( $wowp, qw/account_list account_info account_planes/ );
-can_ok( $wowp, qw/encyclopedia_planes encyclopedia_planeinfo encyclopedia_planemodules/ );
+can_ok( $wowp, qw/encyclopedia_planes encyclopedia_planeinfo encyclopedia_planemodules encyclopedia_planeupgrades/ );
 can_ok( $wowp, qw/ratings_types ratings_accounts ratings_neighbors ratings_top ratings_dates/ );
 can_ok( $wowp, qw/planes_stats planes_achievements/ );
 
@@ -43,6 +43,10 @@ SKIP: {
         is( $wowp->encyclopedia_planemodules(), undef, "get plane configuration wo plane id" );
         is( $wowp->encyclopedia_planemodules( plane_id => 'XXX' ), undef, "get plane configuration w invalid plane id" );
         ok( $wowp->encyclopedia_planemodules( plane_id => $plane_id ), "get plane configuation w valid plane id" );
+
+        is( $wowp->encyclopedia_planeupgrades(), undef, "get plane tech tree wo plane id" );
+        is( $wowp->encyclopedia_planeupgrades( plane_id => 'XXX' ), undef, "get plane teche tree w invalid plane id" );
+        ok( $wowp->encyclopedia_planeupgrades( plane_id => $plane_id ), "get plane tech tree w valid plane id" );
     };
 
     subtest 'ratings' => sub {

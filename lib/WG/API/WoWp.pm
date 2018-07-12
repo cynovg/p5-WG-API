@@ -176,6 +176,26 @@ sub encyclopedia_planemodules {
     return $self->_request( 'get', 'wowp/encyclopedia/planemodules/', [ 'plane_id', 'fields', 'language', 'type' ], ['plane_id'], @_ );
 }
 
+=item B<encyclopedia_planeupgrades( [ %params ] )>
+
+Method returns information from Encyclopedia about slots of aircrafts and lists of modules which are compatible with specified slots.
+
+=over 2
+
+=item I<required fields>
+
+    plane_id - aircraft id
+
+=back
+
+=cut
+
+sub encyclopedia_planeupgrades {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wowp/encyclopedia/planeupgrades/', [ 'plane_id', 'fields', 'language' ], ['plane_id'], @_ );
+}
+
 =back
 
 =head2 Ratings
