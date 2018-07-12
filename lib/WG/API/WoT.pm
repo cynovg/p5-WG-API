@@ -203,6 +203,29 @@ sub encyclopedia_vehicles {
     return $self->_request( 'get', 'wot/encyclopedia/vehicles/', [ 'fields', 'language', 'limit', 'nation', 'page_no', 'tank_id', 'tier', 'type' ], undef, @_ );
 }
 
+=item B<encyclopedia_vehicleprofile( [ %params ] )>
+
+=over 2
+
+=item I<required fields>
+
+    tank_id - vehicle id
+
+=back
+
+=cut
+
+sub encyclopedia_vehicleprofile {
+    my $self = shift;
+
+    return $self->_request(
+        'get', 'wot/encyclopedia/vehicleprofile/',
+        [ 'tank_id', 'engine_id', 'fields', 'gun_id', 'language', 'profile_id', 'radio_id', 'suspension_id', 'turret_id' ],
+        ['tank_id'],
+        @_
+    );
+}
+
 =back
 
 =head2 Clan ratings
