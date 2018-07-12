@@ -17,7 +17,7 @@ can_ok(
     $wot, qw/encyclopedia_vehicles encyclopedia_vehicleprofile encyclopedia_achievements
         encyclopedia_info encyclopedia_arenas encyclopedia_provisions encyclopedia_personalmissions
         encyclopedia_boosters encyclopedia_vehicleprofiles encyclopedia_modules
-        encyclopedia_badges encyclopedia_crewroles
+        encyclopedia_badges encyclopedia_crewroles encyclopedia_crewskills
         /
 );
 can_ok( $wot, qw/clanratings_dates clanratings_dates clanratings_clans clanratings_neighbors clanratings_top/ );
@@ -63,9 +63,10 @@ SKIP: {
         is( $wot->encyclopedia_vehicleprofiles( tank_id => 'XXX' ), undef, "get information about vehicle configurations w invalid tank id" );
         ok( $wot->encyclopedia_vehicleprofiles( tank_id => $tank_id ), "get information about vehicle configurations w valid tank id" );
 
-        ok( $wot->encyclopedia_modules(),   "get information about available modules" );
-        ok( $wot->encyclopedia_badges(),    "get information about available badgets" );
-        ok( $wot->encyclopedia_crewroles(), "get full description of all crew qualifications" );
+        ok( $wot->encyclopedia_modules(),    "get information about available modules" );
+        ok( $wot->encyclopedia_badges(),     "get information about available badgets" );
+        ok( $wot->encyclopedia_crewroles(),  "get full description of all crew qualifications" );
+        ok( $wot->encyclopedia_crewskills(), "get full description of all crew skills" );
     };
 
     subtest 'clan ratings' => sub {

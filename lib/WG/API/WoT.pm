@@ -352,6 +352,18 @@ sub encyclopedia_crewroles {
     return $self->_request( 'get', 'wot/encyclopedia/crewroles/', [ 'fields', 'language', 'role' ], undef, @_ );
 }
 
+=item B<encyclopedia_crewskills( [ %params ] )>
+
+Method returns full description of all crew skills.
+
+=cut
+
+sub encyclopedia_crewskills {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wot/encyclopedia/crewskills/', [ 'fields', 'language', 'role', 'skill' ], undef, @_ );
+}
+
 =back
 
 =head2 Clan ratings
