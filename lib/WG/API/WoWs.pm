@@ -308,6 +308,18 @@ sub encyclopedia_collectioncards {
     return $self->_request( 'get', 'wows/encyclopedia/collectioncards/', [ 'fields', 'language' ], undef, @_ );
 }
 
+=item B<encyclopedia_battlearenas( [ %params ] )>
+
+Method returns the information about maps.
+
+=cut
+
+sub encyclopedia_battlearenas {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wows/encyclopedia/battlearenas/', [ 'fields', 'language' ], undef, @_ );
+}
+
 =back
 
 =head2 Warships
