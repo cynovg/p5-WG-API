@@ -224,6 +224,18 @@ sub encyclopedia_accountlevels {
     return $self->_request( 'get', 'wows/encyclopedia/accountlevels/', ['fields'], undef, @_ );
 }
 
+=item B<encyclopedia_crews( [ %params ] )>
+
+Method returns information about Commanders.
+
+=cut
+
+sub encyclopedia_crews {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wows/encyclopedia/crews/', [ 'commander_id', 'fields', 'language' ], undef, @_ );
+}
+
 =back
 
 =head2 Warships
