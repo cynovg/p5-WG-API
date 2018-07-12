@@ -284,6 +284,18 @@ sub encyclopedia_consumables {
     return $self->_request( 'get', 'wows/encyclopedia/consumables/', [ 'consumable_id', 'fields', 'language', 'limit', 'page_no', 'type' ], undef, @_ );
 }
 
+=item B<encyclopedia_collections( [ %params ] )>
+
+Method returns information about collections.
+
+=cut
+
+sub encyclopedia_collections {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wows/encyclopedia/collections/', [ 'fields', 'language' ], undef, @_ );
+}
+
 =back
 
 =head2 Warships

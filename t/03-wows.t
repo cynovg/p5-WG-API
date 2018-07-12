@@ -15,6 +15,7 @@ can_ok(
     $wows, qw/encyclopedia_info encyclopedia_ships encyclopedia_achievements encyclopedia_shipprofile
         encyclopedia_modules encyclopedia_accountlevels encyclopedia_crews encyclopedia_crewskills
         encyclopedia_crewranks encyclopedia_battletypes encyclopedia_consumables
+        encyclopedia_collections
         /
 );
 can_ok( $wows, qw/ships_stats/ );
@@ -57,6 +58,7 @@ SKIP: {
         ok( $wows->encyclopedia_crewranks(),     "get information about Commanders' rank" );
         ok( $wows->encyclopedia_battletypes(),   "get information about battle types" );
         ok( $wows->encyclopedia_consumables(),   "get information about consumables" );
+        ok( $wows->encyclopedia_collections(),   "get information about collections" );
     };
 
     subtest 'ships' => sub {
