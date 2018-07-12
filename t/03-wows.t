@@ -13,7 +13,7 @@ isa_ok( $wows, 'WG::API::WoWs' );
 can_ok( $wows, qw/account_list account_info account_achievements/ );
 can_ok(
     $wows, qw/encyclopedia_info encyclopedia_ships encyclopedia_achievements encyclopedia_shipprofile
-        encyclopedia_modules encyclopedia_accountlevels encyclopedia_crews
+        encyclopedia_modules encyclopedia_accountlevels encyclopedia_crews encyclopedia_crewskills
         /
 );
 can_ok( $wows, qw/ships_stats/ );
@@ -52,6 +52,7 @@ SKIP: {
         ok( $wows->encyclopedia_modules(),       "get list of available modules" );
         ok( $wows->encyclopedia_accountlevels(), "get information about Service Record levels" );
         ok( $wows->encyclopedia_crews(),         "get information about commanders" );
+        ok( $wows->encyclopedia_crewskills(),    "get information about Commanders' skills" );
     };
 
     subtest 'ships' => sub {

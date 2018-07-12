@@ -236,6 +236,18 @@ sub encyclopedia_crews {
     return $self->_request( 'get', 'wows/encyclopedia/crews/', [ 'commander_id', 'fields', 'language' ], undef, @_ );
 }
 
+=item B<encyclopedia_crewskills( [ %params ] )>
+
+Method returns information about Commangers' skills.
+
+=cut
+
+sub encyclopedia_crewskills {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wows/encyclopedia/crewskills/', [ 'fields', 'language', 'skill_id' ], undef, @_ );
+}
+
 =back
 
 =head2 Warships
