@@ -286,6 +286,18 @@ sub encyclopedia_personalmissions {
     return $self->_request( 'get', 'wot/encyclopedia/personalmissions/', [ 'compaign_id', 'fields', 'language', 'operation_id', 'set_id', 'tag' ], undef, @_ );
 }
 
+=item B<encyclopedia_boosters( [ %params ] )>
+
+Method returns information about Personal Reserves.
+
+=cut
+
+sub encyclopedia_boosters {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wot/encyclopedia/boosters/', [ 'fields', 'language' ], undef, @_ );
+}
+
 =back
 
 =head2 Clan ratings
