@@ -159,6 +159,18 @@ sub encyclopedia_ships {
     return $self->_request( 'get', 'wows/encyclopedia/ships/', [ 'fields', 'language', 'limit', 'nation', 'page_no', 'ship_id', 'type' ], undef, @_ );
 }
 
+=item B<encyclopedia_achievements( [ %params ] )>
+
+Method returns information about achievements.
+
+=cut
+
+sub encyclopedia_achievements {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wows/encyclopedia/achievements/', [ 'fields', 'language' ], undef, @_ );
+}
+
 =back
 
 =head2 Warships
