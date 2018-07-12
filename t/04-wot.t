@@ -43,7 +43,7 @@ SKIP: {
 
     subtest 'encyclopedia' => sub {
         my $tanks;
-        ok( $tanks = $wot->encyclopedia_vehicles(), "get information about available vehicles" );
+        ok( $tanks = $wot->encyclopedia_vehicles( limit => 1 ), "get information about available vehicles" );
 
         my ($tank_id) = keys %$tanks;
         is( $wot->encyclopedia_vehicleprofile(), undef, "get vehicle configuration characteristics wo tank_id" );
