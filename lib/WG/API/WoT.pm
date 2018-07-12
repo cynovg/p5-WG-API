@@ -328,6 +328,18 @@ sub encyclopedia_modules {
     return $self->_request( 'get', 'wot/encyclopedia/modules/', [ 'extra', 'fields', 'language', 'limit', 'module_id', 'nation', 'page_no', 'type' ], undef, @_ );
 }
 
+=item B<encyclopedia_badges( [ %params ] )>
+
+Method returns list of available badges a player can gain in Ranked Battles.
+
+=cut
+
+sub encyclopedia_badges {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wot/encyclopedia/badges/', [ 'fields', 'language' ], undef, @_ );
+}
+
 =back
 
 =head2 Clan ratings
