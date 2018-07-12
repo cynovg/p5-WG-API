@@ -136,6 +136,18 @@ sub encyclopedia_planes {
     return $self->_request( 'get', 'wowp/encyclopedia/planes/', [ 'fields', 'language', 'nation', 'type' ], undef, @_ );
 }
 
+=item B<encyclopedia_planeinfo( [ %params ] )>
+
+Method returns aircraft details from Encyclopedia.
+
+=cut
+
+sub encyclopedia_planeinfo {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wowp/encyclopedia/planeinfo/', [ 'plane_id', 'fields', 'language' ], ['plane_id'], @_ );
+}
+
 =back
 
 =head2 Ratings
