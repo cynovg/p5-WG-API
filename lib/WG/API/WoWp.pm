@@ -156,6 +156,26 @@ sub encyclopedia_planeinfo {
     return $self->_request( 'get', 'wowp/encyclopedia/planeinfo/', [ 'plane_id', 'fields', 'language' ], ['plane_id'], @_ );
 }
 
+=item B<encyclopedia_planemodules( [ %params ] )>
+
+Method returns information from Encyclopedia about modules available for specified aircrafts.
+
+=over 2
+
+=item I<required fields>
+
+    plane_id - aircraft id
+
+=back
+
+=cut
+
+sub encyclopedia_planemodules {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wowp/encyclopedia/planemodules/', [ 'plane_id', 'fields', 'language', 'type' ], ['plane_id'], @_ );
+}
+
 =back
 
 =head2 Ratings
