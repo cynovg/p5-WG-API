@@ -272,6 +272,18 @@ sub encyclopedia_battletypes {
     return $self->_request( 'get', 'wows/encyclopedia/battletypes/', [ 'fields', 'language' ], undef, @_ );
 }
 
+=item B<encyclopedia_consumables( [ %params ] )>
+
+Method returns information about consumables: camouflages, flags, and upgrades.
+
+=cut
+
+sub encyclopedia_consumables {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wows/encyclopedia/consumables/', [ 'consumable_id', 'fields', 'language', 'limit', 'page_no', 'type' ], undef, @_ );
+}
+
 =back
 
 =head2 Warships
