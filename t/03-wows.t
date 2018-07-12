@@ -15,7 +15,7 @@ can_ok(
     $wows, qw/encyclopedia_info encyclopedia_ships encyclopedia_achievements encyclopedia_shipprofile
         encyclopedia_modules encyclopedia_accountlevels encyclopedia_crews encyclopedia_crewskills
         encyclopedia_crewranks encyclopedia_battletypes encyclopedia_consumables
-        encyclopedia_collections
+        encyclopedia_collections encyclopedia_collectioncards
         /
 );
 can_ok( $wows, qw/ships_stats/ );
@@ -51,14 +51,15 @@ SKIP: {
         is( $wows->encyclopedia_shipprofile( ship_id => 'XXX' ), undef, "get parameters of ships w invalid ship id" );
         ok( $wows->encyclopedia_shipprofile( ship_id => $ship_id ), "get parameters df ship w valid ship id" );
 
-        ok( $wows->encyclopedia_modules(),       "get list of available modules" );
-        ok( $wows->encyclopedia_accountlevels(), "get information about Service Record levels" );
-        ok( $wows->encyclopedia_crews(),         "get information about commanders" );
-        ok( $wows->encyclopedia_crewskills(),    "get information about Commanders' skills" );
-        ok( $wows->encyclopedia_crewranks(),     "get information about Commanders' rank" );
-        ok( $wows->encyclopedia_battletypes(),   "get information about battle types" );
-        ok( $wows->encyclopedia_consumables(),   "get information about consumables" );
-        ok( $wows->encyclopedia_collections(),   "get information about collections" );
+        ok( $wows->encyclopedia_modules(),         "get list of available modules" );
+        ok( $wows->encyclopedia_accountlevels(),   "get information about Service Record levels" );
+        ok( $wows->encyclopedia_crews(),           "get information about commanders" );
+        ok( $wows->encyclopedia_crewskills(),      "get information about Commanders' skills" );
+        ok( $wows->encyclopedia_crewranks(),       "get information about Commanders' rank" );
+        ok( $wows->encyclopedia_battletypes(),     "get information about battle types" );
+        ok( $wows->encyclopedia_consumables(),     "get information about consumables" );
+        ok( $wows->encyclopedia_collections(),     "get information about collections" );
+        ok( $wows->encyclopedia_collectioncards(), "get information about items that included in the collections" );
     };
 
     subtest 'ships' => sub {

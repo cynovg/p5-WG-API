@@ -296,6 +296,18 @@ sub encyclopedia_collections {
     return $self->_request( 'get', 'wows/encyclopedia/collections/', [ 'fields', 'language' ], undef, @_ );
 }
 
+=item B<encyclopedia_collectioncards( [ %params ] )>
+
+Method returns information about items that are included in the collection.
+
+=cut
+
+sub encyclopedia_collectioncards {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wows/encyclopedia/collectioncards/', [ 'fields', 'language' ], undef, @_ );
+}
+
 =back
 
 =head2 Warships
