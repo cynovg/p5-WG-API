@@ -15,7 +15,7 @@ can_ok( $wot, qw/account_list account_info account_tanks account_achievements/ )
 can_ok( $wot, qw/stronghold_claninfo stronghold_clanreserves/ );
 can_ok(
     $wot, qw/encyclopedia_vehicles encyclopedia_vehicleprofile encyclopedia_achievements
-        encyclopedia_info
+        encyclopedia_info encyclopedia_arenas
         /
 );
 can_ok( $wot, qw/clanratings_dates clanratings_dates clanratings_clans clanratings_neighbors clanratings_top/ );
@@ -52,6 +52,7 @@ SKIP: {
 
         ok( $wot->encyclopedia_achievements(), "get information about achievements" );
         ok( $wot->encyclopedia_info(),         "get information about tankopedia" );
+        ok( $wot->encyclopedia_arenas(),       "get information about maps" );
     };
 
     subtest 'clan ratings' => sub {
