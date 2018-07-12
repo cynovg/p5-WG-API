@@ -147,6 +147,18 @@ sub encyclopedia_info {
     return $self->_request( 'get', 'wows/encyclopedia/info/', [ 'fields', 'language' ], undef, @_ );
 }
 
+=item b<encyclopedia_ships( [ %params ] )
+
+Method returns list of ships available.
+
+=cut
+
+sub encyclopedia_ships {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wows/encyclopedia/ships/', [ 'fields', 'language', 'limit', 'nation', 'page_no', 'ship_id', 'type' ], undef, @_ );
+}
+
 =back
 
 =head2 Warships
