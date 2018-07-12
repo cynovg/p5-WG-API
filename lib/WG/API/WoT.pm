@@ -252,6 +252,8 @@ sub encyclopedia_info {
 
 =item B<encyclopedia_provisions( [ %params ] )>
 
+Method returns a list of available equipment and consumables.
+
 =cut
 
 sub encyclopedia_provisions {
