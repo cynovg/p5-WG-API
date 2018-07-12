@@ -250,6 +250,18 @@ sub encyclopedia_info {
     return $self->_request( 'get', 'wot/encyclopedia/info/', [ 'fields', 'language' ], undef, @_ );
 }
 
+=item B<encyclopedia_arenas( [ %params ] )>
+
+Method returns information about maps.
+
+=cut
+
+sub encyclopedia_arenas {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wot/encyclopedia/arenas/', [ 'fields', 'language' ], undef, @_ );
+}
+
 =item B<encyclopedia_provisions( [ %params ] )>
 
 Method returns a list of available equipment and consumables.
@@ -262,17 +274,6 @@ sub encyclopedia_provisions {
     return $self->_request( 'get', 'wot/encyclopedia/provisions/', [ 'fields', 'language', 'limit', 'page_no', 'provision_id', 'type' ], undef, @_ );
 }
 
-=item B<encyclopedia_arenas( [ %params ] )>
-
-Method returns information about maps.
-
-=cut
-
-sub encyclopedia_arenas {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wot/encyclopedia/arenas/', [ 'fields', 'language' ], undef, @_ );
-}
 
 =back
 
