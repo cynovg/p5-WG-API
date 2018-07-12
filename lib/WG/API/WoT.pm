@@ -274,6 +274,17 @@ sub encyclopedia_provisions {
     return $self->_request( 'get', 'wot/encyclopedia/provisions/', [ 'fields', 'language', 'limit', 'page_no', 'provision_id', 'type' ], undef, @_ );
 }
 
+=item B<encyclopedia_personalmissions( [ %params ] )>
+
+Method returns details on Personal Missions on the basis of specified campaign IDs, operation IDs, mission branch and tag IDs.
+
+=cut
+
+sub encyclopedia_personalmissions {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wot/encyclopedia/personalmissions/', [ 'compaign_id', 'fields', 'language', 'operation_id', 'set_id', 'tag' ], undef, @_ );
+}
 
 =back
 
