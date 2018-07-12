@@ -11,6 +11,7 @@ my $wows = WG::API->new( application_id => $ENV{'WG_KEY'} || 'demo' )->wows();
 isa_ok( $wows, 'WG::API::WoWs' );
 
 can_ok( $wows, qw/account_list account_info account_achievements/ );
+can_ok( $wows, qw/encyclopedia_info/ );
 can_ok( $wows, qw/ships_stats/ );
 can_ok( $wows, qw/seasons_info seasons_shipstats seasons_accountinfo/ );
 can_ok( $wows, qw/clans clans_details clans_accountinfo clans_glossary clans_season/ );
@@ -31,6 +32,10 @@ SKIP: {
         ok( $wows->account_achievements( account_id => $accounts->[0]->{'account_id'} ), 'account achievements with valid params' );
 
         isnt( $wows->account_statsbydate( account_id => $accounts->[0]->{account_id} ), undef, 'account stats by date with valid params' );
+    };
+
+    subtest 'encyclopedia' => sub {
+        ok( $wows->encyclopedia_info(), "get information about encyclopedia" );
     };
 
     subtest 'ships' => sub {

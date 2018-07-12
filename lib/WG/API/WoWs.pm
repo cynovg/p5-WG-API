@@ -118,6 +118,8 @@ Method returns statistics slices by dates in specified time span.
 
 =back
 
+=back
+
 =cut
 
 sub account_statsbydate {
@@ -127,6 +129,22 @@ sub account_statsbydate {
         'get', 'wows/account/statsbydate/', [ 'language', 'fields', 'dates', 'access_token', 'extra', 'account_id' ],
         ['account_id'], @_
     );
+}
+
+=head2 Encyclopedia
+
+=over 1
+
+=item B<encyclopedia_info( [ %params ] )>
+
+Method returns information about encyclopedia.
+
+=cut
+
+sub encyclopedia_info {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wows/encyclopedia/info/', [ 'fields', 'language' ], undef, @_ );
 }
 
 =back
