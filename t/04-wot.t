@@ -13,7 +13,7 @@ isa_ok( $wot, 'WG::API::WoT' );
 
 can_ok( $wot, qw/account_list account_info account_tanks account_achievements/ );
 can_ok( $wot, qw/stronghold_claninfo stronghold_clanreserves/ );
-can_ok( $wot, qw/encyclopedia_vehicles encyclopedia_vehicleprofile/ );
+can_ok( $wot, qw/encyclopedia_vehicles encyclopedia_vehicleprofile encyclopedia_achievements/ );
 can_ok( $wot, qw/clanratings_dates clanratings_dates clanratings_clans clanratings_neighbors clanratings_top/ );
 can_ok( $wot, qw/tanks_stats tanks_achievements/ );
 
@@ -45,6 +45,8 @@ SKIP: {
         is( $wot->encyclopedia_vehicleprofile(), undef, "get vehicle configuration characteristics wo tank_id" );
         is( $wot->encyclopedia_vehicleprofile( tank_id => 'XXX' ), undef, "get vehicle configuration w invalid tank_id" );
         ok( $wot->encyclopedia_vehicleprofile( tank_id => $tank_id ), "get vehicle configuration w valid tank id" );
+
+        ok( $wot->encyclopedia_achievements(), "get information about achievements" );
     };
 
     subtest 'clan ratings' => sub {

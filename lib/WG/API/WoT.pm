@@ -226,6 +226,18 @@ sub encyclopedia_vehicleprofile {
     );
 }
 
+=item B<encyclopedia_achievements( [ %params ] )>
+
+Method returns information about achievements.
+
+=cut
+
+sub encyclopedia_achievements {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wot/encyclopedia/achievements/', [ 'fields', 'language' ], undef, @_ );
+}
+
 =back
 
 =head2 Clan ratings
