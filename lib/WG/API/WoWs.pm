@@ -200,6 +200,18 @@ sub encyclopedia_shipprofile {
     );
 }
 
+=item B<encyclopedia_modules( [ %params ] )>
+
+Method returns list of available modules that can be mounted on a ship (hull, engines, etc.).
+
+=cut
+
+sub encyclopedia_modules {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wows/encyclopedia/modules/', [ 'fields', 'language', 'limit', 'module_id', 'page_no', 'type' ], undef, @_ );
+}
+
 =back
 
 =head2 Warships

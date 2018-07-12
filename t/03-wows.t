@@ -11,7 +11,11 @@ my $wows = WG::API->new( application_id => $ENV{'WG_KEY'} || 'demo' )->wows();
 isa_ok( $wows, 'WG::API::WoWs' );
 
 can_ok( $wows, qw/account_list account_info account_achievements/ );
-can_ok( $wows, qw/encyclopedia_info encyclopedia_ships encyclopedia_achievements encyclopedia_shipprofile/ );
+can_ok(
+    $wows, qw/encyclopedia_info encyclopedia_ships encyclopedia_achievements encyclopedia_shipprofile
+        encyclopedia_modules
+        /
+);
 can_ok( $wows, qw/ships_stats/ );
 can_ok( $wows, qw/seasons_info seasons_shipstats seasons_accountinfo/ );
 can_ok( $wows, qw/clans clans_details clans_accountinfo clans_glossary clans_season/ );
@@ -44,6 +48,8 @@ SKIP: {
         is( $wows->encyclopedia_shipprofile(), undef, "get parameters of ships wo ship id" );
         is( $wows->encyclopedia_shipprofile( ship_id => 'XXX' ), undef, "get parameters of ships w invalid ship id" );
         ok( $wows->encyclopedia_shipprofile( ship_id => $ship_id ), "get parameters df ship w valid ship id" );
+
+        ok( $wows->encyclopedia_modules(), "get list of available modules" );
     };
 
     subtest 'ships' => sub {
