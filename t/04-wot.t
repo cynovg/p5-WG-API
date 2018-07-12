@@ -13,6 +13,7 @@ isa_ok( $wot, 'WG::API::WoT' );
 
 can_ok( $wot, qw/account_list account_info account_tanks account_achievements/ );
 can_ok( $wot, qw/stronghold_claninfo stronghold_clanreserves/ );
+can_ok( $wot, qw/encyclopedia_vehicles/);
 can_ok( $wot, qw/clanratings_dates clanratings_dates clanratings_clans clanratings_neighbors clanratings_top/ );
 can_ok( $wot, qw/tanks_stats tanks_achievements/ );
 
@@ -34,6 +35,10 @@ SKIP: {
         ok( !$wot->stronghold_claninfo, "can't get stronghold claninfo wo required fields" );
         ok( $wot->stronghold_claninfo( clan_id => _get_clan()->{clan_id} ), "get stronghold claninfo" );
         ok( !$wot->stronghold_clanreserves, "can't get stronghold clanreserves wo required fields" );
+    };
+
+    subtest 'encyclopedia' => sub {
+        ok( $wot->encyclopedia_vehicles(), "get information about available vehicles");
     };
 
     subtest 'clan ratings' => sub {

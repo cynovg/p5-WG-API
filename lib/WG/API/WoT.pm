@@ -187,6 +187,24 @@ sub stronghold_clanreserves {
     return $self->_request( 'get', 'wot/stronghold/clanreserves/', [ 'access_token', 'fields', 'language' ], ['access_token'], @_ );
 }
 
+=head2 Encyclopedia
+
+=over 1
+
+=item B<encyclopedia_vehicles( [ %params ] )>
+
+Method returns list of available vehicles.
+
+=cut
+
+sub encyclopedia_vehicles {
+    my $self = shift;
+
+    return $self->_request( 'get', 'wot/encyclopedia/vehicles/', [ 'fields', 'language', 'limit', 'nation', 'page_no', 'tank_id', 'tier', 'type' ], undef, @_ );
+}
+
+=back
+
 =head2 Clan ratings
 
 =over 1
