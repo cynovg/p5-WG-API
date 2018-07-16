@@ -6,15 +6,15 @@ with 'WG::API::Base';
 
 =head1 NAME
 
-WG::API::WoWp - Modules to work with Wargaming.net Public API for World of Warplanes
+WG::API::WoWp - Module to work with Wargaming.net Public API for World of Warplanes
 
 =head1 VERSION
 
-Version v0.9
+Version v0.10
 
 =cut
 
-our $VERSION = 'v0.9';
+our $VERSION = 'v0.10';
 
 use constant api_uri => '//api.worldofwarplanes.ru/';
 

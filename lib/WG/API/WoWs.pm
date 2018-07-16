@@ -6,15 +6,15 @@ with 'WG::API::Base';
 
 =head1 NAME
 
-WG::API::WoWs - Moduled for work with Wargaming.net Public API for Worlf of Warships
+WG::API::WoWs - Module for work with Wargaming.net Public API for Worlf of Warships
 
 =head1 VERSION
 
-Version v0.9
+Version v0.10
 
 =cut
 
-our $VERSION = 'v0.9';
+our $VERSION = 'v0.10';
 
 use constant api_uri => '//api.worldofwarships.ru/';
 
@@ -147,7 +147,7 @@ sub encyclopedia_info {
     return $self->_request( 'get', 'wows/encyclopedia/info/', [ 'fields', 'language' ], undef, @_ );
 }
 
-=item b<encyclopedia_ships( [ %params ] )
+=item B<encyclopedia_ships( [ %params ] )>
 
 Method returns list of ships available.
 

@@ -11,11 +11,11 @@ WG::API::Auth  - Auth-module with using OpenID for work with WG PAPI
 
 =head1 VERSION
 
-Version v0.9
+Version v0.10
 
 =cut
 
-our $VERSION = 'v0.9';
+our $VERSION = 'v0.10';
 
 =head1 SYNOPSIS
 
@@ -60,7 +60,9 @@ This method is used when the player is still using the application but the curre
 
 =item I<required fields:>
 
-    access_token - Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
+    access_token - Access token for the private data of a user's account
+                   can be received via the authorization method
+                   valid within a stated time period
 
 =back
 

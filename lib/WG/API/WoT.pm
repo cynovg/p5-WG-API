@@ -6,15 +6,15 @@ with 'WG::API::Base';
 
 =head1 NAME
 
-WG::API::WoT - Modules to work with Wargaming.net Public API for World of Tanks
+WG::API::WoT - Module to work with Wargaming.net Public API for World of Tanks
 
 =head1 VERSION
 
-Version v0.9
+Version v0.10
 
 =cut
 
-our $VERSION = 'v0.9';
+our $VERSION = 'v0.10';
 
 use constant api_uri => '//api.worldoftanks.ru/';
 
@@ -319,6 +319,8 @@ sub encyclopedia_vehicleprofiles {
 }
 
 =item B<encyclopedia_modules( [ %params ] )>
+
+Method returns list of available modules that can be installed on vehicles, such as engines, turrets, etc. At least one input filter parameter (module ID, type) is required to be indicated.
 
 =cut
 
