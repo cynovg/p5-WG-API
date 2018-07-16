@@ -147,7 +147,7 @@ sub encyclopedia_info {
     return $self->_request( 'get', 'wows/encyclopedia/info/', [ 'fields', 'language' ], undef, @_ );
 }
 
-=item b<encyclopedia_ships( [ %params ] )
+=item B<encyclopedia_ships( [ %params ] )>
 
 Method returns list of ships available.
 
