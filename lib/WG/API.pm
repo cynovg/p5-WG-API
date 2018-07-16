@@ -74,7 +74,7 @@ sub wot {
 
 =item B<wowp>
 
-Returns A WoWp instance
+Returns a WoWp instance
 
 =back
 
