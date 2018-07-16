@@ -16,13 +16,11 @@ our $VERSION = 'v0.9';
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
+Return full error data for unsuccessed requests.
 
     use WG::API::Error;
 
-    my $wg_error = WG::API::Error->new();
+    my $wg_error = WG::API::Error->new({code => 999, message => 'test error', fieald => 'unknown', value => 'none'});
     ...
     say $wg_error->code;
 
