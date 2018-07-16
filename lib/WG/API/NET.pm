@@ -6,7 +6,7 @@ with 'WG::API::Base';
 
 =head1 NAME
 
-WG::API::NET - Modules to work with Wargaming.net Public API
+WG::API::NET - Module to work with Wargaming.net Public API
 
 =head1 VERSION
 

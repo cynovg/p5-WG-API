@@ -6,7 +6,7 @@ with 'WG::API::Base';
 
 =head1 NAME
 
-WG::API::WoWs - Moduled for work with Wargaming.net Public API for Worlf of Warships
+WG::API::WoWs - Module for work with Wargaming.net Public API for Worlf of Warships
 
 =head1 VERSION
 

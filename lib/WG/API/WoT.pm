@@ -6,7 +6,7 @@ with 'WG::API::Base';
 
 =head1 NAME
 
-WG::API::WoT - Modules to work with Wargaming.net Public API for World of Tanks
+WG::API::WoT - Module to work with Wargaming.net Public API for World of Tanks
 
 =head1 VERSION
 

@@ -4,7 +4,7 @@ use Moo;
 
 =head1 NAME
 
-WG::API::Error - module for work with API error 
+WG::API::Error - Module for work with API errors
 
 =head1 VERSION
 
