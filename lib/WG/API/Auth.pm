@@ -60,7 +60,9 @@ This method is used when the player is still using the application but the curre
 
 =item I<required fields:>
 
-    access_token - Access token for the private data of a user's account; can be received via the authorization method; valid within a stated time period
+    access_token - Access token for the private data of a user's account
+                   can be received via the authorization method
+                   valid within a stated time period
 
 =back
 
