@@ -1,5 +1,7 @@
 package WG::API::NET;
 
+use Const::Fast;
+
 use Moo;
 
 with 'WG::API::Base';
@@ -16,7 +18,13 @@ Version v0.10
 
 our $VERSION = 'v0.10';
 
-use constant api_uri => '//api.worldoftanks.ru/';
+const my $api_uri => '//api.worldoftanks.ru/';
+
+sub _api_uri {
+    my ($self) = @_;
+
+    return $api_uri;
+}
 
 =head1 SYNOPSIS
 

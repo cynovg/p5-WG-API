@@ -27,7 +27,7 @@ Base class for all instances
 
 =cut
 
-requires 'api_uri';
+requires '_api_uri';
 
 =head1 ATTRIBUTES
 
@@ -273,7 +273,7 @@ sub _parse {
 sub _build_url {
     my ( $self, $uri ) = @_;
 
-    my $url = URI->new( $self->api_uri );
+    my $url = URI->new( $self->_api_uri );
     $url->scheme("https");
     $url->path($uri);
 
