@@ -72,9 +72,7 @@ Method returns partial list of players. The list is filtered by initial characte
 =cut
 
 sub accounts_list {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wgn/account/list/', [ 'fields', 'game', 'type', 'search', 'limit', 'language' ], ['search'], @_ );
+    return shift->_request( 'get', 'wgn/account/list/', [ 'fields', 'game', 'type', 'search', 'limit', 'language' ], ['search'], @_ );
 }
 
 =item B<account_info>
@@ -94,11 +92,9 @@ Method returns Wargaming account details.
 =cut
 
 sub account_info {
-    my ( $self, %params ) = @_;
-
-    return $self->_request(
+    return shift->_request(
         'get', 'wgn/account/info/', [ 'fields', 'access_token', 'account_id', 'language' ], ['account_id'],
-        %params
+        @_
     );
 }
 
@@ -113,9 +109,7 @@ Method searches through clans and sorts them in a specified order.
 =cut
 
 sub clans_list {
-    my $self = shift;
-
-    return $self->_request(
+    return shift->_request(
         'get', 'wgn/clans/list/',
         [ 'language', 'fields', 'search', 'limit', 'page_no', 'game' ],
         undef, @_
@@ -137,9 +131,7 @@ Method returns detailed clan information.
 =cut
 
 sub clans_info {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wgn/clans/info/', [ 'language', 'fields', 'access_token', 'clan_id', 'extra', 'game', 'members_key' ], ['clan_id'], @_ );
+    return shift->_request( 'get', 'wgn/clans/info/', [ 'language', 'fields', 'access_token', 'clan_id', 'extra', 'game', 'members_key' ], ['clan_id'], @_ );
 }
 
 =item B<clans_membersinfo>
@@ -157,9 +149,7 @@ Method returns clan member info and short info on the clan. Information is avail
 =cut
 
 sub clans_membersinfo {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wgn/clans/membersinfo/', [ 'language', 'fields', 'account_id', 'game' ], ['account_id'], @_ );
+    return shift->_request( 'get', 'wgn/clans/membersinfo/', [ 'language', 'fields', 'account_id', 'game' ], ['account_id'], @_ );
 }
 
 =item B<clans_glossary>
@@ -169,9 +159,7 @@ Method returns information on clan entities in World of Tanks and World of Warpl
 =cut
 
 sub clans_glossary {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wgn/clans/glossary/', [ 'language', 'fields', 'game' ], undef, @_ );
+    return shift->_request( 'get', 'wgn/clans/glossary/', [ 'language', 'fields', 'game' ], undef, @_ );
 }
 
 =item B<clans_messageboard>
@@ -189,9 +177,7 @@ Method returns messages of clan message board.
 =cut
 
 sub clans_messageboard {
-    my $self = shift;
-
-    return $self->_request(
+    return shift->_request(
         'get', 'wgn/clans/mesageboard/', [ 'game', 'fields', 'access_token' ], ['access_token'],
         @_
     );
@@ -214,9 +200,7 @@ Method returns information about player's clan history. Data on 10 last clan mem
 =cut
 
 sub clans_memberhistory {
-    my $self = shift;
-
-    return $self->_request(
+    return shift->_request(
         'get', 'wgn/clans/memberhistory/', [ 'game', 'fields', 'account_id', 'language' ], ['account_id'],
         @_
     );
@@ -235,9 +219,7 @@ Method returns the number of online players on the servers.
 =cut
 
 sub servers_info {
-    my ( $self, %params ) = @_;
-
-    return $self->_request( 'get', 'wgn/servers/info/', [ 'language', 'fields', 'game' ], undef, %params );
+    return shift->_request( 'get', 'wgn/servers/info/', [ 'language', 'fields', 'game' ], undef, @_ );
 }
 
 =head1 BUGS

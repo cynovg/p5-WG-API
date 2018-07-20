@@ -71,9 +71,7 @@ Method returns partial list of players. The list is filtered by initial characte
 =cut
 
 sub account_list {
-    my $self = shift;
-
-    return $self->_request(
+    return shift->_request(
         'get', 'wows/account/list/', [ 'language', 'fields', 'type', 'search', 'limit' ], ['search'],
         @_
     );
@@ -94,9 +92,7 @@ Method returns player details. Players may hide their game profiles, use field h
 =cut
 
 sub account_info {
-    my $self = shift;
-
-    return $self->_request(
+    return shift->_request(
         'get', 'wows/account/info/', [ 'language', 'fields', 'access_token', 'extra', 'account_id' ],
         ['account_id'], @_
     );
@@ -109,9 +105,7 @@ Method returns information about players' achievements. Accounts with hidden gam
 =cut
 
 sub account_achievements {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wows/account/achievements/', [ 'language', 'fields', 'account_id', 'access_token' ], ['account_id'], @_ );
+    return shift->_request( 'get', 'wows/account/achievements/', [ 'language', 'fields', 'account_id', 'access_token' ], ['account_id'], @_ );
 }
 
 =item B<account_statsbydate( [ %params ] )>
@@ -131,9 +125,7 @@ Method returns statistics slices by dates in specified time span.
 =cut
 
 sub account_statsbydate {
-    my $self = shift;
-
-    return $self->_request(
+    return shift->_request(
         'get', 'wows/account/statsbydate/', [ 'language', 'fields', 'dates', 'access_token', 'extra', 'account_id' ],
         ['account_id'], @_
     );
@@ -150,9 +142,7 @@ Method returns information about encyclopedia.
 =cut
 
 sub encyclopedia_info {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wows/encyclopedia/info/', [ 'fields', 'language' ], undef, @_ );
+    return shift->_request( 'get', 'wows/encyclopedia/info/', [ 'fields', 'language' ], undef, @_ );
 }
 
 =item B<encyclopedia_ships( [ %params ] )>
@@ -162,9 +152,7 @@ Method returns list of ships available.
 =cut
 
 sub encyclopedia_ships {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wows/encyclopedia/ships/', [ 'fields', 'language', 'limit', 'nation', 'page_no', 'ship_id', 'type' ], undef, @_ );
+    return shift->_request( 'get', 'wows/encyclopedia/ships/', [ 'fields', 'language', 'limit', 'nation', 'page_no', 'ship_id', 'type' ], undef, @_ );
 }
 
 =item B<encyclopedia_achievements( [ %params ] )>
@@ -174,9 +162,7 @@ Method returns information about achievements.
 =cut
 
 sub encyclopedia_achievements {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wows/encyclopedia/achievements/', [ 'fields', 'language' ], undef, @_ );
+    return shift->_request( 'get', 'wows/encyclopedia/achievements/', [ 'fields', 'language' ], undef, @_ );
 }
 
 =item B<encyclopedia_shipprofile( [ %params ] )>
@@ -194,9 +180,7 @@ Method returns parameters of ships in all existing configurations.
 =cut
 
 sub encyclopedia_shipprofile {
-    my $self = shift;
-
-    return $self->_request(
+    return shift->_request(
         'get', 'wows/encyclopedia/shipprofile/',
         [
             'ship_id', 'artillery_id', 'dive_bomber_id',    'engine_id',
@@ -215,9 +199,7 @@ Method returns list of available modules that can be mounted on a ship (hull, en
 =cut
 
 sub encyclopedia_modules {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wows/encyclopedia/modules/', [ 'fields', 'language', 'limit', 'module_id', 'page_no', 'type' ], undef, @_ );
+    return shift->_request( 'get', 'wows/encyclopedia/modules/', [ 'fields', 'language', 'limit', 'module_id', 'page_no', 'type' ], undef, @_ );
 }
 
 =item B<encyclopedia_accountlevels( [ %params ] )>
@@ -227,9 +209,7 @@ Method returns information about Service Record levels.
 =cut
 
 sub encyclopedia_accountlevels {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wows/encyclopedia/accountlevels/', ['fields'], undef, @_ );
+    return shift->_request( 'get', 'wows/encyclopedia/accountlevels/', ['fields'], undef, @_ );
 }
 
 =item B<encyclopedia_crews( [ %params ] )>
@@ -239,9 +219,7 @@ Method returns information about Commanders.
 =cut
 
 sub encyclopedia_crews {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wows/encyclopedia/crews/', [ 'commander_id', 'fields', 'language' ], undef, @_ );
+    return shift->_request( 'get', 'wows/encyclopedia/crews/', [ 'commander_id', 'fields', 'language' ], undef, @_ );
 }
 
 =item B<encyclopedia_crewskills( [ %params ] )>
@@ -251,9 +229,7 @@ Method returns information about Commangers' skills.
 =cut
 
 sub encyclopedia_crewskills {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wows/encyclopedia/crewskills/', [ 'fields', 'language', 'skill_id' ], undef, @_ );
+    return shift->_request( 'get', 'wows/encyclopedia/crewskills/', [ 'fields', 'language', 'skill_id' ], undef, @_ );
 }
 
 =item B<encyclopedia_crewranks( [ %params ] )>
@@ -263,9 +239,7 @@ Method returns information about Commanders' skills.
 =cut
 
 sub encyclopedia_crewranks {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wows/encyclopedia/crewranks/', [ 'fields', 'language', 'nation' ], undef, @_ );
+    return shift->_request( 'get', 'wows/encyclopedia/crewranks/', [ 'fields', 'language', 'nation' ], undef, @_ );
 }
 
 =item B<encyclopedia_battletypes( [ %params ] )>
@@ -275,9 +249,7 @@ Method returns information about battle types.
 =cut
 
 sub encyclopedia_battletypes {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wows/encyclopedia/battletypes/', [ 'fields', 'language' ], undef, @_ );
+    return shift->_request( 'get', 'wows/encyclopedia/battletypes/', [ 'fields', 'language' ], undef, @_ );
 }
 
 =item B<encyclopedia_consumables( [ %params ] )>
@@ -287,9 +259,7 @@ Method returns information about consumables: camouflages, flags, and upgrades.
 =cut
 
 sub encyclopedia_consumables {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wows/encyclopedia/consumables/', [ 'consumable_id', 'fields', 'language', 'limit', 'page_no', 'type' ], undef, @_ );
+    return shift->_request( 'get', 'wows/encyclopedia/consumables/', [ 'consumable_id', 'fields', 'language', 'limit', 'page_no', 'type' ], undef, @_ );
 }
 
 =item B<encyclopedia_collections( [ %params ] )>
@@ -299,9 +269,7 @@ Method returns information about collections.
 =cut
 
 sub encyclopedia_collections {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wows/encyclopedia/collections/', [ 'fields', 'language' ], undef, @_ );
+    return shift->_request( 'get', 'wows/encyclopedia/collections/', [ 'fields', 'language' ], undef, @_ );
 }
 
 =item B<encyclopedia_collectioncards( [ %params ] )>
@@ -311,9 +279,7 @@ Method returns information about items that are included in the collection.
 =cut
 
 sub encyclopedia_collectioncards {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wows/encyclopedia/collectioncards/', [ 'fields', 'language' ], undef, @_ );
+    return shift->_request( 'get', 'wows/encyclopedia/collectioncards/', [ 'fields', 'language' ], undef, @_ );
 }
 
 =item B<encyclopedia_battlearenas( [ %params ] )>
@@ -323,9 +289,7 @@ Method returns the information about maps.
 =cut
 
 sub encyclopedia_battlearenas {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wows/encyclopedia/battlearenas/', [ 'fields', 'language' ], undef, @_ );
+    return shift->_request( 'get', 'wows/encyclopedia/battlearenas/', [ 'fields', 'language' ], undef, @_ );
 }
 
 =back
@@ -351,9 +315,7 @@ Method returns general statistics for each ship of a player. Accounts with hidde
 =cut
 
 sub ships_stats {
-    my $self = shift;
-
-    return $self->_request(
+    return shift->_request(
         'get', 'wows/ships/stats/',
         [ 'language', 'fields', 'access_token', 'extra', 'account_id', 'ship_id', 'in_garage' ],
         ['account_id'], @_
@@ -369,9 +331,7 @@ sub ships_stats {
 =cut
 
 sub seasons_info {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wows/seasons/info/', [ 'fields', 'language', 'season_id' ], [], @_ );
+    return shift->_request( 'get', 'wows/seasons/info/', [ 'fields', 'language', 'season_id' ], [], @_ );
 }
 
 =item B<seasons_shipstats( [ %params ] )>
@@ -389,9 +349,7 @@ Method returns players' ships statistics in Ranked Battles seasons. Accounts wit
 =cut
 
 sub seasons_shipstats {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wows/seasons/shipstats/', [ 'account_id', 'access_token', 'fields', 'language', 'season_id', 'ship_id' ], ['account_id'], @_ );
+    return shift->_request( 'get', 'wows/seasons/shipstats/', [ 'account_id', 'access_token', 'fields', 'language', 'season_id', 'ship_id' ], ['account_id'], @_ );
 }
 
 =item B<seasons_accountinfo( [ %params ] )>
@@ -411,9 +369,7 @@ Method returns players' statistics in Ranked Battles seasons. Accounts with hidd
 =cut
 
 sub seasons_accountinfo {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wows/seasons/accountinfo/', [ 'account_id', 'access_token', 'fields', 'language', 'season_id' ], ['account_id'], @_ );
+    return shift->_request( 'get', 'wows/seasons/accountinfo/', [ 'account_id', 'access_token', 'fields', 'language', 'season_id' ], ['account_id'], @_ );
 }
 
 =head2 Clans
@@ -427,9 +383,7 @@ Method searches through clans and sorts them in a specified order
 =cut
 
 sub clans {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wows/clans/list/', [ 'fields', 'language', 'limit', 'page_no', 'search' ], [], @_ );
+    return shift->_request( 'get', 'wows/clans/list/', [ 'fields', 'language', 'limit', 'page_no', 'search' ], [], @_ );
 }
 
 =item B<clans_details( [ %params ] )>
@@ -447,9 +401,7 @@ Method returns detailed clan information
 =cut
 
 sub clans_details {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wows/clans/info/', [ 'clan_id', 'extra', 'fields', 'language' ], ['clan_id'], @_ );
+    return shift->_request( 'get', 'wows/clans/info/', [ 'clan_id', 'extra', 'fields', 'language' ], ['clan_id'], @_ );
 }
 
 =item B<clans_accountinfo( [ $params ] )>
@@ -467,9 +419,7 @@ Method returns player clan data. Player clan data exist only for accounts, that 
 =cut
 
 sub clans_accountinfo {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wows/clans/accountinfo/', [ 'account_id', 'extra', 'fields', 'language' ], ['account_id'], @_ );
+    return shift->_request( 'get', 'wows/clans/accountinfo/', [ 'account_id', 'extra', 'fields', 'language' ], ['account_id'], @_ );
 }
 
 =item B<clans_glossary( [ %params ] )>
@@ -479,9 +429,7 @@ Method returns information on clan entities.
 =cut
 
 sub clans_glossary {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wows/clans/glossary/', [ 'fields', 'language' ], [], @_ );
+    return shift->_request( 'get', 'wows/clans/glossary/', [ 'fields', 'language' ], [], @_ );
 }
 
 =item B<clans_season( [ %params ] )>
@@ -493,9 +441,7 @@ Method returns information about Clan Battles season.
 =cut
 
 sub clans_season {
-    my $self = shift;
-
-    return $self->_request( 'get', 'wows/clans/season/', [ 'fields', 'language' ], [], @_ );
+    return shift->_request( 'get', 'wows/clans/season/', [ 'fields', 'language' ], [], @_ );
 }
 
 =head1 BUGS
