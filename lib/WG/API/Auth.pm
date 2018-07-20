@@ -1,9 +1,10 @@
 package WG::API::Auth;
 
-use Moo;
-with 'WG::API::Base';
+use Const::Fast;
 
-use constant api_uri => '//api.worldoftanks.ru/';
+use Moo;
+
+with 'WG::API::Base';
 
 =head1 NAME
 
@@ -16,6 +17,14 @@ Version v0.10
 =cut
 
 our $VERSION = 'v0.10';
+
+const my $api_uri => '//api.worldoftanks.ru/';
+
+sub api_uri {
+    my ($self) = @_;
+
+    return $api_uri;
+}
 
 =head1 SYNOPSIS
 
