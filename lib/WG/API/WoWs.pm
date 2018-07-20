@@ -20,7 +20,7 @@ our $VERSION = 'v0.10';
 
 const my $api_uri => '//api.worldofwarships.ru/';
 
-sub api_uri {
+sub _api_uri {
     my ($self) = @_;
 
     return $api_uri;
