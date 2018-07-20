@@ -35,7 +35,7 @@ requires 'api_uri';
 
 =item I<application_id*>
 
-Rerquired application id: L<https://developers.wargaming.net/documentation/guide/getting-started/>
+Required application id: L<https://developers.wargaming.net/documentation/guide/getting-started/>
 
 =back
 
