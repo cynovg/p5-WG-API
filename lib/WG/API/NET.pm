@@ -116,6 +116,21 @@ sub clans_list {
     );
 }
 
+=item B<clans>
+
+Method searches through clans and sorts them in a specified order.
+
+=cut
+
+sub clans {
+    return shift->_request(
+        'get', 'wgn/clans/list/',
+        [ 'language', 'fields', 'search', 'limit', 'page_no', 'game' ],
+        undef, @_
+    );
+}
+
+
 =item B<clans_info>
 
 Method returns detailed clan information.
