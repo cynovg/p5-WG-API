@@ -1,7 +1,7 @@
 package WG::API::NET;
 
 use Const::Fast;
-
+use Carp qw/cluck/;
 use Moo;
 
 with 'WG::API::Base';
@@ -104,11 +104,26 @@ sub account_info {
 
 =item B<clans_list>
 
-Method searches through clans and sorts them in a specified order.
+DEPRECATED: Method searches through clans and sorts them in a specified order.
 
 =cut
 
 sub clans_list {
+    cluck "DEPRECATED!";
+    return shift->_request(
+        'get', 'wgn/clans/list/',
+        [ 'language', 'fields', 'search', 'limit', 'page_no', 'game' ],
+        undef, @_
+    );
+}
+
+=item B<clans>
+
+Method searches through clans and sorts them in a specified order.
+
+=cut
+
+sub clans {
     return shift->_request(
         'get', 'wgn/clans/list/',
         [ 'language', 'fields', 'search', 'limit', 'page_no', 'game' ],
