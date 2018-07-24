@@ -131,7 +131,6 @@ sub clans {
     );
 }
 
-
 =item B<clans_info>
 
 Method returns detailed clan information.
