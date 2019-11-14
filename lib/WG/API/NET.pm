@@ -102,21 +102,6 @@ sub account_info {
 
 =over 1
 
-=item B<clans_list>
-
-DEPRECATED: Method searches through clans and sorts them in a specified order.
-
-=cut
-
-sub clans_list {
-    cluck "DEPRECATED!";
-    return shift->_request(
-        'get', 'wgn/clans/list/',
-        [ 'language', 'fields', 'search', 'limit', 'page_no', 'game' ],
-        undef, @_
-    );
-}
-
 =item B<clans>
 
 Method searches through clans and sorts them in a specified order.
