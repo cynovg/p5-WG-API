@@ -86,6 +86,7 @@
       }
    },
    "version" : "v0.11",
+   "x_authority" : "cpan:CYNOVG",
    "x_contributors" : [
       "Cyrill Novgorodcev <cynovg@cpan.org>"
    ],

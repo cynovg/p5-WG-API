@@ -1,4 +1,4 @@
-[![MetaCPAN Release](https://badge.fury.io/pl/p5-WG-API.svg)](https://metacpan.org/release/p5-WG-API)
+[![MetaCPAN Release](https://badge.fury.io/pl/WG-API.svg)](https://metacpan.org/release/WG-API) [![Build Status](https://travis-ci.org/cynovg/p5-WG-API.svg?branch=master)](https://travis-ci.org/cynovg/p5-WG-API)
 # NAME
 
 WG::API - Module for work with Wargaming.net Public API
