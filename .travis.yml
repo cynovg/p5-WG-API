@@ -1,12 +1,12 @@
 language: perl
 perl:
-  - "5.18"
+  - "5.18.1"
   - "5.20"
   - "5.30"
   - "dev"
 matrix:
   include:
-    - perl: 5.18
+    - perl: 5.18.1
       env: COVERAGE=1
 sudo: false
 before_install:
