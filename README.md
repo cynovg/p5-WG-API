@@ -59,9 +59,9 @@ You can find documentation for this module with the perldoc command.
 
 You can also look for information at:
 
-- RT: Gitlab's request tracker (report bugs here)
+- RT: GitHub's request tracker (report bugs here)
 
-    [https://gitlab.com/cynovg/WG-API/issues](https://gitlab.com/cynovg/WG-API/issues)
+    [https://github.com/cynovg/p5-WG-API/issues](https://github.com/cynovg/p5-WG-API/issues)
 
 - AnnoCPAN: Annotated CPAN documentation
 
