@@ -1,4 +1,4 @@
 license="artistic_2"
-badges = ['metacpan', 'travis']
+badges = ['metacpan', 'travis', 'coveralls']
 abstract_from="lib/WG/API.pm"
 authors_from="lib/WG/API.pm"
