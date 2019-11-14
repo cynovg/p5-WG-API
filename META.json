@@ -85,7 +85,7 @@
          "web" : "https://github.com/cynovg/p5-WG-API"
       }
    },
-   "version" : "v0.11",
+   "version" : "v0.12",
    "x_authority" : "cpan:CYNOVG",
    "x_contributors" : [
       "Cyrill Novgorodcev <cynovg@cpan.org>"
