@@ -296,7 +296,7 @@ sub _raw_post {
 
     $self->log( sprintf "METHOD POST, URL %s, %s\n", $url, Dumper $params );
 
-    return $self->ua->post( $url, $params );
+    return $self->ua->post_form( $url, $params );
 }
 
 =head1 BUGS
